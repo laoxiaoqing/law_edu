@@ -49,11 +49,11 @@ public class GuideActivity extends Activity {
             ImageView point = new ImageView(this);
             point.setBackgroundResource(R.drawable.point_normal);
             //单位：像素
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(20,20);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(10,10);
             point.setLayoutParams(params);
             if (i !=0){
                 //距离左边有十个像素，不包括第一个
-                params.leftMargin = 20;
+                params.leftMargin = 10;
             }
             start_point_group.addView(point);
         }
@@ -69,7 +69,7 @@ public class GuideActivity extends Activity {
         @Override
         public void onGlobalLayout() {
             //执行不止一次
-            iv_point_light.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            iv_point_light.getViewTreeObserver().removeGlobalOnLayoutListener(this);
             //间距
             int leftmax = start_point_group.getChildAt(1).getLeft() - start_point_group.getChildAt(0).getLeft();
 
