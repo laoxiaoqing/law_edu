@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".activity.GuideActivity">
         </activity>
+        <activity android:name=".activity.MainActivity">
+        </activity>
     </application>
 
 </manifest>

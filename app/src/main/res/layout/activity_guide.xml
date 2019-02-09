@@ -18,6 +18,7 @@
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="85dp"
+            android:visibility="gone"
             android:text="开始体验"
             android:textSize="20sp"
             android:layout_width="wrap_content"
