@@ -13,6 +13,6 @@ public class MainActivity extends SlidingFragmentActivity {
         super.onCreate(savedInstanceState);
         //1.设置主页面
         setContentView(R.layout.activity_main);
-        //
+        
     }
 }
