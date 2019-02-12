@@ -16,6 +16,7 @@ import com.example.administrator.lawapp.pager.ForumPager;
 import com.example.administrator.lawapp.pager.HomePager;
 import com.example.administrator.lawapp.pager.LawPager;
 import com.example.administrator.lawapp.pager.MePager;
+import com.example.administrator.lawapp.ui.IsScrollViewPager;
 import com.example.administrator.lawapp.utils.LogUtil;
 
 import org.xutils.view.annotation.ViewInject;
@@ -27,7 +28,7 @@ public class ContentFragment extends BaseFragment {
     private TextView textView;
     //初始化控件
     @ViewInject(R.id.viewpager)
-    private ViewPager viewPager;
+    private IsScrollViewPager viewPager;
     @ViewInject(R.id.rg_main)
     private RadioGroup rg_main;
     /**
@@ -56,12 +57,39 @@ public class ContentFragment extends BaseFragment {
         basePagers.add(new LawPager(context));//案例
         basePagers.add(new ForumPager(context));//社区
         basePagers.add(new MePager(context));//我的
-        //设置默认选中首页
-        rg_main.check(R.id.rb_home);
+
         //设置ViewPager的适配器
         viewPager.setAdapter(new ContentFragmentAdapter());
         //设置RadioGroup 监听事件：为底部RadioGroup绑定状态改变监听事件
         rg_main.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
+        //监听某个页面被选中，初始化对应页面的数据
+        viewPager.addOnPageChangeListener(new MyOnPageChangeListener());
+        //设置默认选中首页
+        rg_main.check(R.id.rb_home);
+        //只加载一个页面数据，配合addOnPageChangeListener使用
+        basePagers.get(0).initData();
+    }
+    class MyOnPageChangeListener implements ViewPager.OnPageChangeListener{
+
+        @Override
+        public void onPageScrolled(int i, float v, int i1) {
+
+        }
+
+        /**
+         * 当某个页面被选中时候回调这个方法
+         * @param i 被选中页面的位置
+         */
+        @Override
+        public void onPageSelected(int i) {
+            BasePager basePager = basePagers.get(i);
+            basePager.initData();
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int i) {
+
+        }
     }
 
     class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
@@ -117,7 +145,7 @@ public class ContentFragment extends BaseFragment {
             BasePager basePager = basePagers.get(position);//本质是各个页面的实例，，0为主页
             View rootView = basePager.rootView;//各个子页面
             //调用各个页面的initData()
-            basePager.initData();//初始化数据
+//            basePager.initData();//初始化数据
             container.addView(rootView);
             return rootView;
         }
