@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Window;
+
 import com.example.administrator.lawapp.R;
 import com.example.administrator.lawapp.fragment.ContentFragment;
 import com.example.administrator.lawapp.fragment.LeftmenuFragment;
@@ -21,6 +23,7 @@ public class MainActivity extends SlidingFragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         //1.设置主页面
         setContentView(R.layout.activity_main);
         //2.左侧菜单
@@ -34,7 +37,7 @@ public class MainActivity extends SlidingFragmentActivity {
         //5.设置滑动模式：滑动边缘，全屏滑动，不可以滑动
         slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         //6.设置主页占据宽度
-        slidingMenu.setBehindOffset(DensityUtil.dip2px(MainActivity.this,200));
+        slidingMenu.setBehindOffset(DensityUtil.dip2px(MainActivity.this,220));
         //初始化Fragment
         initFragment();
     }
@@ -46,9 +49,19 @@ public class MainActivity extends SlidingFragmentActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         //3.替换
         fragmentTransaction.replace(R.id.main_content,new ContentFragment(), MAIN_CONTENT_TAG);//主页
-        fragmentTransaction.replace(R.id.left_menu,new LeftmenuFragment(), LEFTMENU_TAG);//主页
+        fragmentTransaction.replace(R.id.left_menu,new LeftmenuFragment(), LEFTMENU_TAG);//左侧菜单
         //4.提交
         fragmentTransaction.commit();
         //5
+    }
+
+    /**
+     * 得到左侧菜单Fragment
+     * @return
+     */
+    public LeftmenuFragment getLeftmenuFragment() {
+        //1.得到FragmentManger
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        return (LeftmenuFragment) fragmentManager.findFragmentByTag(LEFTMENU_TAG);
     }
 }

@@ -31,7 +31,7 @@
             style="@style/rb_tag_style"
             android:drawableTop="@drawable/rb_law_drawable_selector"
             android:gravity="center"
-            android:text="案例" />
+            android:text="法律" />
 
         <RadioButton
             android:id="@+id/rb_forum"

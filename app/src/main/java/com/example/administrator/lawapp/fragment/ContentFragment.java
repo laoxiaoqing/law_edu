@@ -10,6 +10,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.administrator.lawapp.R;
+import com.example.administrator.lawapp.activity.MainActivity;
 import com.example.administrator.lawapp.base.BaseFragment;
 import com.example.administrator.lawapp.base.BasePager;
 import com.example.administrator.lawapp.pager.ForumPager;
@@ -18,6 +19,7 @@ import com.example.administrator.lawapp.pager.LawPager;
 import com.example.administrator.lawapp.pager.MePager;
 import com.example.administrator.lawapp.ui.IsScrollViewPager;
 import com.example.administrator.lawapp.utils.LogUtil;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -99,18 +101,27 @@ public class ContentFragment extends BaseFragment {
          */
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
+            MainActivity mainActivity = (MainActivity)context;
             switch (checkedId) {
                 case R.id.rb_home:
                     viewPager.setCurrentItem(0,false);//false没有动画
+                    //设置可以侧滑菜单
+                    mainActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
                     break;
                 case R.id.rb_law:
                     viewPager.setCurrentItem(1,false);
+                    //设置不可以侧滑菜单
+                    mainActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     break;
                 case R.id.rb_forum:
                     viewPager.setCurrentItem(2,false);
+                    //设置不可以侧滑菜单
+                    mainActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
                     break;
                 case R.id.rb_me:
                     viewPager.setCurrentItem(3,false);
+                    //设置不可以侧滑菜单
+                    mainActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
                     break;
             }
         }
