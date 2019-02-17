@@ -56,7 +56,7 @@ public class ContentFragment extends BaseFragment {
         //初始化四个页面，并且放入集合中
         basePagers = new ArrayList<>();
         basePagers.add(new HomePager(context));//主页面
-        basePagers.add(new LawPager(context));//案例
+        basePagers.add(new LawPager(context));//法律
         basePagers.add(new ForumPager(context));//社区
         basePagers.add(new MePager(context));//我的
 
@@ -71,6 +71,15 @@ public class ContentFragment extends BaseFragment {
         //只加载一个页面数据，配合addOnPageChangeListener使用
         basePagers.get(0).initData();
     }
+
+    /**
+     * 得到法律书库页面
+     * @return
+     */
+    public LawPager getLawPager() {
+        return (LawPager) basePagers.get(1);
+    }
+
     class MyOnPageChangeListener implements ViewPager.OnPageChangeListener{
 
         @Override

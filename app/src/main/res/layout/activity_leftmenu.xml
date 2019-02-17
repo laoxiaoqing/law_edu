@@ -1,9 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/left_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/left_menu"
-    android:background="#7BDFF2">
+    android:background="#7BDFF2"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/leftmenu_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/leftmenu_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:src="@drawable/search_leftmenu_selector" />
+        <TextView
+            android:id="@+id/leftmenu_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:enabled="false"
+            android:text="搜索"
+            android:textColor="@drawable/item_leftmenu_selector"
+            android:textSize="22sp" />
+    </LinearLayout>
+
+    <!--<ListView
+        android:id="@+id/leftmenu_lv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="@color/colorItem"
+        android:dividerHeight="1dp"
+        android:listSelector="@color/colorItem"
+        ></ListView>-->
 
     <!--<TextView
         android:layout_gravity="center"
@@ -13,4 +46,5 @@
         android:textColor="#ff0000"
         android:textSize="25sp"
         />-->
-</FrameLayout>
+
+</LinearLayout>

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.administrator.lawapp.activity.MainActivity;
+import com.example.administrator.lawapp.base.BaseCategoryPager;
 import com.example.administrator.lawapp.base.BasePager;
 import com.example.administrator.lawapp.fragment.LeftmenuFragment;
 import com.example.administrator.lawapp.getJson.LawPagerBean;
@@ -18,6 +19,7 @@ import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,6 +30,8 @@ public class LawPager extends BasePager {
      * 左侧菜单对应的集合
      */
     List<LawPagerBean.DataBean> data;
+    public List<BaseCategoryPager> baseCategoryPagers;
+
     public LawPager(Context context) {
         super(context);
     }
@@ -38,7 +42,7 @@ public class LawPager extends BasePager {
         LogUtil.e("新闻页面数据初始化了");
         ib_menu.setVisibility(View.VISIBLE);
         //1.设置标题
-        tv_title.setText("新闻");
+        //tv_title.setText("法律书库");
         //2.联网请求得到数据创建视图
         TextView textView = new TextView(context);
         textView.setGravity(Gravity.CENTER);
@@ -46,11 +50,10 @@ public class LawPager extends BasePager {
         //3.把子视图添加到BasePager的FrameLayout
         fl_content.addView(textView);
         //4.绑定数据
-        textView.setText("新闻内容");
+        //textView.setText("新闻内容");
         getDataFromNet();
 
     }
-
 
 
     private void getDataFromNet() {
@@ -58,20 +61,20 @@ public class LawPager extends BasePager {
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                LogUtil.e("请求成功"+result);
+                LogUtil.e("请求成功" + result);
                 //设置适配器
                 manageData(result);
             }
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
-                LogUtil.e("请求失败"+ex.getMessage());
+                LogUtil.e("请求失败" + ex.getMessage());
 
             }
 
             @Override
             public void onCancelled(CancelledException cex) {
-                LogUtil.e("请求onCancelled"+cex.getMessage());
+                LogUtil.e("请求onCancelled" + cex.getMessage());
 
             }
 
@@ -82,32 +85,76 @@ public class LawPager extends BasePager {
             }
         });
     }
+
     /**
      * 解析json数据和显示数据
      */
     private void manageData(String json) {
         LawPagerBean lawPagerBean = parsedJson(json);
-        data=lawPagerBean.getData();
-        LogUtil.e("获得一条数据"+lawPagerBean.isSuccess());
-        LogUtil.e("获得一条数据"+data.get(0).getLaw_category_id());
-        LogUtil.e("获得一条数据"+data.get(0).getList());
-        LogUtil.e("获得一条数据"+data.get(0).getLaw_category_name());
+        data = lawPagerBean.getData();
         MainActivity mainActivity = (MainActivity) context;
         //得到左侧菜单
-        LeftmenuFragment leftmenuFragment=mainActivity.getLeftmenuFragment();
+        LeftmenuFragment leftmenuFragment = mainActivity.getLeftmenuFragment();
+        baseCategoryPagers = new ArrayList<>();
+        baseCategoryPagers.add(new LawCategoryPager(context));//二级目录显示页面
+        baseCategoryPagers.add(new LawSearchPager(context));//搜索页面
         //把数据传递给左侧菜单
         leftmenuFragment.setData(data);
+
+
 
     }
 
     /**
      * 解析json数据：
+     *
      * @param json
      * @return
      */
-    private LawPagerBean parsedJson(String json){
+    private LawPagerBean parsedJson(String json) {
         Gson gson = new Gson();
-        LawPagerBean bean=gson.fromJson(json,LawPagerBean.class);
-        return  bean;
+        LawPagerBean bean = gson.fromJson(json, LawPagerBean.class);
+        return bean;
+    }
+
+    /**
+     * 切换详情页面
+     *
+     * @param position
+     */
+    public void switchPager(int position) {
+
+        if (position == Constants.CATEGORYPAGER) {
+            tv_title.setText("搜索");
+            isPosition(1);
+        } else {
+            tv_title.setText(data.get(position).getLaw_category_name());
+            /*//1.设置标题
+            tv_title.setText(data.get(position).getLaw_category_name());
+            //2.移除内容
+            fl_content.removeAllViews();//移除之前的视图
+            //3.添加新内容
+            BaseCategoryPager baseCategoryPager;
+            baseCategoryPager = baseCategoryPagers.get(0);
+            View rootView = baseCategoryPager.rootView;
+            //初始化数据,参数传category的id
+            baseCategoryPager.initData(data.get(position).getLaw_category_id());
+            fl_content.addView(rootView);*/
+            isPosition(0);
+        }
+    }
+
+    public void isPosition(int num){
+        //1.设置标题
+
+        //2.移除内容
+        fl_content.removeAllViews();//移除之前的视图
+        //3.添加新内容
+        BaseCategoryPager baseCategoryPager;
+        baseCategoryPager = baseCategoryPagers.get(num);
+        View rootView = baseCategoryPager.rootView;
+        //初始化数据,参数传category的id
+        baseCategoryPager.initData(Constants.CATEGORYPAGER);
+        fl_content.addView(rootView);
     }
 }
