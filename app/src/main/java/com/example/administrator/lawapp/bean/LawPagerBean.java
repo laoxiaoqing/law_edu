@@ -1,4 +1,4 @@
-package com.example.administrator.lawapp.getJson;
+package com.example.administrator.lawapp.bean;
 
 import java.util.List;
 

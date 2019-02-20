@@ -39,7 +39,7 @@ public class BasePager {
         rootView = initView();
     }
 
-    private View initView() {
+    public View initView() {
         //基类的页面
         View view = View.inflate(context, R.layout.base_pager, null);
         tv_title = view.findViewById(R.id.tv_title);

@@ -19,13 +19,15 @@ public abstract class BaseCategoryPager {
 
     /**
      * 抽象方法，强制孩子实现该方法，每个页面实现不同的效果
+     *
      * @return
      */
     public abstract View initView();
+
     /**
      * 子页面需要绑定数据，联网请求数据等时候，重写该方法
      */
-    public void initData(int categoryId){
+    public void initData(int categoryId, int position) {
 
 
     }

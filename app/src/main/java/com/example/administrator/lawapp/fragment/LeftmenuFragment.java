@@ -1,39 +1,22 @@
 package com.example.administrator.lawapp.fragment;
 
-import android.content.Context;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.provider.SyncStateContract;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.administrator.lawapp.R;
 import com.example.administrator.lawapp.activity.MainActivity;
 import com.example.administrator.lawapp.base.BaseFragment;
-import com.example.administrator.lawapp.base.BasePager;
-import com.example.administrator.lawapp.getJson.LawPagerBean;
+import com.example.administrator.lawapp.bean.LawPagerBean;
 import com.example.administrator.lawapp.pager.LawPager;
 import com.example.administrator.lawapp.utils.Constants;
-import com.example.administrator.lawapp.utils.DensityUtil;
 import com.example.administrator.lawapp.utils.LogUtil;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -47,26 +30,16 @@ public class LeftmenuFragment extends BaseFragment {
     private TextView leftmenu_tv;
     private LinearLayout linearLayout;
     private TextView textView;
+    private Boolean isData = false;
 
     @Override
     public View initView() {
         LogUtil.e("左侧菜单视图初始化了");
-        View view = View.inflate(context, R.layout.activity_leftmenu, null);
-        //listView = view.findViewById(R.id.leftmenu_lv);
+        //View view = View.inflate(context, R.layout.activity_leftmenu, null);
         listView = new ListView(context);
         listView.setCacheColorHint(1);
         listView.setSelector(R.color.colorItem);
         listView.setDividerHeight(1);
-
-        /*linearLayout = (LinearLayout) view.findViewById(R.id.leftmenu_search);
-        linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.e("cc","ccc");
-                Toast.makeText(getActivity(),"333",Toast.LENGTH_SHORT).show();
-            }
-        });*/
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -77,7 +50,7 @@ public class LeftmenuFragment extends BaseFragment {
                 //2.把左侧菜单关闭
                 MainActivity mainActivity = (MainActivity) context;
                 mainActivity.getSlidingMenu().toggle();//关开切换
-                //3.切换到对应的详情页面：宪法，民事类。。
+                //3.切换到对应的详情页面：宪法。。
                 switchPager2(prePosition);
             }
         });
@@ -100,11 +73,13 @@ public class LeftmenuFragment extends BaseFragment {
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                prePosition = -1;
-                leftmenuFragmentAdapter.notifyDataSetChanged();//getCount
+                prePosition = Constants.CATEGORYPAGER;
+                if (isData) {
+                    leftmenuFragmentAdapter.notifyDataSetChanged();
+                }
                 MainActivity mainActivity = (MainActivity) context;
                 mainActivity.getSlidingMenu().toggle();//关开切换
-                //切换页面
+                //切换法律的两个页面  搜索，
                 ContentFragment contentFragment = mainActivity.getContentFragment();
                 LawPager lawPager = contentFragment.getLawPager();
                 lawPager.switchPager(Constants.CATEGORYPAGER);
@@ -119,6 +94,7 @@ public class LeftmenuFragment extends BaseFragment {
      */
     public void setData(List<LawPagerBean.DataBean> data) {
         this.data = data;
+        isData = true;
         for (LawPagerBean.DataBean dataBean : data) {
             LogUtil.e("名称" + dataBean.getLaw_category_name());
         }
