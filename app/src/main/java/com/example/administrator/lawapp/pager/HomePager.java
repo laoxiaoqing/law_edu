@@ -74,6 +74,5 @@ public class HomePager extends BasePager {
      */
     private void dealData(String data) {
 
-
     }
 }

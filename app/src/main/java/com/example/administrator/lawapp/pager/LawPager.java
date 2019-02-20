@@ -46,11 +46,11 @@ public class LawPager extends BasePager {
         //1.设置标题
         //tv_title.setText("法律书库");
         //2.联网请求得到数据创建视图
-        TextView textView = new TextView(context);
-        textView.setGravity(Gravity.CENTER);
-        textView.setTextColor(Color.RED);
+//        TextView textView = new TextView(context);
+//        textView.setGravity(Gravity.CENTER);
+//        textView.setTextColor(Color.RED);
         //3.把子视图添加到BasePager的FrameLayout
-        fl_content.addView(textView);
+//        fl_content.addView(textView);
         //4.绑定数据
         //textView.setText("新闻内容");
 

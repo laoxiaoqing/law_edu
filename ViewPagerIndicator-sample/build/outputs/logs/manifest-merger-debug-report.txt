@@ -1,0 +1,353 @@
+-- Merging decision tree log ---
+manifest
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:2:1-298:12
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:2:1-298:12
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:2:1-298:12
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:2:1-298:12
+MERGED from [:ViewPagerIndicator_library] G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator_library\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-v4:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\1bdf286e58653f3044ab51297822839b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\5adf10e68fbf857f0c34af3d4c641a92\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\1d2a910f65b5bb7bbf94da6d72413725\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\c9f7126230f9951c20a8d454d93cda6f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\c29d35b54e35f784d3f85a81a641245f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\22cc49d5548c7f7d36abcf59bff6ca27\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\5ab50dda89737a7954c982b78941a7ae\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\604c6dd235abe220a971b6635c37640c\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\7e2cd27f8e3b05719e6b13366e8b3d62\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\d66aa67487473ef95e9a1e00e80a9af1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\5b1164142258284a4ca71cd62e4d0d9a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\5d04ac05dfef6e4aef72eeed55b6a980\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\4a5a9d4c6be3ef1ebb7d8b6e9d947556\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\383a44cf7374dc4453326c3f39232649\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\6fada104c8f473f73efc8b6a25f10079\AndroidManifest.xml:17:1-25:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\8bd1b5d7f62b711470eadca7687dff9a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\9d4db848d35d17373c9c59bd70908c44\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\29d82d2438cd4851c3f05e4531c3a2ad\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\1890eeaebf32e8715b69e78794af111d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\f83f12e2ef9b4311d5998f2b785ef244\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\3909619c6012947e70b6707184523f2f\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\8eda6de7625bc3d0195f65d5277159d3\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\c54ba24c17bca9d11702d648f234de0e\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\0a6180de20b56db3735b1cd6c7e032ce\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\1bb21b2d6f300c6b4614d6308f3ef43c\AndroidManifest.xml:17:1-22:12
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:2:1-298:12
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:2:1-298:12
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:2:1-298:12
+	package
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:3:5-44
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:5:5-32
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:4:5-29
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml
+uses-sdk
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:7:5-9:41
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:7:5-9:41
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:7:5-9:41
+MERGED from [:ViewPagerIndicator_library] G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator_library\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:ViewPagerIndicator_library] G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator_library\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:support-v4:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\1bdf286e58653f3044ab51297822839b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\1bdf286e58653f3044ab51297822839b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\5adf10e68fbf857f0c34af3d4c641a92\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\5adf10e68fbf857f0c34af3d4c641a92\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\1d2a910f65b5bb7bbf94da6d72413725\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\1d2a910f65b5bb7bbf94da6d72413725\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\c9f7126230f9951c20a8d454d93cda6f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\c9f7126230f9951c20a8d454d93cda6f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\c29d35b54e35f784d3f85a81a641245f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\c29d35b54e35f784d3f85a81a641245f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\22cc49d5548c7f7d36abcf59bff6ca27\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\22cc49d5548c7f7d36abcf59bff6ca27\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\5ab50dda89737a7954c982b78941a7ae\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\5ab50dda89737a7954c982b78941a7ae\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\604c6dd235abe220a971b6635c37640c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\604c6dd235abe220a971b6635c37640c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\7e2cd27f8e3b05719e6b13366e8b3d62\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\7e2cd27f8e3b05719e6b13366e8b3d62\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\d66aa67487473ef95e9a1e00e80a9af1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\d66aa67487473ef95e9a1e00e80a9af1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\5b1164142258284a4ca71cd62e4d0d9a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\5b1164142258284a4ca71cd62e4d0d9a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\5d04ac05dfef6e4aef72eeed55b6a980\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\5d04ac05dfef6e4aef72eeed55b6a980\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\4a5a9d4c6be3ef1ebb7d8b6e9d947556\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\4a5a9d4c6be3ef1ebb7d8b6e9d947556\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\383a44cf7374dc4453326c3f39232649\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\383a44cf7374dc4453326c3f39232649\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\6fada104c8f473f73efc8b6a25f10079\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\6fada104c8f473f73efc8b6a25f10079\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\8bd1b5d7f62b711470eadca7687dff9a\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\8bd1b5d7f62b711470eadca7687dff9a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\9d4db848d35d17373c9c59bd70908c44\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\9d4db848d35d17373c9c59bd70908c44\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\29d82d2438cd4851c3f05e4531c3a2ad\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\29d82d2438cd4851c3f05e4531c3a2ad\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\1890eeaebf32e8715b69e78794af111d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\1890eeaebf32e8715b69e78794af111d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\f83f12e2ef9b4311d5998f2b785ef244\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\f83f12e2ef9b4311d5998f2b785ef244\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\3909619c6012947e70b6707184523f2f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\3909619c6012947e70b6707184523f2f\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\8eda6de7625bc3d0195f65d5277159d3\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\8eda6de7625bc3d0195f65d5277159d3\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\c54ba24c17bca9d11702d648f234de0e\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\c54ba24c17bca9d11702d648f234de0e\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\0a6180de20b56db3735b1cd6c7e032ce\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\0a6180de20b56db3735b1cd6c7e032ce\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\1bb21b2d6f300c6b4614d6308f3ef43c\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\1bb21b2d6f300c6b4614d6308f3ef43c\AndroidManifest.xml:20:5-44
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:7:5-9:41
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:7:5-9:41
+	android:targetSdkVersion
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:9:9-38
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:8:9-34
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml
+application
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:11:5-297:19
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\383a44cf7374dc4453326c3f39232649\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\383a44cf7374dc4453326c3f39232649\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\6fada104c8f473f73efc8b6a25f10079\AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\6fada104c8f473f73efc8b6a25f10079\AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\383a44cf7374dc4453326c3f39232649\AndroidManifest.xml:22:18-91
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:12:9-50
+	android:icon
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:13:9-38
+activity#com.viewpagerindicator.sample.ListSamples
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:15:9-23:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:17:13-48
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:16:13-40
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:19:13-22:29
+action#android.intent.action.MAIN
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:20:17-69
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:20:25-66
+category#android.intent.category.LAUNCHER
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:21:17-77
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:21:27-74
+activity#com.viewpagerindicator.sample.SampleCirclesDefault
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:28:9-35:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:30:13-44
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:29:13-49
+intent-filter#action:name:android.intent.action.MAIN+category:name:com.jakewharton.android.viewpagerindicator.sample.SAMPLE
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:31:13-34:29
+category#com.jakewharton.android.viewpagerindicator.sample.SAMPLE
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:33:17-101
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:33:27-98
+activity#com.viewpagerindicator.sample.SampleCirclesInitialPage
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:36:9-43:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:38:13-49
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:37:13-53
+activity#com.viewpagerindicator.sample.SampleCirclesSnap
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:44:9-51:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:46:13-41
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:45:13-46
+activity#com.viewpagerindicator.sample.SampleCirclesStyledLayout
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:52:9-60:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:54:13-56
+	android:theme
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:55:13-55
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:53:13-54
+activity#com.viewpagerindicator.sample.SampleCirclesStyledMethods
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:61:9-69:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:63:13-57
+	android:theme
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:64:13-55
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:62:13-55
+activity#com.viewpagerindicator.sample.SampleCirclesStyledTheme
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:70:9-78:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:72:13-55
+	android:theme
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:73:13-52
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:71:13-53
+activity#com.viewpagerindicator.sample.SampleCirclesWithListener
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:79:9-86:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:81:13-50
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:80:13-54
+activity#com.viewpagerindicator.sample.SampleIconsDefault
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:91:9-98:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:93:13-42
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:92:13-47
+activity#com.viewpagerindicator.sample.SampleLinesDefault
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:104:9-111:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:106:17-46
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:105:17-51
+activity#com.viewpagerindicator.sample.SampleLinesStyledLayout
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:112:9-120:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:114:17-58
+	android:theme
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:115:17-59
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:113:17-56
+activity#com.viewpagerindicator.sample.SampleLinesStyledMethods
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:121:9-129:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:123:17-59
+	android:theme
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:124:17-59
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:122:17-57
+activity#com.viewpagerindicator.sample.SampleLinesStyledTheme
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:130:9-138:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:132:17-57
+	android:theme
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:133:17-56
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:131:17-55
+activity#com.viewpagerindicator.sample.SampleTitlesBottom
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:143:9-150:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:145:13-52
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:144:13-47
+activity#com.viewpagerindicator.sample.SampleTitlesCenterClickListener
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:151:9-158:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:153:13-57
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:152:13-60
+activity#com.viewpagerindicator.sample.SampleTitlesDefault
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:159:9-166:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:161:13-43
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:160:13-48
+activity#com.viewpagerindicator.sample.SampleTitlesInitialPage
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:167:9-174:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:169:13-48
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:168:13-52
+activity#com.viewpagerindicator.sample.SampleTitlesStyledLayout
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:175:9-183:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:177:13-55
+	android:theme
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:178:13-55
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:176:13-53
+activity#com.viewpagerindicator.sample.SampleTitlesStyledMethods
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:184:9-192:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:186:13-56
+	android:theme
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:187:13-55
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:185:13-54
+activity#com.viewpagerindicator.sample.SampleTitlesStyledTheme
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:193:9-201:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:195:13-54
+	android:theme
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:196:13-52
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:194:13-52
+activity#com.viewpagerindicator.sample.SampleTitlesTriangle
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:202:9-209:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:204:13-50
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:203:13-49
+activity#com.viewpagerindicator.sample.SampleTitlesWithListener
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:210:9-217:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:212:13-49
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:211:13-53
+activity#com.viewpagerindicator.sample.SampleTabsDefault
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:222:9-230:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:224:13-41
+	android:theme
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:225:13-63
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:223:13-46
+activity#com.viewpagerindicator.sample.SampleTabsStyled
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:231:9-239:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:233:13-40
+	android:theme
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:234:13-52
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:232:13-45
+activity#com.viewpagerindicator.sample.SampleTabsWithIcons
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:240:7-248:18
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:242:11-42
+	android:theme
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:243:11-50
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:241:11-46
+activity#com.viewpagerindicator.sample.SampleUnderlinesDefault
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:253:9-260:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:255:17-51
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:254:17-56
+activity#com.viewpagerindicator.sample.SampleUnderlinesNoFade
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:261:9-268:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:263:17-51
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:262:17-55
+activity#com.viewpagerindicator.sample.SampleUnderlinesStyledLayout
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:269:9-277:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:271:17-63
+	android:theme
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:272:17-59
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:270:17-61
+activity#com.viewpagerindicator.sample.SampleUnderlinesStyledMethods
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:278:9-286:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:280:17-64
+	android:theme
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:281:17-59
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:279:17-62
+activity#com.viewpagerindicator.sample.SampleUnderlinesStyledTheme
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:287:9-295:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:289:17-62
+	android:theme
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:290:17-56
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\ViewPagerIndicator-sample\src\main\AndroidManifest.xml:288:17-60
