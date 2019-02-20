@@ -67,7 +67,7 @@ public class LawCategoryPager extends BaseCategoryPager {
             public void onClick(View v) {
                 Toast.makeText(context, "这里点击全部按钮" + law_category_id, Toast.LENGTH_SHORT).show();
                 //通过传回law_category_id的值，获取当前下所有法律书。
-                getDataFromNetByParentId(law_category_id);
+                //getDataFromNetByParentId(law_category_id);
                 MainActivity mainActivity = (MainActivity) context;
                 //mainActivity.getSlidingMenu().toggle();//关开切换
                 //切换法律的两个页面  搜索，
@@ -88,8 +88,7 @@ public class LawCategoryPager extends BaseCategoryPager {
                 LogUtil.e("LawSearchPager请求成功" + result);
                 //缓存数据
                 CacheUtils.putString(context, Constants.LAW_CATEGORY_URL + "parentid/" + law_category_id, result);
-                //设置适配器
-                manageData(result);
+
             }
 
             @Override
@@ -110,10 +109,6 @@ public class LawCategoryPager extends BaseCategoryPager {
 
             }
         });
-    }
-
-    private void manageData(String result) {
-
     }
 
     private int anInt = 1001;

@@ -27,6 +27,7 @@ public class MePager extends BasePager {
         textView.setGravity(Gravity.CENTER);
         textView.setTextColor(Color.RED);
         //3.把子视图添加到BasePager的FrameLayout
+        fl_content.removeAllViews();
         fl_content.addView(textView);
         //4.绑定数据
         textView.setText("我的内容");

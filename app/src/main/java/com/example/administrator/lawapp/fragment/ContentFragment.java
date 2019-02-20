@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
 public class ContentFragment extends BaseFragment {
     private TextView textView;
-    //初始化控件
+    //初始化控件,设置不可以滑动
     @ViewInject(R.id.viewpager)
     private IsScrollViewPager viewPager;
     @ViewInject(R.id.rg_main)
@@ -164,6 +164,7 @@ public class ContentFragment extends BaseFragment {
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
             BasePager basePager = basePagers.get(position);//本质是各个页面的实例，，0为主页
             View rootView = basePager.rootView;//各个子页面
+
             //调用各个页面的initData()
 //            basePager.initData();//初始化数据
             container.addView(rootView);

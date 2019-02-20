@@ -33,7 +33,7 @@ public class ForumPager extends BasePager {
         /*fl_content.addView(textView);*/
         //4.绑定数据
         /*textView.setText("社区内容");*/
-
+        fl_content.removeAllViews();
         fl_content.addView(view);
         //
     }
