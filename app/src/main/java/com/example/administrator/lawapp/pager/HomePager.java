@@ -77,8 +77,13 @@ public class HomePager extends BasePager {
         //1.设置标题
         tv_title.setText("主页面");
         //2.联网请求得到数据创建视图
+        View lvView = View.inflate(context, R.layout.home_display_child, null);
+
         View view = View.inflate(context, R.layout.home_display, null);
+        x.view().inject(HomePager.this, lvView);
         x.view().inject(HomePager.this, view);
+        //把顶部的部分视图，以头的方式添加到ListView中
+        lv_case.addHeaderView(lvView);
         //3.把子视图添加到BasePager的FrameLayout
         ll_detailA.setOnClickListener(new View.OnClickListener() {
             @Override
