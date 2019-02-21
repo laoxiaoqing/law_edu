@@ -74,7 +74,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="90dp"
             android:orientation="horizontal">
             <!--<View
                 android:id="@+id/id_diverline5"
@@ -166,15 +166,17 @@
         <LinearLayout
             android:id="@+id/ll_detailA"
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="90dp">
 
             <ImageView
+                android:id="@+id/iv_video"
                 android:layout_width="120dp"
                 android:layout_height="85dp"
                 android:layout_margin="8dp"
-                android:src="@mipmap/home_page" />
+                android:src="@mipmap/cases_upload" />
 
             <TextView
+                android:id="@+id/tv_video"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -223,15 +225,17 @@
         <LinearLayout
             android:id="@+id/ll_detailB"
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="90dp">
 
             <ImageView
+                android:id="@+id/iv_audio"
                 android:layout_width="120dp"
                 android:layout_height="85dp"
                 android:layout_margin="8dp"
-                android:src="@mipmap/home_page" />
+                android:src="@mipmap/cases_upload" />
 
             <TextView
+                android:id="@+id/tv_audio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"

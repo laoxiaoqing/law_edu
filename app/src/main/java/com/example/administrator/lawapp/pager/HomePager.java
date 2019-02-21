@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -48,9 +49,22 @@ public class HomePager extends BasePager {
     private TextView tv_title_banner;
     @ViewInject(R.id.ll_point_group)
     private LinearLayout ll_point_group;
+    @ViewInject(R.id.iv_audio)
+    private ImageView iv_audio;
+    @ViewInject(R.id.iv_video)
+    private ImageView iv_video;
+    @ViewInject(R.id.tv_audio)
+    private TextView tv_audio;
+    @ViewInject(R.id.tv_video)
+    private TextView tv_video;
     @ViewInject(R.id.lv_case)
     private ListView lv_case;
+
     private List<HomePagerBean.DataBean.BannerBean> banner;
+    private HomePagerBean.DataBean.VideoBean video;
+    private HomePagerBean.DataBean.AuditoriumBean auditorium;
+    private List<HomePagerBean.DataBean.CasesBean> cases;
+    private MyLVCaseAdaper myLVCaseAdaper;
 
     public HomePager(Context context) {
         super(context);
@@ -134,11 +148,23 @@ public class HomePager extends BasePager {
         HomePagerBean homePagerBean = parsedJson(json);
         LogUtil.e("轮播的标题==" + homePagerBean.getData().getBanner().get(0).getBanner_title());
         banner = homePagerBean.getData().getBanner();
-
-        viewpager_banner.requestDisallowInterceptTouchEvent(true);
+        video = homePagerBean.getData().getVideo();
+        auditorium = homePagerBean.getData().getAuditorium();
+        cases = homePagerBean.getData().getCases();
+        LogUtil.e("cases==" + cases.get(1).getCase_name());
+        //viewpager_banner.requestDisallowInterceptTouchEvent(true);
         //设置viewpager的适配器
         viewpager_banner.setAdapter(new ViewpagerBannerAdapter());
-        addpoint();
+        addpoint();//添加点
+        //联网请求图片
+        String iv_videoUrl = Constants.BASE_URL + video.getVideo_picture();
+        String iv_audioUrl = Constants.BASE_URL + auditorium.getAuditorium_picture();
+        x.image().bind(iv_video, iv_videoUrl);
+        x.image().bind(iv_audio, iv_audioUrl);
+        tv_video.setText(video.getVideo_title());
+        tv_audio.setText(auditorium.getAuditorium_title());
+        myLVCaseAdaper = new MyLVCaseAdaper();
+        lv_case.setAdapter(myLVCaseAdaper);
     }
 
     //添加点
@@ -163,6 +189,52 @@ public class HomePager extends BasePager {
         tv_title_banner.setText(banner.get(prePosition).getBanner_title());
     }
 
+    class MyLVCaseAdaper extends BaseAdapter {
+
+        @Override
+        public int getCount() {
+            return cases.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder viewHolder;
+            if (convertView == null) {
+                convertView = View.inflate(context, R.layout.item_cases_pager, null);
+                viewHolder = new ViewHolder();
+                viewHolder.tv_name_item = convertView.findViewById(R.id.tv_name_item);
+                viewHolder.iv_cases_item = convertView.findViewById(R.id.iv_cases_item);
+                convertView.setTag(viewHolder);
+            } else {
+                viewHolder = (ViewHolder) convertView.getTag();
+            }
+            //跟位置得到数据
+            String name=cases.get(position).getCase_name();
+            String imageUrl = Constants.BASE_URL+cases.get(position).getCase_pircture();
+            //请求图片
+            x.image().bind(viewHolder.iv_cases_item,imageUrl);
+            viewHolder.tv_name_item.setText(name);
+            return convertView;
+        }
+
+
+    }
+
+    static class ViewHolder {
+        TextView tv_name_item;
+        ImageView iv_cases_item;
+    }
+
     class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
 
         @Override
@@ -174,7 +246,6 @@ public class HomePager extends BasePager {
         public void onPageSelected(int i) {
             //1.设置文本
             tv_title_banner.setText(banner.get(i).getBanner_title());
-
             //2.对应页面的点高亮
             //把之前的变灰
             ll_point_group.getChildAt(prePosition).setEnabled(false);
@@ -211,7 +282,6 @@ public class HomePager extends BasePager {
             //联网请求图片
             x.image().bind(imageView, imageUrl);
             container.addView(imageView);
-
             return imageView;
         }
 
@@ -220,7 +290,6 @@ public class HomePager extends BasePager {
             //super.destroyItem(container, position, object);
             container.removeView((View) object);
         }
-
 
     }
 
