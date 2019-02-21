@@ -36,7 +36,7 @@ import java.util.List;
  */
 public class LawSearchPager extends BaseCategoryPager {
     //public TextView textView;
-    List<LawBean.DataBean> lawData;
+    List<LawBean.Law> lawData;
     @ViewInject(R.id.lv_search)
     private ListView lv_search;
     private LvSearchAdapter lvSearchAdapter;
@@ -84,7 +84,7 @@ public class LawSearchPager extends BaseCategoryPager {
         //lv_search.setAdapter(new LvSearchAdapter());
         //textView.setText("搜索");
 
-        getDataFromNetById(categoryId,position);
+        getDataFromNetById(categoryId, position);
     }
 
     private void getDataFromNetByName(final String cateName) {
@@ -120,11 +120,11 @@ public class LawSearchPager extends BaseCategoryPager {
         });
     }
 
-    private void getDataFromNetById(final int cate_id,int AllOrBtn) {
+    private void getDataFromNetById(final int cate_id, int AllOrBtn) {
         RequestParams params;
-        if (AllOrBtn==0){
-            params = new RequestParams(Constants.LAW_CATEGORY_URL+"/parentid/" + cate_id);
-        }else {
+        if (AllOrBtn == 0) {
+            params = new RequestParams(Constants.LAW_CATEGORY_URL + "/parentid/" + cate_id);
+        } else {
             params = new RequestParams(Constants.LAW_CATEGORY_URL + cate_id);
         }
 

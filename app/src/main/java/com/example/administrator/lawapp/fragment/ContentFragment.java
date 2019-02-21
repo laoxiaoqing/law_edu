@@ -74,13 +74,14 @@ public class ContentFragment extends BaseFragment {
 
     /**
      * 得到法律书库页面
+     *
      * @return
      */
     public LawPager getLawPager() {
         return (LawPager) basePagers.get(1);
     }
 
-    class MyOnPageChangeListener implements ViewPager.OnPageChangeListener{
+    class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
 
         @Override
         public void onPageScrolled(int i, float v, int i1) {
@@ -89,6 +90,7 @@ public class ContentFragment extends BaseFragment {
 
         /**
          * 当某个页面被选中时候回调这个方法
+         *
          * @param i 被选中页面的位置
          */
         @Override
@@ -110,25 +112,26 @@ public class ContentFragment extends BaseFragment {
          */
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
-            MainActivity mainActivity = (MainActivity)context;
+            MainActivity mainActivity = (MainActivity) context;
+
             switch (checkedId) {
                 case R.id.rb_home:
-                    viewPager.setCurrentItem(0,false);//false没有动画
-                    //设置可以侧滑菜单
+                    viewPager.setCurrentItem(0, false);//false没有动画
+                    //设置不可以侧滑菜单
                     mainActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
                     break;
                 case R.id.rb_law:
-                    viewPager.setCurrentItem(1,false);
-                    //设置不可以侧滑菜单
+                    viewPager.setCurrentItem(1, false);
+                    //设置可以侧滑菜单TOUCHMODE_FULLSCREEN
                     mainActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     break;
                 case R.id.rb_forum:
-                    viewPager.setCurrentItem(2,false);
+                    viewPager.setCurrentItem(2, false);
                     //设置不可以侧滑菜单
                     mainActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
                     break;
                 case R.id.rb_me:
-                    viewPager.setCurrentItem(3,false);
+                    viewPager.setCurrentItem(3, false);
                     //设置不可以侧滑菜单
                     mainActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
                     break;
@@ -176,4 +179,12 @@ public class ContentFragment extends BaseFragment {
             container.removeView((View) object);
         }
     }
+
+    /*@Override
+    public void setMenuVisibility(boolean menuVisible) {
+        super.setMenuVisibility(menuVisible);
+        if(this.getView()!=null){
+            this.getView().setVisibility(menuVisible ? View.VISIBLE : View.GONE);
+        }
+    }*/
 }

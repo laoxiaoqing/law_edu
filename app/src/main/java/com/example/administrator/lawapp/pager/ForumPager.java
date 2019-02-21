@@ -25,7 +25,7 @@ public class ForumPager extends BasePager {
         //1.设置标题
         tv_title.setText("社区");
         //2.联网请求得到数据创建视图
-        View view = View.inflate(context,R.layout.forum_pager,null);
+        View view = View.inflate(context, R.layout.forum_pager, null);
         /*TextView textView = new TextView(context);
         textView.setGravity(Gravity.CENTER);
         textView.setTextColor(Color.RED);*/
@@ -44,4 +44,5 @@ public class ForumPager extends BasePager {
 
         return view;
     }*/
+
 }

@@ -79,7 +79,7 @@ public class LawCategoryPager extends BaseCategoryPager {
         return view;
     }
 
-    private void getDataFromNetByParentId(final int law_category_id) {
+    /*private void getDataFromNetByParentId(final int law_category_id) {
         RequestParams params = new RequestParams(Constants.LAW_CATEGORY_URL + "parentid/" + law_category_id);
         LogUtil.e(Constants.LAW_CATEGORY_URL + "parentid/" + law_category_id);//写url
         x.http().get(params, new Callback.CommonCallback<String>() {
@@ -109,7 +109,7 @@ public class LawCategoryPager extends BaseCategoryPager {
 
             }
         });
-    }
+    }*/
 
     private int anInt = 1001;
     private LinearLayout create_ll;
@@ -141,9 +141,9 @@ public class LawCategoryPager extends BaseCategoryPager {
         /*textView.setText("二级目录内容");*/
     }
 
-    private void createButton() {
+    /*private void createButton() {
 
-    }
+    }*/
 
     private View createLinearLayout(final int a, final int position) {
 

@@ -11,13 +11,12 @@
         android:background="@android:color/white"
         android:orientation="vertical">
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="180dp">
 
             <android.support.v4.view.ViewPager
-                android:id="@+id/viewpager_home"
+                android:id="@+id/viewpager_banner"
                 android:layout_width="wrap_content"
                 android:layout_height="180dp" />
 
@@ -25,11 +24,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:background="@android:color/darker_gray"
+                android:background="#44000000"
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/tv_title_home"
+                    android:id="@+id/tv_title_banner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -38,13 +37,12 @@
                     android:textColor="@android:color/white" />
 
                 <LinearLayout
-                    android:id="@+id/ll_point_home"
+                    android:id="@+id/ll_point_group"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:orientation="vertical">
-
+                    android:orientation="horizontal">
 
                 </LinearLayout>
             </RelativeLayout>
@@ -67,7 +65,6 @@
                 android:layout_margin="5dp"
                 android:text="每日一做" />
         </LinearLayout>
-
 
         <View
             android:id="@+id/id_diverline1"
@@ -248,7 +245,7 @@
             android:background="@android:color/darker_gray" />
 
         <ListView
-            android:id="@+id/lv_edu"
+            android:id="@+id/lv_case"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

@@ -11,22 +11,24 @@ import android.view.ViewGroup;
 
 public abstract class BaseFragment extends Fragment {
     public Context context;//MainActivity
+
     /**
      * 当Fragment被创建的时候回调这个方法
+     *
      * @param savedInstanceState
      */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context=getActivity();
+        context = getActivity();
     }
 
     /**
      * 当视图被创建的时候回调
+     *
      * @param inflater
      * @param container
-     * @param savedInstanceState
-     * 创建了视图
+     * @param savedInstanceState 创建了视图
      * @return
      */
     @Nullable
@@ -37,12 +39,14 @@ public abstract class BaseFragment extends Fragment {
 
     /**
      * 让孩子实现自己的视图，达到自己特有的效果
+     *
      * @return
      */
     public abstract View initView();
 
     /**
-     *当Activity被创建之后被回调
+     * 当Activity被创建之后被回调
+     *
      * @param savedInstanceState
      */
     @Override
@@ -57,4 +61,12 @@ public abstract class BaseFragment extends Fragment {
      */
     public void initData() {
     }
+
+    /*@Override
+    public void setMenuVisibility(boolean menuVisible) {
+        super.setMenuVisibility(menuVisible);
+        if(this.getView()!=null){
+            this.getView().setVisibility(menuVisible ? View.VISIBLE : View.GONE);
+        }
+    }*/
 }

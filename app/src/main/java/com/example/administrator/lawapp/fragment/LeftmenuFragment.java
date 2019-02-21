@@ -144,9 +144,8 @@ public class LeftmenuFragment extends BaseFragment {
                 leftmenu_tv.setEnabled(true);
                 textView.setEnabled(false);
             }
-
-
             return convertView;
         }
     }
+
 }

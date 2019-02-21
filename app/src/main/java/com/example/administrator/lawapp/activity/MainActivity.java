@@ -37,7 +37,8 @@ public class MainActivity extends SlidingFragmentActivity {
         //5.设置滑动模式：滑动边缘，全屏滑动，不可以滑动
         slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         //6.设置主页占据宽度
-        slidingMenu.setBehindOffset(DensityUtil.dip2px(MainActivity.this,220));
+        slidingMenu.setBehindOffset(DensityUtil.dip2px(MainActivity.this, 220));
+        slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
         //初始化Fragment
         initFragment();
     }
@@ -48,8 +49,8 @@ public class MainActivity extends SlidingFragmentActivity {
         //2.开始事务
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         //3.替换
-        fragmentTransaction.replace(R.id.main_content,new ContentFragment(), MAIN_CONTENT_TAG);//主页
-        fragmentTransaction.replace(R.id.left_menu,new LeftmenuFragment(), LEFTMENU_TAG);//左侧菜单
+        fragmentTransaction.replace(R.id.main_content, new ContentFragment(), MAIN_CONTENT_TAG);//主页
+        fragmentTransaction.replace(R.id.left_menu, new LeftmenuFragment(), LEFTMENU_TAG);//左侧菜单
         //4.提交
         fragmentTransaction.commit();
         //5
@@ -57,6 +58,7 @@ public class MainActivity extends SlidingFragmentActivity {
 
     /**
      * 得到左侧菜单Fragment
+     *
      * @return
      */
     public LeftmenuFragment getLeftmenuFragment() {
@@ -67,6 +69,7 @@ public class MainActivity extends SlidingFragmentActivity {
 
     /**
      * 得到正文的Fragment
+     *
      * @return
      */
     public ContentFragment getContentFragment() {

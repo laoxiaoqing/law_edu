@@ -14,7 +14,7 @@ public class LawBean {
      */
 
     private boolean success;
-    private List<DataBean> data;
+    private List<Law> data;
 
     public boolean isSuccess() {
         return success;
@@ -24,15 +24,15 @@ public class LawBean {
         this.success = success;
     }
 
-    public List<DataBean> getData() {
+    public List<Law> getData() {
         return data;
     }
 
-    public void setData(List<DataBean> data) {
+    public void setData(List<Law> data) {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class Law {
         /**
          * law_id : 2
          * law_name : 新婚姻法司法解释（三）全文

@@ -1,23 +1,56 @@
 package com.example.administrator.lawapp.pager;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.view.Gravity;
+import android.support.annotation.NonNull;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.administrator.lawapp.R;
 import com.example.administrator.lawapp.base.BasePager;
+import com.example.administrator.lawapp.bean.HomePagerBean;
+import com.example.administrator.lawapp.utils.CacheUtils;
+import com.example.administrator.lawapp.utils.Constants;
 import com.example.administrator.lawapp.utils.LogUtil;
+import com.google.gson.Gson;
 
 import org.xutils.common.Callback;
+import org.xutils.common.util.DensityUtil;
 import org.xutils.http.RequestParams;
+import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
+
+import java.util.List;
 
 /**
  * 主页面
  */
 public class HomePager extends BasePager {
+
+    @ViewInject(R.id.tv_moreA)
+    private TextView tv_moreA;
+    @ViewInject(R.id.tv_moreB)
+    private TextView tv_moreB;
+    @ViewInject(R.id.ll_detailA)
+    private LinearLayout ll_detailA;
+    @ViewInject(R.id.ll_detailB)
+    private LinearLayout ll_detailB;
+    @ViewInject(R.id.viewpager_banner)
+    private ViewPager viewpager_banner;
+    @ViewInject(R.id.tv_title_banner)
+    private TextView tv_title_banner;
+    @ViewInject(R.id.ll_point_group)
+    private LinearLayout ll_point_group;
+    @ViewInject(R.id.lv_case)
+    private ListView lv_case;
+    private List<HomePagerBean.DataBean.BannerBean> banner;
 
     public HomePager(Context context) {
         super(context);
@@ -32,27 +65,42 @@ public class HomePager extends BasePager {
         //2.联网请求得到数据创建视图
         View view = View.inflate(context, R.layout.home_display, null);
         x.view().inject(HomePager.this, view);
-        /*TextView textView = new TextView(context);
-        textView.setGravity(Gravity.CENTER);
-        textView.setTextColor(Color.RED);*/
         //3.把子视图添加到BasePager的FrameLayout
-
-        fl_content.removeAllViews();
+        ll_detailA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "aa", Toast.LENGTH_SHORT).show();
+            }
+        });
+        ll_detailB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "bb", Toast.LENGTH_SHORT).show();
+            }
+        });
+        //fl_content.removeAllViews();
+        //fl_content.requestDisallowInterceptTouchEvent(true);
         fl_content.addView(view);
         //4.绑定数据
-        /*textView.setText("主页面内容");*/
-        //getDataFromNet();
+        //缓存获取数据
+        String saveJson = CacheUtils.getString(context, Constants.HOME_PAGER_URL);
+        if (!TextUtils.isEmpty(saveJson)) {
+            //解析数据和处理显示数据
+            manageData(saveJson);
+        }
+        getDataFromNet();
     }
 
+
     private void getDataFromNet() {
-        RequestParams params = new RequestParams("http://192.168.155.1:8088/api/v1/auditorium");//写url
+        RequestParams params = new RequestParams(Constants.HOME_PAGER_URL);//写url
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
+                CacheUtils.putString(context, Constants.HOME_PAGER_URL, result);
                 LogUtil.e("请求成功" + result);
-                //dealData();
                 //设置适配器
-
+                manageData(result);
             }
 
             @Override
@@ -75,12 +123,111 @@ public class HomePager extends BasePager {
         });
     }
 
+    private int prePosition;//记录红点前一次位置
+
     /**
      * 解析json数据和显示数据
      *
-     * @param data
+     * @param json
      */
-    private void dealData(String data) {
+    private void manageData(String json) {
+        HomePagerBean homePagerBean = parsedJson(json);
+        LogUtil.e("轮播的标题==" + homePagerBean.getData().getBanner().get(0).getBanner_title());
+        banner = homePagerBean.getData().getBanner();
+
+        viewpager_banner.requestDisallowInterceptTouchEvent(true);
+        //设置viewpager的适配器
+        viewpager_banner.setAdapter(new ViewpagerBannerAdapter());
+        addpoint();
+    }
+
+    //添加点
+    private void addpoint() {
+        ll_point_group.removeAllViews();//移除所有的红点
+        for (int i = 0; i < banner.size(); i++) {
+            ImageView imageView = new ImageView(context);
+            //背景选择器
+            imageView.setBackgroundResource(R.drawable.banner_point_selector);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DensityUtil.dip2px(15), DensityUtil.dip2px(15));
+
+            if (i == 0) {
+                imageView.setEnabled(true);
+            } else {
+                imageView.setEnabled(false);
+                params.leftMargin = DensityUtil.dip2px(8);
+            }
+            imageView.setLayoutParams(params);
+            ll_point_group.addView(imageView);
+        }
+        viewpager_banner.addOnPageChangeListener(new MyOnPageChangeListener());
+        tv_title_banner.setText(banner.get(prePosition).getBanner_title());
+    }
+
+    class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
+
+        @Override
+        public void onPageScrolled(int i, float v, int i1) {
+
+        }
+
+        @Override
+        public void onPageSelected(int i) {
+            //1.设置文本
+            tv_title_banner.setText(banner.get(i).getBanner_title());
+
+            //2.对应页面的点高亮
+            //把之前的变灰
+            ll_point_group.getChildAt(prePosition).setEnabled(false);
+            //把当前的变红
+            ll_point_group.getChildAt(i).setEnabled(true);
+            prePosition = i;
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int i) {
+
+        }
+    }
+
+    class ViewpagerBannerAdapter extends PagerAdapter {
+
+        @Override
+        public int getCount() {
+            return banner.size();
+        }
+
+        @Override
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
+            return view == o;
+        }
+
+        @NonNull
+        @Override
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+            ImageView imageView = new ImageView(context);
+            imageView.setBackgroundResource(R.mipmap.banner_upload);
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            String imageUrl = Constants.BASE_URL + banner.get(position).getBanner_image_url();
+            //联网请求图片
+            x.image().bind(imageView, imageUrl);
+            container.addView(imageView);
+
+            return imageView;
+        }
+
+        @Override
+        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+            //super.destroyItem(container, position, object);
+            container.removeView((View) object);
+        }
+
 
     }
+
+    private HomePagerBean parsedJson(String json) {
+        Gson gson = new Gson();
+        HomePagerBean homePagerBean = gson.fromJson(json, HomePagerBean.class);
+        return homePagerBean;
+    }
+
 }
