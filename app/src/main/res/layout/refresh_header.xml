@@ -55,9 +55,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="上次更新时间:2019-02-22"
-                android:textColor="#60ff3d1b"
-                android:textSize="18sp"
+                android:text="上次更新时间:2019-02-22 00:00:00"
+                android:textColor="#66000000"
+                android:textSize="13sp"
 
                 />
         </LinearLayout>

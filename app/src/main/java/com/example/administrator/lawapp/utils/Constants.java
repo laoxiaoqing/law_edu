@@ -7,6 +7,7 @@ package com.example.administrator.lawapp.utils;
 public class Constants {
     public static final String BASE_URL = "http://10.20.92.90:8088";
     public static final String HOME_PAGER_URL = BASE_URL + "/api/v1/banner/home";
+    public static final String HOME_PAGER_CASES_URL = BASE_URL + "/api/v1/cases";
     public static final String LAW_PAGER_URL = BASE_URL + "/api/v1/lawcategory";
     public static final String LAW_CATEGORY_URL = BASE_URL + "/api/v1/law/";
     public static final String FORUM_PAGER_URL = BASE_URL + "";

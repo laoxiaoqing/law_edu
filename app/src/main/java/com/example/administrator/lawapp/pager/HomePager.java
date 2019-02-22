@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,6 +65,9 @@ public class HomePager extends BasePager {
     private HomePagerBean.DataBean.AuditoriumBean auditorium;
     private List<HomePagerBean.DataBean.CasesBean> cases;
     private MyLVCaseAdaper myLVCaseAdaper;
+    private int pagenum = 2;
+    private int pagesize = 5;
+    private List<HomePagerBean.DataBean.CasesBean> casesMore;
 
     public HomePager(Context context) {
         super(context);
@@ -82,8 +84,13 @@ public class HomePager extends BasePager {
         View view = View.inflate(context, R.layout.home_display, null);
         x.view().inject(HomePager.this, lvView);
         x.view().inject(HomePager.this, view);
+        x.Ext.setDebug(false);
         //把顶部的部分视图，以头的方式添加到ListView中
-        lv_case.addHeaderView(lvView);
+        //lv_case.addHeaderView(lvView);
+        lv_case.addBannerView(lvView);
+        //设置监听下拉刷新
+        lv_case.setmOnRefreshListener(new MyOnRefreshListener());
+
         //3.把子视图添加到BasePager的FrameLayout
         ll_detailA.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,12 +125,15 @@ public class HomePager extends BasePager {
                 LogUtil.e("请求成功" + result);
                 //设置适配器
                 manageData(result);
+                //隐藏下拉刷新控件--更新时间，显示联网请求成功，重新显示数据
+                lv_case.setRefreshFinish(true);
             }
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
                 LogUtil.e("请求失败" + ex.getMessage());
-
+                //隐藏下拉刷新控件--不更新时间，显示联网请求失败
+                lv_case.setRefreshFinish(true);
             }
 
             @Override
@@ -141,6 +151,7 @@ public class HomePager extends BasePager {
     }
 
     private int prePosition;//记录红点前一次位置
+    public Boolean isLoadMore = false;//记录是否是第一次
 
     /**
      * 解析json数据和显示数据
@@ -149,26 +160,41 @@ public class HomePager extends BasePager {
      */
     private void manageData(String json) {
         HomePagerBean homePagerBean = parsedJson(json);
-        LogUtil.e("轮播的标题==" + homePagerBean.getData().getBanner().get(0).getBanner_title());
-        banner = homePagerBean.getData().getBanner();
-        video = homePagerBean.getData().getVideo();
-        auditorium = homePagerBean.getData().getAuditorium();
-        cases = homePagerBean.getData().getCases();
-        LogUtil.e("cases==" + cases.get(1).getCase_name());
-        //viewpager_banner.requestDisallowInterceptTouchEvent(true);请求父层视图不拦截，当前控件的事件
-        //设置viewpager的适配器
-        viewpager_banner.setAdapter(new ViewpagerBannerAdapter());
-        addpoint();//添加点
-        //联网请求图片
-        String iv_videoUrl = Constants.BASE_URL + video.getVideo_picture();
-        String iv_audioUrl = Constants.BASE_URL + auditorium.getAuditorium_picture();
-        x.image().bind(iv_video, iv_videoUrl);
-        x.image().bind(iv_audio, iv_audioUrl);
-        tv_video.setText(video.getVideo_title());
-        tv_audio.setText(auditorium.getAuditorium_title());
-        myLVCaseAdaper = new MyLVCaseAdaper();
-        lv_case.setAdapter(myLVCaseAdaper);
+        //LogUtil.e("轮播的标题==" + homePagerBean.getData().getBanner().get(0).getBanner_title());
+        if (!isLoadMore) {//是否加载更多
+            LogUtil.v("pagenum============================" + pagenum);
+            pagenum = 2;
+            banner = homePagerBean.getData().getBanner();
+            video = homePagerBean.getData().getVideo();
+            auditorium = homePagerBean.getData().getAuditorium();
+            cases = homePagerBean.getData().getCases();
+            LogUtil.e("cases==" + cases.get(1).getCase_name());
+            //viewpager_banner.requestDisallowInterceptTouchEvent(true);请求父层视图不拦截，当前控件的事件
+            //设置viewpager的适配器
+            viewpager_banner.setAdapter(new ViewpagerBannerAdapter());
+            addpoint();//添加点
+            //联网请求图片
+            String iv_videoUrl = Constants.BASE_URL + video.getVideo_picture();
+            String iv_audioUrl = Constants.BASE_URL + auditorium.getAuditorium_picture();
+            x.image().bind(iv_video, iv_videoUrl);
+            x.image().bind(iv_audio, iv_audioUrl);
+            tv_video.setText(video.getVideo_title());
+            tv_audio.setText(auditorium.getAuditorium_title());
+            myLVCaseAdaper = new MyLVCaseAdaper();
+            lv_case.setAdapter(myLVCaseAdaper);
+        } else {//加载更多
+            isLoadMore = false;
+            if (homePagerBean.getData().getCases().get(0) != null) {
+                pagenum++;
+            }
+            //添加到原来的集合中
+            cases.addAll(homePagerBean.getData().getCases());
+            //刷新适配器
+            myLVCaseAdaper.notifyDataSetChanged();
+        }
+
     }
+
 
     //添加点
     private void addpoint() {
@@ -221,10 +247,10 @@ public class HomePager extends BasePager {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
             //跟位置得到数据
-            String name=cases.get(position).getCase_name();
-            String imageUrl = Constants.BASE_URL+cases.get(position).getCase_pircture();
+            String name = cases.get(position).getCase_name();
+            String imageUrl = Constants.BASE_URL + cases.get(position).getCase_pircture();
             //请求图片
-            x.image().bind(viewHolder.iv_cases_item,imageUrl);
+            x.image().bind(viewHolder.iv_cases_item, imageUrl);
             viewHolder.tv_name_item.setText(name);
             return convertView;
         }
@@ -300,4 +326,59 @@ public class HomePager extends BasePager {
         return homePagerBean;
     }
 
+
+    class MyOnRefreshListener implements RefreshListView.OnRefreshListener {
+
+        @Override
+        public void onPullDownRefresh() {
+            Toast.makeText(context, "我在下拉",Toast.LENGTH_SHORT).show();
+            getDataFromNet();
+        }
+
+        @Override
+        public void onLoadMore() {
+            //Toast.makeText(context, "加载更多", Toast.LENGTH_SHORT).show();
+            getMoreFromNet();
+        }
+    }
+
+
+    private void getMoreFromNet() {
+        RequestParams params =
+                new RequestParams(Constants.HOME_PAGER_CASES_URL
+                        + "?pagenum=" + pagenum
+                        + "&pagesize=" + pagesize);
+        params.setConnectTimeout(4000);
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                LogUtil.e("加载更多数据==" + result);
+                LogUtil.e("pagenum==" + pagenum);
+                lv_case.setRefreshFinish(false);
+                //解析数据
+                isLoadMore = true;
+                manageData(result);
+
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                LogUtil.e("加载数据失败==" + ex.getMessage());
+                LogUtil.e("pagenum==" + pagenum);
+                Toast.makeText(context,"没有了",Toast.LENGTH_SHORT).show();
+                lv_case.setRefreshFinish(false);
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+                LogUtil.e("加载更多数据onCancelled==" + cex.getMessage());
+            }
+
+            @Override
+            public void onFinished() {
+                LogUtil.e("加载更多数据onFinished");
+            }
+        });
+
+    }
 }
