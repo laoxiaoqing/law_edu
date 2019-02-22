@@ -13,12 +13,12 @@
 
 
 
-        <ListView
+        <com.example.administrator.lawapp.ui.RefreshListView
             android:id="@+id/lv_case"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        </ListView>
+        </com.example.administrator.lawapp.ui.RefreshListView>
     </LinearLayout>
 <!--
 </ScrollView>-->

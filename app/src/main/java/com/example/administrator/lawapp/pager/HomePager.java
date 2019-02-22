@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.administrator.lawapp.R;
 import com.example.administrator.lawapp.base.BasePager;
 import com.example.administrator.lawapp.bean.HomePagerBean;
+import com.example.administrator.lawapp.ui.RefreshListView;
 import com.example.administrator.lawapp.utils.CacheUtils;
 import com.example.administrator.lawapp.utils.Constants;
 import com.example.administrator.lawapp.utils.LogUtil;
@@ -58,7 +59,7 @@ public class HomePager extends BasePager {
     @ViewInject(R.id.tv_video)
     private TextView tv_video;
     @ViewInject(R.id.lv_case)
-    private ListView lv_case;
+    private RefreshListView lv_case;
 
     private List<HomePagerBean.DataBean.BannerBean> banner;
     private HomePagerBean.DataBean.VideoBean video;
@@ -78,7 +79,6 @@ public class HomePager extends BasePager {
         tv_title.setText("主页面");
         //2.联网请求得到数据创建视图
         View lvView = View.inflate(context, R.layout.home_display_child, null);
-
         View view = View.inflate(context, R.layout.home_display, null);
         x.view().inject(HomePager.this, lvView);
         x.view().inject(HomePager.this, view);
@@ -97,8 +97,6 @@ public class HomePager extends BasePager {
                 Toast.makeText(context, "bb", Toast.LENGTH_SHORT).show();
             }
         });
-        //fl_content.removeAllViews();
-        //fl_content.requestDisallowInterceptTouchEvent(true);
         fl_content.addView(view);
         //4.绑定数据
         //缓存获取数据
@@ -157,7 +155,7 @@ public class HomePager extends BasePager {
         auditorium = homePagerBean.getData().getAuditorium();
         cases = homePagerBean.getData().getCases();
         LogUtil.e("cases==" + cases.get(1).getCase_name());
-        //viewpager_banner.requestDisallowInterceptTouchEvent(true);
+        //viewpager_banner.requestDisallowInterceptTouchEvent(true);请求父层视图不拦截，当前控件的事件
         //设置viewpager的适配器
         viewpager_banner.setAdapter(new ViewpagerBannerAdapter());
         addpoint();//添加点
@@ -180,7 +178,6 @@ public class HomePager extends BasePager {
             //背景选择器
             imageView.setBackgroundResource(R.drawable.banner_point_selector);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DensityUtil.dip2px(15), DensityUtil.dip2px(15));
-
             if (i == 0) {
                 imageView.setEnabled(true);
             } else {
@@ -231,7 +228,6 @@ public class HomePager extends BasePager {
             viewHolder.tv_name_item.setText(name);
             return convertView;
         }
-
 
     }
 
