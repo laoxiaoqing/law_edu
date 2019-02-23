@@ -1,0 +1,229 @@
+-- Merging decision tree log ---
+manifest
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:2:1-71:12
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:2:1-71:12
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:2:1-71:12
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:2:1-71:12
+MERGED from [:pullToRefreshListFragment] G:\workspaceAll\AndroidStudioProjects\law_edu\pullToRefreshListFragment\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:pullToRefreshViewPager] G:\workspaceAll\AndroidStudioProjects\law_edu\pullToRefreshViewPager\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-13:12
+MERGED from [:PullToRefresh_library] G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh_library\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-13:12
+MERGED from [com.android.support:support-v4:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\1bdf286e58653f3044ab51297822839b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\5adf10e68fbf857f0c34af3d4c641a92\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\1d2a910f65b5bb7bbf94da6d72413725\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\c9f7126230f9951c20a8d454d93cda6f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\c29d35b54e35f784d3f85a81a641245f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\22cc49d5548c7f7d36abcf59bff6ca27\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\5ab50dda89737a7954c982b78941a7ae\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\604c6dd235abe220a971b6635c37640c\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\7e2cd27f8e3b05719e6b13366e8b3d62\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\d66aa67487473ef95e9a1e00e80a9af1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\5b1164142258284a4ca71cd62e4d0d9a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\5d04ac05dfef6e4aef72eeed55b6a980\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\4a5a9d4c6be3ef1ebb7d8b6e9d947556\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\383a44cf7374dc4453326c3f39232649\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\6fada104c8f473f73efc8b6a25f10079\AndroidManifest.xml:17:1-25:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\8bd1b5d7f62b711470eadca7687dff9a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\9d4db848d35d17373c9c59bd70908c44\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\29d82d2438cd4851c3f05e4531c3a2ad\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\1890eeaebf32e8715b69e78794af111d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\f83f12e2ef9b4311d5998f2b785ef244\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\3909619c6012947e70b6707184523f2f\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\8eda6de7625bc3d0195f65d5277159d3\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\c54ba24c17bca9d11702d648f234de0e\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\0a6180de20b56db3735b1cd6c7e032ce\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\1bb21b2d6f300c6b4614d6308f3ef43c\AndroidManifest.xml:17:1-22:12
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:2:1-71:12
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:2:1-71:12
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:2:1-71:12
+	package
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:3:5-49
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:5:5-32
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:4:5-31
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml
+uses-sdk
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:7:5-9:41
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:7:5-9:41
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:7:5-9:41
+MERGED from [:pullToRefreshViewPager] G:\workspaceAll\AndroidStudioProjects\law_edu\pullToRefreshViewPager\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:pullToRefreshViewPager] G:\workspaceAll\AndroidStudioProjects\law_edu\pullToRefreshViewPager\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:PullToRefresh_library] G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh_library\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:PullToRefresh_library] G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh_library\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:support-v4:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\1bdf286e58653f3044ab51297822839b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\1bdf286e58653f3044ab51297822839b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\5adf10e68fbf857f0c34af3d4c641a92\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\5adf10e68fbf857f0c34af3d4c641a92\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\1d2a910f65b5bb7bbf94da6d72413725\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\1d2a910f65b5bb7bbf94da6d72413725\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\c9f7126230f9951c20a8d454d93cda6f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\c9f7126230f9951c20a8d454d93cda6f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\c29d35b54e35f784d3f85a81a641245f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\c29d35b54e35f784d3f85a81a641245f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\22cc49d5548c7f7d36abcf59bff6ca27\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\22cc49d5548c7f7d36abcf59bff6ca27\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\5ab50dda89737a7954c982b78941a7ae\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\5ab50dda89737a7954c982b78941a7ae\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\604c6dd235abe220a971b6635c37640c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\604c6dd235abe220a971b6635c37640c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\7e2cd27f8e3b05719e6b13366e8b3d62\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\7e2cd27f8e3b05719e6b13366e8b3d62\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\d66aa67487473ef95e9a1e00e80a9af1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\d66aa67487473ef95e9a1e00e80a9af1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\5b1164142258284a4ca71cd62e4d0d9a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\5b1164142258284a4ca71cd62e4d0d9a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\5d04ac05dfef6e4aef72eeed55b6a980\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\5d04ac05dfef6e4aef72eeed55b6a980\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\4a5a9d4c6be3ef1ebb7d8b6e9d947556\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\4a5a9d4c6be3ef1ebb7d8b6e9d947556\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\383a44cf7374dc4453326c3f39232649\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\383a44cf7374dc4453326c3f39232649\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\6fada104c8f473f73efc8b6a25f10079\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\6fada104c8f473f73efc8b6a25f10079\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\8bd1b5d7f62b711470eadca7687dff9a\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\8bd1b5d7f62b711470eadca7687dff9a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\9d4db848d35d17373c9c59bd70908c44\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\9d4db848d35d17373c9c59bd70908c44\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\29d82d2438cd4851c3f05e4531c3a2ad\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\29d82d2438cd4851c3f05e4531c3a2ad\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\1890eeaebf32e8715b69e78794af111d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\1890eeaebf32e8715b69e78794af111d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\f83f12e2ef9b4311d5998f2b785ef244\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\f83f12e2ef9b4311d5998f2b785ef244\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\3909619c6012947e70b6707184523f2f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\3909619c6012947e70b6707184523f2f\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\8eda6de7625bc3d0195f65d5277159d3\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\8eda6de7625bc3d0195f65d5277159d3\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\c54ba24c17bca9d11702d648f234de0e\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\c54ba24c17bca9d11702d648f234de0e\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\0a6180de20b56db3735b1cd6c7e032ce\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\0a6180de20b56db3735b1cd6c7e032ce\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\1bb21b2d6f300c6b4614d6308f3ef43c\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\1bb21b2d6f300c6b4614d6308f3ef43c\AndroidManifest.xml:20:5-44
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:7:5-9:41
+INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:7:5-9:41
+	android:targetSdkVersion
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:9:9-38
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:8:9-34
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml
+		INJECTED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml
+application
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:11:5-64:19
+MERGED from [:pullToRefreshListFragment] G:\workspaceAll\AndroidStudioProjects\law_edu\pullToRefreshListFragment\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-20
+MERGED from [:pullToRefreshListFragment] G:\workspaceAll\AndroidStudioProjects\law_edu\pullToRefreshListFragment\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-20
+MERGED from [:pullToRefreshViewPager] G:\workspaceAll\AndroidStudioProjects\law_edu\pullToRefreshViewPager\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-20
+MERGED from [:pullToRefreshViewPager] G:\workspaceAll\AndroidStudioProjects\law_edu\pullToRefreshViewPager\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-20
+MERGED from [:PullToRefresh_library] G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh_library\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-20
+MERGED from [:PullToRefresh_library] G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh_library\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-20
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\383a44cf7374dc4453326c3f39232649\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\383a44cf7374dc4453326c3f39232649\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\6fada104c8f473f73efc8b6a25f10079\AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\6fada104c8f473f73efc8b6a25f10079\AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\383a44cf7374dc4453326c3f39232649\AndroidManifest.xml:22:18-91
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:14:9-41
+	android:hardwareAccelerated
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:12:9-43
+	android:icon
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:13:9-38
+activity#com.handmark.pulltorefresh.samples.LauncherActivity
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:15:9-23:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:17:13-50
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:16:13-45
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:18:13-22:29
+action#android.intent.action.MAIN
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:19:17-69
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:19:25-66
+category#android.intent.category.LAUNCHER
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:21:17-77
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:21:27-74
+activity#com.handmark.pulltorefresh.samples.PullToRefreshListActivity
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:24:9-27:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:26:13-41
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:25:13-54
+activity#com.handmark.pulltorefresh.samples.PullToRefreshListFragmentActivity
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:28:9-31:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:30:13-50
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:29:13-62
+activity#com.handmark.pulltorefresh.samples.PullToRefreshListInViewPagerActivity
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:32:9-35:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:34:13-54
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:33:13-65
+activity#com.handmark.pulltorefresh.samples.PullToRefreshGridActivity
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:36:9-39:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:38:13-41
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:37:13-54
+activity#com.handmark.pulltorefresh.samples.PullToRefreshExpandableListActivity
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:40:9-43:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:42:13-51
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:41:13-64
+activity#com.handmark.pulltorefresh.samples.PullToRefreshWebViewActivity
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:44:9-47:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:46:13-40
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:45:13-57
+activity#com.handmark.pulltorefresh.samples.PullToRefreshScrollViewActivity
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:48:9-51:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:50:13-43
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:49:13-60
+activity#com.handmark.pulltorefresh.samples.PullToRefreshHorizontalScrollViewActivity
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:52:9-55:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:54:13-53
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:53:13-70
+activity#com.handmark.pulltorefresh.samples.PullToRefreshViewPagerActivity
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:56:9-59:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:58:13-42
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:57:13-59
+activity#com.handmark.pulltorefresh.samples.PullToRefreshWebView2Activity
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:60:9-63:20
+	android:label
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:62:13-49
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:61:13-58
+uses-permission#android.permission.INTERNET
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:67:5-67
+	android:name
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:67:22-64
+supports-screens
+ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:69:5-51
+	android:anyDensity
+		ADDED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:69:23-48
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+IMPLIED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:2:1-71:12 reason: com.handmark.pulltorefresh.extras.listfragment has a targetSdkVersion < 4
+uses-permission#android.permission.READ_PHONE_STATE
+IMPLIED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:2:1-71:12 reason: com.handmark.pulltorefresh.extras.listfragment has a targetSdkVersion < 4
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+IMPLIED from G:\workspaceAll\AndroidStudioProjects\law_edu\PullToRefresh-master-sample\src\main\AndroidManifest.xml:2:1-71:12 reason: com.handmark.pulltorefresh.extras.listfragment requested WRITE_EXTERNAL_STORAGE

@@ -1,3 +1,7 @@
 include ':app', ':SlidingMenu_library', ':xutils', ':xUtils3_sample', ':banner', ':banner-master-app'
 include ':ViewPagerIndicator_library'
 include ':ViewPagerIndicator-sample'
+include ':PullToRefresh_library'
+include ':pullToRefreshListFragment'
+include ':pullToRefreshViewPager'
+include ':PullToRefresh-master-sample'
