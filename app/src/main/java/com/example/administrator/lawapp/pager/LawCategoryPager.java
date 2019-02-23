@@ -79,38 +79,6 @@ public class LawCategoryPager extends BaseCategoryPager {
         return view;
     }
 
-    /*private void getDataFromNetByParentId(final int law_category_id) {
-        RequestParams params = new RequestParams(Constants.LAW_CATEGORY_URL + "parentid/" + law_category_id);
-        LogUtil.e(Constants.LAW_CATEGORY_URL + "parentid/" + law_category_id);//写url
-        x.http().get(params, new Callback.CommonCallback<String>() {
-            @Override
-            public void onSuccess(String result) {
-                LogUtil.e("LawSearchPager请求成功" + result);
-                //缓存数据
-                CacheUtils.putString(context, Constants.LAW_CATEGORY_URL + "parentid/" + law_category_id, result);
-
-            }
-
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-                LogUtil.e("LawSearchPager请求失败" + ex.getMessage());
-
-            }
-
-            @Override
-            public void onCancelled(CancelledException cex) {
-                LogUtil.e("LawSearchPager请求onCancelled" + cex.getMessage());
-
-            }
-
-            @Override
-            public void onFinished() {
-                LogUtil.e("LawSearchPager请求结束");
-
-            }
-        });
-    }*/
-
     private int anInt = 1001;
     private LinearLayout create_ll;
 
@@ -121,12 +89,6 @@ public class LawCategoryPager extends BaseCategoryPager {
         law_category_id = dataBeanList.get(position).getLaw_category_id();
         law_category_name = dataBeanList.get(position).getLaw_category_name();
         int a = 0;
-        //linearLayout.removeAllViews();
-        //linearLayout.removeViewAt(1);
-
-        //int b = linearLayout.getChildCount();
-        //LogUtil.e(b + "-----------------");
-        //linearLayout.removeViews(1,b);
         child_ll.removeAllViews();
         //创建多个LinearLayout
         while (a < (dataBeanList.get(position).getList().size() / 4) + 1) {
@@ -136,14 +98,8 @@ public class LawCategoryPager extends BaseCategoryPager {
             child_ll.addView(create_ll);
         }
 
-
-        //dataBeanList.get(position).getLaw_category_name();
-        /*textView.setText("二级目录内容");*/
     }
 
-    /*private void createButton() {
-
-    }*/
 
     private View createLinearLayout(final int a, final int position) {
 
