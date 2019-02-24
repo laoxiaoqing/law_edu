@@ -26,11 +26,11 @@ public class RefreshListView extends ListView {
     /**
      * 顶部轮播图部分
      */
-    private  View bannerView;
+    private View bannerView;
     /**
      * 下拉刷新顶部和顶部轮播图
      */
-    private LinearLayout ll_headerView;
+    private LinearLayout ll_pullView;
     /**
      * 下拉刷新控件
      */
@@ -84,7 +84,7 @@ public class RefreshListView extends ListView {
     /**
      * listView在Y轴上的坐标
      */
-    private int listViewOnScreenY =-1;
+    private int listViewOnScreenY = -1;
 
 
     public RefreshListView(Context context) {
@@ -97,12 +97,13 @@ public class RefreshListView extends ListView {
 
     /**
      * 添加顶部轮播图
+     *
      * @param bannerView
      */
     public void addBannerView(View bannerView) {
-        if (bannerView!=null){
-            this.bannerView=bannerView;
-            ll_headerView.addView(bannerView);
+        if (bannerView != null) {
+            this.bannerView = bannerView;
+            ll_pullView.addView(bannerView);
         }
 
     }
@@ -190,13 +191,13 @@ public class RefreshListView extends ListView {
     }
 
     private void initHeaderView(Context context) {
-        ll_headerView = (LinearLayout) View.inflate(context, R.layout.refresh_header, null);
+        ll_pullView = (LinearLayout) View.inflate(context, R.layout.refresh_header, null);
         //下拉刷新控件
-        ll_header_down = ll_headerView.findViewById(R.id.ll_header_down);
-        iv_header = (ImageView) ll_headerView.findViewById(R.id.iv_header);
-        tv_stauts = (TextView) ll_headerView.findViewById(R.id.tv_status);
-        pb_status = (ProgressBar) ll_headerView.findViewById(R.id.pb_status);
-        tv_time = (TextView) ll_headerView.findViewById(R.id.tv_time);
+        ll_header_down = ll_pullView.findViewById(R.id.ll_header_down);
+        iv_header = (ImageView) ll_pullView.findViewById(R.id.iv_header);
+        tv_stauts = (TextView) ll_pullView.findViewById(R.id.tv_status);
+        pb_status = (ProgressBar) ll_pullView.findViewById(R.id.pb_status);
+        tv_time = (TextView) ll_pullView.findViewById(R.id.tv_time);
 
         ll_header_down.measure(0, 0);//测量
         pull_down_height = ll_header_down.getMeasuredHeight();
@@ -205,7 +206,7 @@ public class RefreshListView extends ListView {
 
 
         //添加头
-        RefreshListView.this.addHeaderView(ll_headerView);
+        RefreshListView.this.addHeaderView(ll_pullView);
     }
 
 
@@ -222,7 +223,7 @@ public class RefreshListView extends ListView {
                 }
                 //判断顶部轮播图是否完全显示，只有完全显示才会有下拉刷新
                 boolean isDisplayBanner = isDisplayBanner();//true为完全显示
-                if (!isDisplayBanner){
+                if (!isDisplayBanner) {
                     //加载更多
                     break;
                 }
@@ -271,26 +272,27 @@ public class RefreshListView extends ListView {
 
     /**
      * 判断是否完全显示顶部轮播图
+     *
      * @return
      */
     private boolean isDisplayBanner() {
-        if (bannerView!=null){
+        if (bannerView != null) {
 //1.得到ListView在屏幕上的坐标
             int[] location = new int[2];
 
-            if (listViewOnScreenY==-1){
+            if (listViewOnScreenY == -1) {
                 getLocationOnScreen(location);
                 listViewOnScreenY = location[1];
             }
             //2.得到顶部轮播图在屏幕的坐标
             bannerView.getLocationOnScreen(location);
             int bannerViewOnScreenY = location[1];
-            if (listViewOnScreenY<=bannerViewOnScreenY){
+            if (listViewOnScreenY <= bannerViewOnScreenY) {
                 return true;
-            }else {
+            } else {
                 return false;
             }
-        }else{
+        } else {
             return true;
         }
 

@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.administrator.lawapp.R;
 import com.example.administrator.lawapp.activity.AudioActivity;
+import com.example.administrator.lawapp.activity.DetailActivity;
 import com.example.administrator.lawapp.activity.MainActivity;
 import com.example.administrator.lawapp.activity.VideoActivity;
 import com.example.administrator.lawapp.base.BasePager;
@@ -62,7 +64,7 @@ public class HomePager extends BasePager {
     @ViewInject(R.id.tv_video)
     private TextView tv_video;
     @ViewInject(R.id.lv_case)
-    private RefreshListView lv_case;
+    private RefreshListView lv_case;//显示cases内容的listview
     private int prePosition;//记录红点前一次位置
     public Boolean isLoadMore = false;//记录是否是第一次
     private List<HomePagerBean.DataBean.BannerBean> banner;
@@ -95,17 +97,24 @@ public class HomePager extends BasePager {
         lv_case.addBannerView(lvView);
         //设置监听下拉刷新
         lv_case.setmOnRefreshListener(new MyOnRefreshListener());
-
+        lv_case.setOnItemClickListener(new MyOnItemClickListener());
         ll_detailA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "aa", Toast.LENGTH_SHORT).show();
+                //跳转页面
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("type", "video");
+                intent.putExtra("dataId", video.getVideo_id() + "");
+                context.startActivity(intent);
             }
         });
         ll_detailB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "bb", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("type", "audio");
+                intent.putExtra("dataId", auditorium.getAuditorium_id() + "");
+                context.startActivity(intent);
             }
         });
         tv_moreA.setOnClickListener(new View.OnClickListener() {
@@ -182,7 +191,6 @@ public class HomePager extends BasePager {
                 //解析数据
                 isLoadMore = true;
                 manageData(result);
-
             }
 
             @Override
@@ -206,11 +214,6 @@ public class HomePager extends BasePager {
 
     }
 
-    /**
-     * 解析json数据和显示数据
-     *
-     * @param json
-     */
     private void manageData(String json) {
         HomePagerBean homePagerBean = parsedJson(json);
         //LogUtil.e("轮播的标题==" + homePagerBean.getData().getBanner().get(0).getBanner_title());
@@ -393,4 +396,16 @@ public class HomePager extends BasePager {
 
     }
 
+    private class MyOnItemClickListener implements android.widget.AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            int realPosition = position - 1;
+            //跳转页面
+            Intent intent = new Intent(context,DetailActivity.class);
+            intent.putExtra("type","cases");
+            intent.putExtra("dataId",cases.get(realPosition).getCase_id()+"");
+            //LogUtil.e("id======"+cases.get(position).getCase_id());
+            context.startActivity(intent);
+        }
+    }
 }

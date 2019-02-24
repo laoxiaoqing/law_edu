@@ -139,11 +139,8 @@ public class LawCategoryPager extends BaseCategoryPager {
                     }
                 });
                 create_ll.addView(button);
-
             }
-
         }
-
         return create_ll;
     }
 }

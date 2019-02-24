@@ -24,7 +24,8 @@
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.VideoActivity" />
         <activity android:name=".activity.AudioActivity" />
-        <activity android:name=".activity.AudioDetailActivity"></activity>
+        <activity android:name=".activity.DetailActivity" />
+        <activity android:name=".activity.LoginActivity"></activity>
     </application>
 
 </manifest>

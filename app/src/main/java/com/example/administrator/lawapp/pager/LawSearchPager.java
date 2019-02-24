@@ -1,23 +1,20 @@
 package com.example.administrator.lawapp.pager;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.text.Editable;
-import android.view.Gravity;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.administrator.lawapp.R;
+import com.example.administrator.lawapp.activity.DetailActivity;
 import com.example.administrator.lawapp.base.BaseCategoryPager;
-import com.example.administrator.lawapp.bean.LawBean;
-import com.example.administrator.lawapp.bean.LawPagerBean;
+import com.example.administrator.lawapp.bean.LawMoreBean;
 import com.example.administrator.lawapp.utils.CacheUtils;
 import com.example.administrator.lawapp.utils.Constants;
 import com.example.administrator.lawapp.utils.LogUtil;
@@ -36,7 +33,7 @@ import java.util.List;
  */
 public class LawSearchPager extends BaseCategoryPager {
     //public TextView textView;
-    List<LawBean.Law> lawData;
+    List<LawMoreBean.Law> lawData;
     @ViewInject(R.id.lv_search)
     private ListView lv_search;
     private LvSearchAdapter lvSearchAdapter;
@@ -57,11 +54,6 @@ public class LawSearchPager extends BaseCategoryPager {
 
     @Override
     public View initView() {
-        /*textView = new TextView(context);
-        textView.setGravity(Gravity.CENTER);
-        textView.setTextColor(Color.RED);
-
-        return textView;*/
         View view = View.inflate(context, R.layout.law_search_pager, null);
         x.view().inject(LawSearchPager.this, view);
         imageView = view.findViewById(R.id.iv_search);
@@ -83,7 +75,6 @@ public class LawSearchPager extends BaseCategoryPager {
         LogUtil.e("搜索");
         //lv_search.setAdapter(new LvSearchAdapter());
         //textView.setText("搜索");
-
         getDataFromNetById(categoryId, position);
     }
 
@@ -161,7 +152,7 @@ public class LawSearchPager extends BaseCategoryPager {
 
     private void manageData(String json) {
         LogUtil.e(json);
-        LawBean lawBean = parsedJson(json);
+        final LawMoreBean lawBean = parsedJson(json);
         lawData = lawBean.getData();
         LogUtil.e("这里显示大小" + lawData.size());
         lvSearchAdapter = new LvSearchAdapter();
@@ -170,9 +161,12 @@ public class LawSearchPager extends BaseCategoryPager {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String tv = tv_cateId.getText().toString().trim();
-                /**
-                 * 跳转到
-                 */
+                //跳转页面
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("type", "law");
+                intent.putExtra("dataId", lawBean.getData().get(position).getLaw_id() + "");
+                LogUtil.e("dataid==" + lawBean.getData().get(position).getLaw_id());
+                context.startActivity(intent);
             }
         });
     }
@@ -183,9 +177,9 @@ public class LawSearchPager extends BaseCategoryPager {
      * @param json
      * @return
      */
-    private LawBean parsedJson(String json) {
+    private LawMoreBean parsedJson(String json) {
         Gson gson = new Gson();
-        LawBean bean = gson.fromJson(json, LawBean.class);
+        LawMoreBean bean = gson.fromJson(json, LawMoreBean.class);
 
         return bean;
     }

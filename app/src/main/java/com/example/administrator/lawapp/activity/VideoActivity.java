@@ -1,12 +1,12 @@
 package com.example.administrator.lawapp.activity;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -35,17 +35,25 @@ public class VideoActivity extends Activity {
     private int pagenum = 2;
     private int pagesize = 8;
     private MyPullRefresh myadapter;
+    private ImageView ivBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_video);
-        ImageView imageView = findViewById(R.id.iv_back);
-        imageView.setVisibility(View.VISIBLE);
+        ivBack = findViewById(R.id.iv_back);
+        ivBack.setVisibility(View.VISIBLE);
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         TextView textView = findViewById(R.id.tv_title);
         textView.setText("看法视频");
         pull_listview = findViewById(R.id.pull_refresh_list);
+        pull_listview.setOnItemClickListener(new MyOnItemClickListener());
         myadapter = new MyPullRefresh();
         getDataFromNet();
     }
@@ -209,5 +217,17 @@ public class VideoActivity extends Activity {
         TextView tv_video_item;
         TextView tv_video_time;
         ImageView iv_video_item;
+    }
+
+    private class MyOnItemClickListener implements android.widget.AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            int realPosition = position - 1;
+            //跳转页面
+            Intent intent = new Intent(VideoActivity.this, DetailActivity.class);
+            intent.putExtra("type", "video");
+            intent.putExtra("dataId", videoBeanList.get(realPosition).getVideo_id() + "");
+            startActivity(intent);
+        }
     }
 }

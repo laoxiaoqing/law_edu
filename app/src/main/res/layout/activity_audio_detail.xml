@@ -5,9 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.AudioDetailActivity">
+    tools:context=".activity.DetailActivity">
 
     <include layout="@layout/titlebar" />
+
+    <LinearLayout
+        android:id="@+id/ll_law_head"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_law1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:text="娱乐场所管理条例"
+            android:textSize="23dp" />
+
+        <TextView
+            android:id="@+id/tv_law2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="3dp"
+            android:text="维权消费"
+            android:textColor="#66777777" />
+
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
