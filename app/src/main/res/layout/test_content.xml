@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/blue">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:text="答题卡"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:text="已完成(0/10)"
+            android:textColor="@color/default_line_indicator_selected_color" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="8dp" />
+
+
+    <RadioGroup
+        android:id="@+id/rb_option"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rba"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableLeft="@drawable/choicea"
+            android:text="选择答案a" />
+
+        <RadioButton
+            android:id="@+id/rbb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableLeft="@drawable/choiceb"
+            android:text="选择答案b" />
+
+        <RadioButton
+            android:id="@+id/rbc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableLeft="@drawable/choicec"
+            android:text="选择答案c" />
+
+        <RadioButton
+            android:id="@+id/rbd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableLeft="@drawable/choiced"
+            android:text="选择答案d" />
+    </RadioGroup>
+
+    <GridView
+        android:id="@+id/paperGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:horizontalSpacing="20dp"
+        android:numColumns="5"
+        android:paddingLeft="25dp"
+        android:paddingTop="45dp"
+        android:paddingRight="25dp"
+        android:verticalSpacing="45dp"
+        android:visibility="gone"></GridView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_commit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#55000000"
+            android:text="提交并看答案"
+            android:textColor="#ffffff"
+            android:visibility="gone" />
+    </LinearLayout>
+
+
+</LinearLayout>

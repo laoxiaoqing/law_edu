@@ -43,16 +43,6 @@ public class LawPager extends BasePager {
         super.initData();
         LogUtil.e("新闻页面数据初始化了");
         ib_menu.setVisibility(View.VISIBLE);//显示侧滑菜单按钮
-        //1.设置标题
-        //tv_title.setText("法律书库");
-        //2.联网请求得到数据创建视图
-//        TextView textView = new TextView(context);
-//        textView.setGravity(Gravity.CENTER);
-//        textView.setTextColor(Color.RED);
-        //3.把子视图添加到BasePager的FrameLayout
-//        fl_content.addView(textView);
-        //4.绑定数据
-        //textView.setText("新闻内容");
 
         //获取缓存数据
         String saveJson = CacheUtils.getString(context, Constants.LAW_PAGER_URL);
@@ -139,18 +129,6 @@ public class LawPager extends BasePager {
         } else {
             tv_title.setText(data.get(position).getLaw_category_name());
             isPosition(0, data.get(position).getLaw_category_id(), position);
-            /*//1.设置标题
-            tv_title.setText(data.get(position).getLaw_category_name());
-            //2.移除内容
-            fl_content.removeAllViews();//移除之前的视图
-            //3.添加新内容
-            BaseCategoryPager baseCategoryPager;
-            baseCategoryPager = baseCategoryPagers.get(0);
-            View rootView = baseCategoryPager.rootView;
-            //初始化数据,参数传category的id
-            baseCategoryPager.initData(data.get(position).getLaw_category_id());
-            fl_content.addView(rootView);*/
-
         }
     }
 
@@ -158,6 +136,7 @@ public class LawPager extends BasePager {
         //1.设置标题
 
         //2.移除内容
+
         fl_content.removeAllViews();//移除之前的视图
         //3.添加新内容
         BaseCategoryPager baseCategoryPager;
@@ -165,6 +144,7 @@ public class LawPager extends BasePager {
         View rootView = baseCategoryPager.rootView;
         //初始化数据,参数传category的id
         baseCategoryPager.initData(category, position);
+
         fl_content.addView(rootView);
     }
 

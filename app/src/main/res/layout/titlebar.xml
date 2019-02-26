@@ -53,5 +53,13 @@
         android:paddingRight="10dp"
         android:src="@mipmap/share"
         android:visibility="gone" />
-
+    <ImageView
+        android:id="@+id/iv_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:paddingRight="10dp"
+        android:src="@mipmap/answer"
+        android:visibility="gone" />
 </RelativeLayout>

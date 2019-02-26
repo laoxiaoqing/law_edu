@@ -80,8 +80,8 @@ public class GuideActivity extends Activity {
             public void onClick(View v) {
                 //1.保存曾经进入过的主页面
                 CacheUtils.putBoolean(GuideActivity.this, SplashActivity.START_MAIN, true);
-                //2.跳转到主页面
-                Intent intent = new Intent(GuideActivity.this, MainActivity.class);
+                //2.跳转到登录
+                Intent intent = new Intent(GuideActivity.this, LoginActivity.class);
                 startActivity(intent);
                 //3.关闭引导页面
                 finish();

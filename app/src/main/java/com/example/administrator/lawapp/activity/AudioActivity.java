@@ -61,7 +61,6 @@ public class AudioActivity extends Activity {
         pull_listview = findViewById(R.id.pull_refresh_list);
         //设置lisrview点击监听
         pull_listview.setOnItemClickListener(new MyOnItemClickListener());
-
         myadapter = new MyPullRefresh();
         getDataFromNet();
     }

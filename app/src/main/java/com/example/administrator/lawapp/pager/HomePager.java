@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.example.administrator.lawapp.R;
 import com.example.administrator.lawapp.activity.AudioActivity;
 import com.example.administrator.lawapp.activity.DetailActivity;
-import com.example.administrator.lawapp.activity.MainActivity;
+import com.example.administrator.lawapp.activity.TrainActivity;
 import com.example.administrator.lawapp.activity.VideoActivity;
 import com.example.administrator.lawapp.base.BasePager;
 import com.example.administrator.lawapp.bean.HomePagerBean;
@@ -65,6 +65,12 @@ public class HomePager extends BasePager {
     private TextView tv_video;
     @ViewInject(R.id.lv_case)
     private RefreshListView lv_case;//显示cases内容的listview
+    @ViewInject(R.id.iv_test_home)
+    private ImageView iv_test_home;
+    @ViewInject(R.id.iv_wrong_home)
+    private ImageView iv_wrong_home;
+    @ViewInject(R.id.iv_page_home)
+    private ImageView iv_page_home;
     private int prePosition;//记录红点前一次位置
     public Boolean isLoadMore = false;//记录是否是第一次
     private List<HomePagerBean.DataBean.BannerBean> banner;
@@ -98,6 +104,19 @@ public class HomePager extends BasePager {
         //设置监听下拉刷新
         lv_case.setmOnRefreshListener(new MyOnRefreshListener());
         lv_case.setOnItemClickListener(new MyOnItemClickListener());
+        myOnClickListener();
+        fl_content.addView(view);
+        //4.绑定数据
+        //缓存获取数据
+        String saveJson = CacheUtils.getString(context, Constants.HOME_PAGER_URL);
+        if (!TextUtils.isEmpty(saveJson)) {
+            //解析数据和处理显示数据
+            manageData(saveJson);
+        }
+        getDataFromNet();
+    }
+
+    private void myOnClickListener() {
         ll_detailA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,15 +150,30 @@ public class HomePager extends BasePager {
                 context.startActivity(intent);
             }
         });
-        fl_content.addView(view);
-        //4.绑定数据
-        //缓存获取数据
-        String saveJson = CacheUtils.getString(context, Constants.HOME_PAGER_URL);
-        if (!TextUtils.isEmpty(saveJson)) {
-            //解析数据和处理显示数据
-            manageData(saveJson);
-        }
-        getDataFromNet();
+        iv_test_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, TrainActivity.class);
+                intent.putExtra("position", "test");
+                context.startActivity(intent);
+            }
+        });
+        iv_wrong_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, TrainActivity.class);
+                intent.putExtra("position", "wrong");
+                context.startActivity(intent);
+            }
+        });
+        iv_page_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, TrainActivity.class);
+                intent.putExtra("position", "page");
+                context.startActivity(intent);
+            }
+        });
     }
 
     private void getDataFromNet() {
@@ -401,9 +435,9 @@ public class HomePager extends BasePager {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             int realPosition = position - 1;
             //跳转页面
-            Intent intent = new Intent(context,DetailActivity.class);
-            intent.putExtra("type","cases");
-            intent.putExtra("dataId",cases.get(realPosition).getCase_id()+"");
+            Intent intent = new Intent(context, DetailActivity.class);
+            intent.putExtra("type", "cases");
+            intent.putExtra("dataId", cases.get(realPosition).getCase_id() + "");
             //LogUtil.e("id======"+cases.get(position).getCase_id());
             context.startActivity(intent);
         }

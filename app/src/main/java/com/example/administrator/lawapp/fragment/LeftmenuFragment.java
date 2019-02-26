@@ -70,7 +70,7 @@ public class LeftmenuFragment extends BaseFragment {
         linearLayout = getActivity().findViewById(R.id.leftmenu_search);
         leftmenu_tv = getActivity().findViewById(R.id.leftmenu_tv);
         leftmenu_iv = getActivity().findViewById(R.id.leftmenu_iv);
-        linearLayout.setOnClickListener(new View.OnClickListener() {
+        linearLayout.setOnClickListener(new View.OnClickListener() {//切换到搜索页面
             @Override
             public void onClick(View v) {
                 prePosition = Constants.CATEGORYPAGER;

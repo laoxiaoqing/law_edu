@@ -49,8 +49,8 @@
                 android:layout_height="20dp"
                 android:layout_marginLeft="1dp"
                 android:layout_marginRight="8dp"
-                android:visibility="visible"
-                android:background="@mipmap/back_arrow" />
+                android:background="@mipmap/back_arrow"
+                android:visibility="visible" />
 
         </LinearLayout>
 
@@ -90,16 +90,53 @@
         android:textColor="#ffffff"
         android:textSize="18dp" />
 
+    <Button
+        android:id="@+id/register"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="28dp"
+        android:background="#ff3d1b"
+        android:text="注  册"
+        android:textColor="#ffffff"
+        android:textSize="18dp" />
+
     <TextView
         android:id="@+id/promptText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/loginBtn"
+        android:layout_below="@+id/register"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text=""
         android:textColor="#ff0000"
         android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/promptText"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_auto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="自动登录"
+            android:textSize="30dp"
+            android:textStyle="" />
+
+        <CheckBox
+            android:id="@+id/cb_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="记住密码"
+            android:textSize="30dp" />
+    </LinearLayout>
 
 </RelativeLayout>
 

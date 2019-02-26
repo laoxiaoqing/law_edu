@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.animation.*;
 import android.widget.RelativeLayout;
+
 import com.example.administrator.lawapp.activity.GuideActivity;
+import com.example.administrator.lawapp.activity.LoginActivity;
 import com.example.administrator.lawapp.activity.MainActivity;
 import com.example.administrator.lawapp.utils.CacheUtils;
+import com.example.administrator.lawapp.utils.LogUtil;
 
 public class SplashActivity extends Activity {
     /**
@@ -17,6 +20,7 @@ public class SplashActivity extends Activity {
      */
     public static final String START_MAIN = "start_main";
     private RelativeLayout rl_splash_root;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,22 +50,30 @@ public class SplashActivity extends Activity {
 
         set.setAnimationListener(new MyAnimationListener());
     }
-    class MyAnimationListener implements Animation.AnimationListener{
+
+    class MyAnimationListener implements Animation.AnimationListener {
         //当动画开始播放的时候回调这个方法
         @Override
         public void onAnimationStart(Animation animation) {
 
         }
+
         //当动画播放结束的时候回调这个方法
         @Override
         public void onAnimationEnd(Animation animation) {
             //判断是否进入过主页面
             boolean isStartMain = CacheUtils.getBoolean(SplashActivity.this, START_MAIN);
-            if(isStartMain){
-                //如果进入过主页面，直接进入主页
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            if (isStartMain) {
+                //如果进入过主页面，直接进入登录
+                String str = CacheUtils.getString(SplashActivity.this, "autologin");
+                Intent intent;
+                if (str.equals("true")) {
+                    intent = new Intent(SplashActivity.this, MainActivity.class);
+                } else {
+                    intent = new Intent(SplashActivity.this, LoginActivity.class);
+                }
                 startActivity(intent);
-            }else{
+            } else {
                 //如果没有，则进入引导页面
                 Intent intent = new Intent(SplashActivity.this, GuideActivity.class);
                 startActivity(intent);
@@ -69,6 +81,7 @@ public class SplashActivity extends Activity {
             //关闭Splash页面
             finish();
         }
+
         //当动画重复回调这个方法
         @Override
         public void onAnimationRepeat(Animation animation) {

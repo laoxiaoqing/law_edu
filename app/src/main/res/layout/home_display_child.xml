@@ -70,11 +70,6 @@
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:orientation="horizontal">
-        <!--<View
-            android:id="@+id/id_diverline5"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="@android:color/darker_gray" />-->
         <ImageView
             android:id="@+id/iv_test_home"
             android:layout_width="wrap_content"
@@ -90,7 +85,7 @@
             android:background="@android:color/darker_gray" />
 
         <ImageView
-            android:id="@+id/iv_error_home"
+            android:id="@+id/iv_wrong_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"

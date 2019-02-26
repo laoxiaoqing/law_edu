@@ -142,7 +142,6 @@ public class ContentFragment extends BaseFragment {
     class ContentFragmentAdapter extends PagerAdapter {
         /**
          * 页面总数
-         *
          * @return
          */
         @Override
