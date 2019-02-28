@@ -150,7 +150,6 @@ public class VideoActivity extends Activity {
                     pagenum++;
                 }
                 getMoreFromNet();
-
             }
         });
         /*pull_listview.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {

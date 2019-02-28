@@ -153,7 +153,9 @@ public class DetailActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    //1
+    /**
+     * 普法视听页面
+     */
     private void getAudioDataId() {
         dataId = getIntent().getStringExtra("dataId");
         LogUtil.e("getAudioDataId====" + dataId);
@@ -225,7 +227,9 @@ public class DetailActivity extends Activity implements View.OnClickListener {
         return auditoriumBean;
     }
 
-    //1
+    /**
+     * 看法视频页面
+     */
     private void getVideoDataId() {
         dataId = getIntent().getStringExtra("dataId");
         LogUtil.e("getAudioDataId====" + dataId);
@@ -292,7 +296,9 @@ public class DetailActivity extends Activity implements View.OnClickListener {
         return videoBean;
     }
 
-    //1
+    /**
+     * 案例页面
+     */
     private void getCasesDataId() {
         dataId = getIntent().getStringExtra("dataId");
         LogUtil.e("getCasesDataId====" + dataId);
@@ -300,6 +306,8 @@ public class DetailActivity extends Activity implements View.OnClickListener {
         webSettings = webview.getSettings();
         //设置支持js
         webSettings.setJavaScriptEnabled(true);
+        //设置是否开启DOM存储API权限，默认false
+        webSettings.setDomStorageEnabled(true);
     }
 
     //2
@@ -358,7 +366,9 @@ public class DetailActivity extends Activity implements View.OnClickListener {
         return casesBean;
     }
 
-    //1
+    /**
+     * 法律书库
+     */
     private void getLawDataId() {
         llLawHead.setVisibility(View.VISIBLE);
         dataId = getIntent().getStringExtra("dataId");

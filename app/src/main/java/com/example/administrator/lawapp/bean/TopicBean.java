@@ -57,6 +57,15 @@ public class TopicBean {
         private String d_option;
         private String right_key;
         private String describe;
+        private Integer papers_id;
+
+        public Integer getPapers_id() {
+            return papers_id;
+        }
+
+        public void setPapers_id(Integer papers_id) {
+            this.papers_id = papers_id;
+        }
 
         public String getDescribe() {
             return describe;

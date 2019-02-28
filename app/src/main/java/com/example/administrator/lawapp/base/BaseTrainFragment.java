@@ -15,6 +15,7 @@ import android.view.ViewGroup;
  */
 public abstract class BaseTrainFragment extends Fragment {
     protected Context context;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

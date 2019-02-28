@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -15,17 +16,20 @@ import android.widget.TextView;
 import com.example.administrator.lawapp.R;
 import com.example.administrator.lawapp.activity.TrainActivity;
 import com.example.administrator.lawapp.base.BaseTrainPager;
+import com.example.administrator.lawapp.bean.PapersTopicBean;
 import com.example.administrator.lawapp.bean.TopicBean;
-import com.example.administrator.lawapp.fragment.AnswerFragment;
+import com.example.administrator.lawapp.fragment.PaperFragment;
 import com.example.administrator.lawapp.utils.CacheUtils;
 import com.example.administrator.lawapp.utils.Constants;
 import com.example.administrator.lawapp.utils.LogUtil;
+import com.google.gson.Gson;
 
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +39,8 @@ import java.util.Map;
  * Describe
  */
 public class TestContentPager extends BaseTrainPager {
-    private Map map;
+    private boolean b;
+    private Map<String, Map<String, String>> map;
     private ViewPager viewPager;
     private int position;
     @ViewInject(R.id.question)
@@ -58,6 +63,8 @@ public class TestContentPager extends BaseTrainPager {
     private GridView paperGrid;
     @ViewInject(R.id.btn_commit)
     private Button btnCommit;
+    @ViewInject(R.id.pb_status)
+    private ProgressBar pbStatus;
     private TopicBean.DataBean dataBean;
     private MyOnCheckedChangeListener rbChange;
     private boolean realPosition = false;
@@ -66,10 +73,8 @@ public class TestContentPager extends BaseTrainPager {
     private ImageView imageView;
 
 
-    public TestContentPager(Context context, List<String> size) {
+    public TestContentPager(Context context) {
         super(context);
-
-
     }
 
     public TestContentPager(Context context,
@@ -77,13 +82,15 @@ public class TestContentPager extends BaseTrainPager {
                             int position,
                             ViewPager viewPager,
                             List<String> list,
-                            Map<Integer, String> map) {
+                            Map<String, Map<String, String>> map,
+                            boolean b) {
         super(context);
         this.position = position;
         this.dataBean = dataBean;
         this.viewPager = viewPager;
         this.list = list;
         this.map = map;
+        this.b = b;
     }
 
 
@@ -91,35 +98,37 @@ public class TestContentPager extends BaseTrainPager {
     public View initView() {
         View view = View.inflate(context, R.layout.test_content, null);
         x.view().inject(TestContentPager.this, view);
+        //提交答案到数据库，跳到成绩页面
         btnCommit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pbStatus.setVisibility(View.VISIBLE);
                 getDataFromNet();
-                TrainActivity trainActivity = (TrainActivity) context;
-                trainActivity.switchFrament(new AnswerFragment());
+                /*TrainActivity trainActivity = (TrainActivity) context;
+                trainActivity.switchFrament(new AnswerFragment());*/
             }
         });
         rbChange = new MyOnCheckedChangeListener();
         rbOption.setOnCheckedChangeListener(rbChange);
         gridViewadapter = new MyGridViewAdapter();
         gridView.setAdapter(gridViewadapter);
-        //ivBack.setVisibility(View.VISIBLE);
         return view;
     }
 
-    private void getDataFromNet() {
+    public void getDataFromNet() {//给后台传送用户答案
         //获得用户做的题目及答案
-        String username=CacheUtils.getString(context,"username");
-        LogUtil.e("username:"+username);
-        RequestParams params = new RequestParams(Constants.TOPIC_ANSWER_URL+"");//写url
-        params.setBodyContent("{\"username\":\"" + username
+        String user_id = CacheUtils.getString(context, "user_id");
+        LogUtil.e("username:" + user_id);
+        RequestParams params = new RequestParams(Constants.TOPIC_ANSWER_URL/*+"?username="+username+"&map="+map*/);//写url
+        params.setBodyContent("{\"user_id\":\"" + user_id
+                + "\",\"papers_id\":\"" + dataBean.getPapers_id()
                 + "\",\"map\":\"" + map + "\"}");
         params.setConnectTimeout(3000);
-        x.http().get(params, new Callback.CommonCallback<String>() {
+        x.http().post(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-//                manageData(result);
                 LogUtil.e("成功");
+                manageData(result);
             }
 
             @Override
@@ -139,11 +148,31 @@ public class TestContentPager extends BaseTrainPager {
         });
     }
 
+    private void manageData(String json) {
+
+        Gson gson = new Gson();
+        PapersTopicBean papersTopicBean = gson.fromJson(json, PapersTopicBean.class);
+        LogUtil.e("getPapers_id:" + papersTopicBean.getData().get(0).getPapers_id());
+        LogUtil.e("getRight_key:" + papersTopicBean.getData().get(0).getRight_key());
+        LogUtil.e("getUser_key:" + papersTopicBean.getData().get(0).getUser_key());
+        LogUtil.e("getPapers_topic_id:" + papersTopicBean.getData().get(0).getPapers_topic_id());
+        LogUtil.e("getTopic_id:" + papersTopicBean.getData().get(0).getTopic_id());
+        pbStatus.setVisibility(View.GONE);
+
+        TrainActivity trainActivity = (TrainActivity) context;
+        trainActivity.switchFrament(new PaperFragment());
+        /**
+         *
+         *   待开发
+         *
+         *
+         */
+    }
+
     @Override
     public void initData() {
         super.initData();
-        if (dataBean != null) {
-
+        if (b) {//判定是做题页还是确认答案页
             question.setText(dataBean.getTopic_content());
             done.setText("(" + (position + 1) + "/10)");
             rbA.setText(dataBean.getA_option() + "");
@@ -177,17 +206,22 @@ public class TestContentPager extends BaseTrainPager {
 
     private void recordAns(int checkedId) {
         if (rbA.getId() == checkedId) {
-            //LogUtil.e("a");
-            map.put(position, "a");
+            Map<String, String> map2 = new HashMap<>();
+            map2.put(dataBean.getTopic_id() + "", "a");
+            map.put(position + "", map2);
         } else if (rbB.getId() == checkedId) {
-            ///LogUtil.e("b");
-            map.put(position, "b");
+            Map<String, String> map2 = new HashMap<>();
+            map2.put(dataBean.getTopic_id() + "", "b");
+            map.put(position + "", map2);
         } else if (rbC.getId() == checkedId) {
-            //LogUtil.e("c");
-            map.put(position, "c");
+            Map<String, String> map2 = new HashMap<>();
+            map2.put(dataBean.getTopic_id() + "", "c");
+            map.put(position + "", map2);
         } else if (rbD.getId() == checkedId) {
-            //LogUtil.e("d");
-            map.put(position, "d");
+            Map<String, String> map2 = new HashMap<>();
+            map2.put(dataBean.getTopic_id() + "", "d");
+            map.put(position + "", map2);
+
         }
     }
 
@@ -246,14 +280,14 @@ public class TestContentPager extends BaseTrainPager {
             Iterator entries = map.entrySet().iterator();
             while (entries.hasNext()) {
                 Map.Entry entry = (Map.Entry) entries.next();
-                Integer key = (Integer) entry.getKey();
-                String value = (String) entry.getValue();
+                String key = (String) entry.getKey();
+                Map<String, String> value = (Map<String, String>) entry.getValue();
                 LogUtil.e("Key = " + key + ", Value = " + value);
-                if (position == key) {
+                if (position == Integer.parseInt(key)) {
                     imageView.setActivated(true);//选择了答案就高亮
                 }
             }
-
+            LogUtil.e("aaa:map");
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -264,47 +298,3 @@ public class TestContentPager extends BaseTrainPager {
         }
     }
 }
-/*switch (key.toString()) {
-                    case "0":
-                        imageView.setEnabled(true);
-                        LogUtil.w("0");
-                        break;
-                    case "1":
-                        imageView.setEnabled(true);
-                        LogUtil.w("1");
-                        break;
-                    case "2":
-                        imageView.setEnabled(true);
-                        LogUtil.w("2");
-                        break;
-                    case "3":
-                        imageView.setEnabled(true);
-                        LogUtil.w("3");
-                        break;
-                    case "4":
-                        imageView.setEnabled(true);
-                        LogUtil.w("4");
-                        break;
-                    case "5":
-                        imageView.setEnabled(true);
-                        LogUtil.w("5");
-                        break;
-                    case "6":
-                        imageView.setEnabled(true);
-                        LogUtil.w("6");
-                        break;
-                    case "7":
-                        imageView.setEnabled(true);
-                        LogUtil.w("7");
-                        break;
-                    case "8":
-                        imageView.setEnabled(true);
-                        LogUtil.w("8");
-                        break;
-                    case "9":
-                        imageView.setEnabled(true);
-                        LogUtil.w("9");
-                        break;
-                    default:
-                        break;
-                }*/

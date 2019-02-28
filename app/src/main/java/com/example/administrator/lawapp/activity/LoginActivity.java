@@ -134,7 +134,14 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private void manageData(String result) {
         Gson gson = new Gson();
         isSuccessBean = gson.fromJson(result, IsSuccessBean.class);
-        if (isSuccessBean.getData().equals("登录成功")) {
+        if (isSuccessBean.getData().getIsSuccess().equals("登录成功")) {
+            CacheUtils.putString(this,"user_id",isSuccessBean.getData().getUser().getUser_id()+"");
+            CacheUtils.putString(this,"user_head",isSuccessBean.getData().getUser().getUser_head());
+            CacheUtils.putString(this,"user_tel",isSuccessBean.getData().getUser().getUser_tel());
+            CacheUtils.putString(this,"user_name",isSuccessBean.getData().getUser().getUser_name());
+            CacheUtils.putString(this,"user_email",isSuccessBean.getData().getUser().getUser_email());
+            CacheUtils.putString(this, "username", userid);
+            CacheUtils.putString(this, "password", pwd);
             boolean isCheakedAuto = cbAuto.isChecked();
             boolean isCheakedSave = cbSave.isChecked();
             if (isCheakedAuto || isCheakedSave) {
@@ -149,11 +156,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 } else {
                     CacheUtils.putString(this, "savelogin", "false");
                 }
-                CacheUtils.putString(this, "username", userid);
-                CacheUtils.putString(this, "password", pwd);
+
             }
+
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            CacheUtils.putString(this, "userManage", userid);
+            //CacheUtils.putString(this, "userManage", userid);
             startActivity(intent);
             finish();
         }else {

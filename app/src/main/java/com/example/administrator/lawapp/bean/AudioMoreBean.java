@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Created by 吴青晓 on 2019/2/23
- * Describe
+ * Describe ：加载更多普法视听使用的
  */
 public class AudioMoreBean {
 

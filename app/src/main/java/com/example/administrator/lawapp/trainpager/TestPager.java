@@ -1,6 +1,8 @@
 package com.example.administrator.lawapp.trainpager;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -50,7 +52,8 @@ public class TestPager extends BaseTrainPager {
     private TopicBean bean;
     private List<TopicBean.DataBean> topicBean;
     private final List<String> list = new ArrayList<>();
-    public Map<Integer, String> map = new LinkedHashMap();//存放  用户做题的答案
+
+    public Map<String, Map<String, String>> map = new LinkedHashMap();//存放  用户做题的答案
     /**
      * 题目页面的集合
      */
@@ -80,8 +83,23 @@ public class TestPager extends BaseTrainPager {
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TrainActivity trainActivity = (TrainActivity) context;
-                trainActivity.switchFrament(new TestFragment());
+                AlertDialog alertDialog = new AlertDialog.Builder(context)
+                        .setTitle("退出试卷？")
+                        .setMessage("是否退出做题？")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                TrainActivity trainActivity = (TrainActivity) context;
+                                trainActivity.switchFrament(new TestFragment());
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                return;
+                            }
+                        }).create();
+                alertDialog.show();
             }
         });
 
@@ -106,19 +124,18 @@ public class TestPager extends BaseTrainPager {
     private void getDataFromNet() {
         String username = CacheUtils.getString(context, "username");
         LogUtil.e("username:" + username);
-        RequestParams params = new RequestParams(Constants.TOPIC_NUM_URL + "?num=10&topictypeid=" + topic_type_id + "&username" + username);//写url
+        RequestParams params = new RequestParams(Constants.TOPIC_NUM_URL + "?num=10&topictypeid=" + topic_type_id + "&username=" + username);//写url
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
                 manageData(result);
                 LogUtil.e(result);
-                LogUtil.e(Constants.TOPIC_NUM_URL + "?num=10&topictypeid=" + topic_type_id);
             }
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
                 LogUtil.e("请求失败" + ex.getMessage());
-                LogUtil.e(Constants.TOPIC_NUM_URL + "?num=10&topictypeid=" + topic_type_id);
+
             }
 
             @Override
@@ -141,9 +158,9 @@ public class TestPager extends BaseTrainPager {
         topicBean = bean.getData();
         testContentPagers = new ArrayList<>();
         for (int i = 0; i < topicBean.size(); i++) {
-            testContentPagers.add(new TestContentPager(context, topicBean.get(i), i, viewPager, list, map));
+            testContentPagers.add(new TestContentPager(context, topicBean.get(i), i, viewPager, list, map, true));
         }
-        testContentPagers.add(new TestContentPager(context, null, 0, viewPager, list, map));//记录答案 答案界面
+        testContentPagers.add(new TestContentPager(context, topicBean.get(0), 0, viewPager, list, map, false));//记录答案 答案界面
         //设置适配器
         viewPager.setAdapter(new MyTopicPagerAdapter());
         viewPager.addOnPageChangeListener(new MyOnPageChangeListener());

@@ -119,7 +119,6 @@ public class TestFragment extends BaseTrainFragment {
         tv_title = (TextView) view.findViewById(R.id.tv_title);
         fl_train = (FrameLayout) view.findViewById(R.id.fl_train);
         pullRefreshList = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
-
         tv_title.setText("知识点练习");
         iv_back.setVisibility(View.VISIBLE);
         iv_back.setOnClickListener(new View.OnClickListener() {
@@ -134,7 +133,6 @@ public class TestFragment extends BaseTrainFragment {
     private class MyOnItemClickListener implements android.widget.AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            TestPager testPager = new TestPager(context);
             //3.添加新内容
             fl_train.removeAllViews();
             LogUtil.e("type_id=="+topicTypeList.get(position-1).getTopic_type_id());

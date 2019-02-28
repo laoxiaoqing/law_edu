@@ -8,8 +8,7 @@ import android.view.Window;
 
 import com.example.administrator.lawapp.R;
 import com.example.administrator.lawapp.base.BaseTrainFragment;
-import com.example.administrator.lawapp.fragment.AnswerFragment;
-import com.example.administrator.lawapp.fragment.PagerFragment;
+import com.example.administrator.lawapp.fragment.PaperFragment;
 import com.example.administrator.lawapp.fragment.TestFragment;
 import com.example.administrator.lawapp.fragment.WrongFragment;
 
@@ -62,9 +61,6 @@ public class TrainActivity extends FragmentActivity {
             case "page":
                 position = 2;
                 break;
-            case "answer":
-                position = 3;
-                break;
             default:
                 position = 0;
                 break;
@@ -77,8 +73,8 @@ public class TrainActivity extends FragmentActivity {
         baseTrainFragments = new ArrayList<>();
         baseTrainFragments.add(new TestFragment());
         baseTrainFragments.add(new WrongFragment());
-        baseTrainFragments.add(new PagerFragment());
-        baseTrainFragments.add(new AnswerFragment());
+        baseTrainFragments.add(new PaperFragment());
+        //baseTrainFragments.add(new AnswerFragment());
     }
 
     public BaseTrainFragment getTextFragement() {

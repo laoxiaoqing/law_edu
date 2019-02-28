@@ -7,12 +7,12 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp">
+        android:layout_height="150dp">
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager_banner"
             android:layout_width="wrap_content"
-            android:layout_height="180dp" />
+            android:layout_height="150dp" />
 
         <RelativeLayout
             android:layout_width="match_parent"

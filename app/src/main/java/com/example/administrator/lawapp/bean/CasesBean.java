@@ -2,7 +2,7 @@ package com.example.administrator.lawapp.bean;
 
 /**
  * Created by 吴青晓 on 2019/2/24
- * Describe
+ * Describe：案例类
  */
 public class CasesBean {
 
