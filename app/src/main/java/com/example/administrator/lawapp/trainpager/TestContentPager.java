@@ -1,11 +1,14 @@
 package com.example.administrator.lawapp.trainpager;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -19,6 +22,7 @@ import com.example.administrator.lawapp.base.BaseTrainPager;
 import com.example.administrator.lawapp.bean.PapersTopicBean;
 import com.example.administrator.lawapp.bean.TopicBean;
 import com.example.administrator.lawapp.fragment.PaperFragment;
+import com.example.administrator.lawapp.fragment.TestFragment;
 import com.example.administrator.lawapp.utils.CacheUtils;
 import com.example.administrator.lawapp.utils.Constants;
 import com.example.administrator.lawapp.utils.LogUtil;
@@ -72,6 +76,8 @@ public class TestContentPager extends BaseTrainPager {
     private MyGridViewAdapter gridViewadapter;
     private ImageView imageView;
 
+    private FrameLayout fl_train;
+
 
     public TestContentPager(Context context) {
         super(context);
@@ -85,12 +91,12 @@ public class TestContentPager extends BaseTrainPager {
                             Map<String, Map<String, String>> map,
                             boolean b) {
         super(context);
-        this.position = position;
-        this.dataBean = dataBean;
-        this.viewPager = viewPager;
-        this.list = list;
-        this.map = map;
-        this.b = b;
+        this.position = position;//记录当前位置
+        this.dataBean = dataBean;//题目数据
+        this.viewPager = viewPager;//当前viewpager
+        this.list = list;//
+        this.map = map;//记录做题答案
+        this.b = b;//分辨是不是做题页，还是确认答案页
     }
 
 
@@ -102,10 +108,24 @@ public class TestContentPager extends BaseTrainPager {
         btnCommit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog alertDialog = new AlertDialog.Builder(context)
+                        .setTitle("是否提交考卷？")
+                        .setMessage("是否退出做题？")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                getDataFromNet();
+
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                return;
+                            }
+                        }).create();
+                alertDialog.show();
                 pbStatus.setVisibility(View.VISIBLE);
-                getDataFromNet();
-                /*TrainActivity trainActivity = (TrainActivity) context;
-                trainActivity.switchFrament(new AnswerFragment());*/
             }
         });
         rbChange = new MyOnCheckedChangeListener();
@@ -116,7 +136,7 @@ public class TestContentPager extends BaseTrainPager {
     }
 
     public void getDataFromNet() {//给后台传送用户答案
-        //获得用户做的题目及答案
+        //获得用户做的题目及正确答案
         String user_id = CacheUtils.getString(context, "user_id");
         LogUtil.e("username:" + user_id);
         RequestParams params = new RequestParams(Constants.TOPIC_ANSWER_URL/*+"?username="+username+"&map="+map*/);//写url
@@ -159,14 +179,27 @@ public class TestContentPager extends BaseTrainPager {
         LogUtil.e("getTopic_id:" + papersTopicBean.getData().get(0).getTopic_id());
         pbStatus.setVisibility(View.GONE);
 
-        TrainActivity trainActivity = (TrainActivity) context;
-        trainActivity.switchFrament(new PaperFragment());
+
+
+        /*TrainActivity trainActivity = (TrainActivity) context;
+        trainActivity.switchFrament(new PaperFragment());*/
         /**
          *
          *   待开发
          *
          *
          */
+        TrainActivity trainActivity = (TrainActivity) context;
+        //trainActivity.switchFrament(new PaperFragment());
+        fl_train=(FrameLayout)trainActivity.findViewById(R.id.fl_train);
+        fl_train.removeAllViews();
+        LogUtil.e("position:"+position);
+        LogUtil.e("试卷号："+dataBean.getPapers_id());
+        BaseTrainPager baseTrainPager = new PapePager(trainActivity,dataBean.getPapers_id());
+        View rootView = baseTrainPager.rootView;
+        baseTrainPager.initData();
+        fl_train.addView(rootView);
+        LogUtil.e("判断是否完成");
     }
 
     @Override

@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@null"
-            android:drawableLeft="@mipmap/a3"
+            android:drawableLeft="@drawable/choicea"
             android:text="选择答案a" />
 
         <RadioButton
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@null"
-            android:drawableLeft="@mipmap/b3"
+            android:drawableLeft="@drawable/choiceb"
             android:text="选择答案b" />
 
         <RadioButton
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@null"
-            android:drawableLeft="@mipmap/c3"
+            android:drawableLeft="@drawable/choicec"
             android:text="选择答案c" />
 
         <RadioButton
@@ -74,17 +74,65 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@null"
-            android:drawableLeft="@mipmap/d3"
+            android:drawableLeft="@drawable/choiced"
             android:text="选择答案d" />
     </RadioGroup>
+
     <ProgressBar
         android:id="@+id/pb_status"
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="10dp"
         android:indeterminateDrawable="@drawable/custom_progressbar"
         android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/ll_tv"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="正确答案是：" />
+
+        <TextView
+            android:id="@+id/tv_right_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="a"
+            android:textColor="#7bdff2"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="您的答案是：" />
+
+        <TextView
+            android:id="@+id/tv_user_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="b"
+            android:textColor="#7bdff2"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_analysis"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="解析：" />
 
     <GridView
         android:id="@+id/paperGrid"
@@ -110,7 +158,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#55000000"
-            android:text="提交并看答案"
+            android:text="查看全部解析"
             android:textColor="#ffffff"
             android:visibility="gone" />
     </LinearLayout>

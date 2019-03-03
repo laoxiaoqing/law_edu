@@ -1,16 +1,20 @@
 package com.example.administrator.lawapp.fragment;
 
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.administrator.lawapp.R;
 import com.example.administrator.lawapp.base.BaseTrainFragment;
+import com.example.administrator.lawapp.base.BaseTrainPager;
 import com.example.administrator.lawapp.bean.PapersBean;
+import com.example.administrator.lawapp.trainpager.PapePager;
 import com.example.administrator.lawapp.utils.CacheUtils;
 import com.example.administrator.lawapp.utils.Constants;
 import com.example.administrator.lawapp.utils.LogUtil;
@@ -23,6 +27,8 @@ import org.xutils.http.RequestParams;
 import org.xutils.x;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by 吴青晓 on 2019/2/25
@@ -39,6 +45,7 @@ public class PaperFragment extends BaseTrainFragment {
     private List<PapersBean.DataBean> papersList;
     private List<PapersBean.DataBean> papersMoreList = null;
     private MyPullRefresh myadapter;
+    private FrameLayout fl_train;
 
     @Override
     public View initView() {
@@ -53,6 +60,7 @@ public class PaperFragment extends BaseTrainFragment {
         pullRefreshList = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
         ivBack = (ImageView) view.findViewById(R.id.iv_back);
         tvTitle = (TextView) view.findViewById(R.id.tv_title);
+        fl_train=(FrameLayout)view.findViewById(R.id.fl_train);
     }
 
     private void getDataFromNet() {
@@ -169,8 +177,28 @@ public class PaperFragment extends BaseTrainFragment {
     private class MyOnItemClickListener implements android.widget.AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            if (isNumeric(papersList.get(position-1).getPapers_score())){//判断是否完成
+                fl_train.removeAllViews();
+                LogUtil.e("position:"+position);
+                BaseTrainPager baseTrainPager = new PapePager(context,papersList.get(position-1).getPapers_id());
+                LogUtil.e("papers_id:"+papersList.get(position-1).getPapers_id());
+                View rootView = baseTrainPager.rootView;
+                baseTrainPager.initData();
+                fl_train.addView(rootView);
+                LogUtil.e("判断是否完成");
+            }else{
+                LogUtil.e("从新做题");
+            }
 
         }
+    }
+    public boolean isNumeric(String str){
+        Pattern pattern = Pattern.compile("[0-9]*");
+        Matcher isNum = pattern.matcher(str);
+        if( !isNum.matches() ){
+            return false;
+        }
+        return true;
     }
 
     private class MyPullRefresh extends BaseAdapter {

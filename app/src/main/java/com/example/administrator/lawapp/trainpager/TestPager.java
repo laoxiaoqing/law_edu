@@ -78,6 +78,19 @@ public class TestPager extends BaseTrainPager {
     public View initView() {
         View view = View.inflate(context, R.layout.topic_detail, null);
         x.view().inject(TestPager.this, view);
+        ivAnswer.setVisibility(View.VISIBLE);
+        ivAnswer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewPager.setCurrentItem(testContentPagers.size());//跳到最后一页
+            }
+        });
+        return view;
+    }
+
+    @Override
+    public void initData() {
+        super.initData();
         tvTitle.setText("知识点专项练习");
         ivBack.setVisibility(View.VISIBLE);
         ivBack.setOnClickListener(new View.OnClickListener() {
@@ -102,20 +115,6 @@ public class TestPager extends BaseTrainPager {
                 alertDialog.show();
             }
         });
-
-        ivAnswer.setVisibility(View.VISIBLE);
-        ivAnswer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewPager.setCurrentItem(testContentPagers.size());//跳到最后一页
-            }
-        });
-        return view;
-    }
-
-    @Override
-    public void initData() {
-        super.initData();
         LogUtil.e("练习内容练习内容练习内容练习内容");
         LogUtil.e("type_id==" + topic_type_id);
         getDataFromNet();
