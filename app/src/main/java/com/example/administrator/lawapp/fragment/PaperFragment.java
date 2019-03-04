@@ -15,6 +15,7 @@ import com.example.administrator.lawapp.base.BaseTrainFragment;
 import com.example.administrator.lawapp.base.BaseTrainPager;
 import com.example.administrator.lawapp.bean.PapersBean;
 import com.example.administrator.lawapp.trainpager.PapePager;
+import com.example.administrator.lawapp.trainpager.TestPager;
 import com.example.administrator.lawapp.utils.CacheUtils;
 import com.example.administrator.lawapp.utils.Constants;
 import com.example.administrator.lawapp.utils.LogUtil;
@@ -51,7 +52,6 @@ public class PaperFragment extends BaseTrainFragment {
     public View initView() {
         view = View.inflate(context, R.layout.papers_fragment, null);
         findViews();
-        pullRefreshList = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
         pullRefreshList.setOnItemClickListener(new MyOnItemClickListener());
         return view;
     }
@@ -188,6 +188,14 @@ public class PaperFragment extends BaseTrainFragment {
                 LogUtil.e("判断是否完成");
             }else{
                 LogUtil.e("从新做题");
+
+                //3.添加新内容
+               fl_train.removeAllViews();
+                LogUtil.e("papers_id=="+papersList.get(position-1).getPapers_id());
+                BaseTrainPager baseTrainPager = new TestPager(context,papersList.get(position-1).getPapers_id(),true);
+                View rootView = baseTrainPager.rootView;
+                baseTrainPager.initData();
+                fl_train.addView(rootView);
             }
 
         }

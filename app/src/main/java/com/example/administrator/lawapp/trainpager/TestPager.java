@@ -39,6 +39,7 @@ import java.util.Map;
  * Describe
  */
 public class TestPager extends BaseTrainPager {
+    private boolean b=false;
     private int topic_type_id;
     @ViewInject(R.id.viewpager)
     public ViewPager viewPager;
@@ -67,6 +68,12 @@ public class TestPager extends BaseTrainPager {
     public TestPager(Context context, int topic_type_id) {
         super(context);
         this.topic_type_id = topic_type_id;
+    }
+
+    public TestPager(Context context, int papers_id, boolean b) {
+        super(context);
+        this.topic_type_id = papers_id;
+        this.b = b;
     }
 
     public ViewPager getViewpager() {
@@ -123,7 +130,14 @@ public class TestPager extends BaseTrainPager {
     private void getDataFromNet() {
         String username = CacheUtils.getString(context, "username");
         LogUtil.e("username:" + username);
-        RequestParams params = new RequestParams(Constants.TOPIC_NUM_URL + "?num=10&topictypeid=" + topic_type_id + "&username=" + username);//写url
+        String  url = "";
+        if (b){
+            url=Constants.PAPGERS_TOPIC_URL+topic_type_id;
+        }else {
+            url=Constants.TOPIC_NUM_URL + "?num=10&topictypeid=" + topic_type_id + "&username=" + username;
+        }
+        RequestParams params =
+                new RequestParams(url);//写url
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {

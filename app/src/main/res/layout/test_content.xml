@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@null"
-            android:drawableLeft="@mipmap/a3"
+            android:drawableLeft="@drawable/choicea"
             android:text="选择答案a" />
 
         <RadioButton
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@null"
-            android:drawableLeft="@mipmap/b3"
+            android:drawableLeft="@drawable/choiceb"
             android:text="选择答案b" />
 
         <RadioButton
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@null"
-            android:drawableLeft="@mipmap/c3"
+            android:drawableLeft="@drawable/choicec"
             android:text="选择答案c" />
 
         <RadioButton
@@ -74,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@null"
-            android:drawableLeft="@mipmap/d3"
+            android:drawableLeft="@drawable/choiced"
             android:text="选择答案d" />
     </RadioGroup>
     <ProgressBar

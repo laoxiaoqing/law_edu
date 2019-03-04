@@ -115,7 +115,6 @@ public class TestContentPager extends BaseTrainPager {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 getDataFromNet();
-
                             }
                         })
                         .setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -125,7 +124,7 @@ public class TestContentPager extends BaseTrainPager {
                             }
                         }).create();
                 alertDialog.show();
-                pbStatus.setVisibility(View.VISIBLE);
+                //pbStatus.setVisibility(View.VISIBLE);
             }
         });
         rbChange = new MyOnCheckedChangeListener();
@@ -139,7 +138,7 @@ public class TestContentPager extends BaseTrainPager {
         //获得用户做的题目及正确答案
         String user_id = CacheUtils.getString(context, "user_id");
         LogUtil.e("username:" + user_id);
-        RequestParams params = new RequestParams(Constants.TOPIC_ANSWER_URL/*+"?username="+username+"&map="+map*/);//写url
+        RequestParams params = new RequestParams(Constants.TOPIC_ANSWER_URL);//写url
         params.setBodyContent("{\"user_id\":\"" + user_id
                 + "\",\"papers_id\":\"" + dataBean.getPapers_id()
                 + "\",\"map\":\"" + map + "\"}");
@@ -148,6 +147,7 @@ public class TestContentPager extends BaseTrainPager {
             @Override
             public void onSuccess(String result) {
                 LogUtil.e("成功");
+                LogUtil.e(result);
                 manageData(result);
             }
 
@@ -168,7 +168,7 @@ public class TestContentPager extends BaseTrainPager {
         });
     }
 
-    private void manageData(String json) {
+    private void manageData(String json) {//跳转到PaperPager 页
 
         Gson gson = new Gson();
         PapersTopicBean papersTopicBean = gson.fromJson(json, PapersTopicBean.class);
@@ -179,16 +179,6 @@ public class TestContentPager extends BaseTrainPager {
         LogUtil.e("getTopic_id:" + papersTopicBean.getData().get(0).getTopic_id());
         pbStatus.setVisibility(View.GONE);
 
-
-
-        /*TrainActivity trainActivity = (TrainActivity) context;
-        trainActivity.switchFrament(new PaperFragment());*/
-        /**
-         *
-         *   待开发
-         *
-         *
-         */
         TrainActivity trainActivity = (TrainActivity) context;
         //trainActivity.switchFrament(new PaperFragment());
         fl_train=(FrameLayout)trainActivity.findViewById(R.id.fl_train);
@@ -230,6 +220,7 @@ public class TestContentPager extends BaseTrainPager {
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if (realPosition == false) {
                 selectBtnCount(checkedId);
+
             }
             recordAns(checkedId);
             viewPager.setCurrentItem(viewPager.getCurrentItem() + 1, true);
@@ -261,12 +252,16 @@ public class TestContentPager extends BaseTrainPager {
     private int selectBtnCount(int checkedId) {
         if (rbA.getId() == checkedId) {
             list.add("a");
+            rbA.setEnabled(true);
         } else if (rbB.getId() == checkedId) {
             list.add("b");
+            rbB.setEnabled(true);
         } else if (rbC.getId() == checkedId) {
             list.add("c");
+            rbC.setEnabled(true);
         } else if (rbD.getId() == checkedId) {
             list.add("d");
+            rbD.setEnabled(true);
         }
         return list.size();
     }
@@ -318,6 +313,7 @@ public class TestContentPager extends BaseTrainPager {
                 LogUtil.e("Key = " + key + ", Value = " + value);
                 if (position == Integer.parseInt(key)) {
                     imageView.setActivated(true);//选择了答案就高亮
+                    LogUtil.e("imagesacticated");
                 }
             }
             LogUtil.e("aaa:map");

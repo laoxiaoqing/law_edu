@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -94,15 +95,22 @@ public class PaperContentPager extends BaseTrainPager {
         super.initData();
         if (b) {//选择题
             question.setText(topicPaper.getTopic().getTopic_content());
-            done.setText("(" + (position + 1) + "/10)");
-            if (topicPaper.getUser_key().equals(topicPaper.getRight_key())) {
-                tvRightKey.setText(topicPaper.getRight_key());
-                tvUserKey.setText(topicPaper.getUser_key() + "(正确)");
+            done.setText("(" + (position + 1) + "/" + list.size() + ")");
+            if (!TextUtils.isEmpty(topicPaper.getUser_key())) {
+                if (topicPaper.getUser_key().equals(topicPaper.getRight_key())) {
+                    tvRightKey.setText(topicPaper.getRight_key());
+                    tvUserKey.setText(topicPaper.getUser_key() + "(正确)");
+                } else {
+                    tvRightKey.setText(topicPaper.getRight_key());
+                    tvUserKey.setText(topicPaper.getUser_key() + "(错误)");
+                    tvUserKey.setTextColor(Color.RED);
+                }
             } else {
                 tvRightKey.setText(topicPaper.getRight_key());
-                tvUserKey.setText(topicPaper.getUser_key() + "(错误)");
+                tvUserKey.setText("(错误)");
                 tvUserKey.setTextColor(Color.RED);
             }
+
             chooseTopic();
             rbA.setText(topicPaper.getTopic().getA_option());
             rbB.setText(topicPaper.getTopic().getB_option());
@@ -136,21 +144,24 @@ public class PaperContentPager extends BaseTrainPager {
         Drawable drawable4 = context.getResources().getDrawable(R.drawable.d2);
         drawable4.setBounds(0, 0, drawable.getMinimumWidth(),
                 drawable.getMinimumHeight());
-        switch (topicPaper.getUser_key()) {
-            case "a":
-                rbA.setCompoundDrawables(drawable, null, null, null);
-                break;
-            case "b":
-                rbB.setCompoundDrawables(drawable2, null, null, null);
-                break;
-            case "c":
-                rbC.setCompoundDrawables(drawable3, null, null, null);
-                break;
-            case "d":
-                rbD.setCompoundDrawables(drawable4, null, null, null);
-            default:
-                break;
+        if (!TextUtils.isEmpty(topicPaper.getUser_key())) {
+            switch (topicPaper.getUser_key()) {
+                case "a":
+                    rbA.setCompoundDrawables(drawable, null, null, null);
+                    break;
+                case "b":
+                    rbB.setCompoundDrawables(drawable2, null, null, null);
+                    break;
+                case "c":
+                    rbC.setCompoundDrawables(drawable3, null, null, null);
+                    break;
+                case "d":
+                    rbD.setCompoundDrawables(drawable4, null, null, null);
+                default:
+                    break;
+            }
         }
+
         Drawable right1 = context.getResources().getDrawable(R.drawable.a4);
         right1.setBounds(0, 0, drawable.getMinimumWidth(),
                 drawable.getMinimumHeight());
@@ -217,10 +228,13 @@ public class PaperContentPager extends BaseTrainPager {
             imageView.setActivated(false);
             imageView.setImageResource(mImagesId[pos]);
             for (int i = 0; i < list.size(); i++) {
-                if (list.get(pos).getUser_key().equals(list.get(pos).getRight_key())) {
-                    imageView.setActivated(true);
+                if (!TextUtils.isEmpty(list.get(pos).getUser_key())) {
+                    if (list.get(pos).getUser_key().equals(list.get(pos).getRight_key())) {
+                        imageView.setActivated(true);
+                    }
+                } else {
+                    imageView.setActivated(false);//错误是false
                 }
-
             }
 
             imageView.setOnClickListener(new View.OnClickListener() {

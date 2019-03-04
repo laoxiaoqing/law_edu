@@ -5,7 +5,7 @@ package com.example.administrator.lawapp.utils;
  * Describe
  */
 public class Constants {
-    public static final String BASE_URL = "http://192.168.198.1:8088";
+    public static final String BASE_URL = "http://10.20.90.73:8088";
     public static final String VIDEO_URL = BASE_URL+"/api/v1/video";
     public static final String AUDITORIUM_URL = BASE_URL+"/api/v1/auditorium";
     public static final String HOME_PAGER_URL = BASE_URL + "/api/v1/banner/home";
@@ -21,4 +21,8 @@ public class Constants {
     public static final String TOPIC_ANSWER_URL = BASE_URL +"/api/v1/topic/answer";
     public static final String  PAPERSTOIC_URL =BASE_URL +"/api/v1/papers";
     public static final String TOPIC_PAPER_URL =BASE_URL +"/api/v1/papers/";
+    public static final String TOPIC_WRONG_URL =BASE_URL +"/api/v1/topic/wrong/";
+    public static final String PAPGERS_TOPIC_URL =BASE_URL+"/api/v1/topic/";//查询未完成的试卷
+
+    public static final String TOPIC_ALL_WRONG_URL = BASE_URL+"/api/v1/topic/wrong2/";
 }
