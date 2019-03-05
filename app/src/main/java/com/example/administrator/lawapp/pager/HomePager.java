@@ -264,10 +264,10 @@ public class HomePager extends BasePager {
             viewpager_banner.setAdapter(new ViewpagerBannerAdapter());
             addpoint();//添加点
             //联网请求图片
-            String iv_videoUrl = Constants.BASE_URL + video.getVideo_picture();
-            String iv_audioUrl = Constants.BASE_URL + auditorium.getAuditorium_picture();
-            x.image().bind(iv_video, iv_videoUrl);
-            x.image().bind(iv_audio, iv_audioUrl);
+            //String iv_videoUrl = Constants.BASE_URL + video.getVideo_picture();
+            //String iv_audioUrl = Constants.BASE_URL + auditorium.getAuditorium_picture();
+            x.image().bind(iv_video, video.getVideo_picture());
+            x.image().bind(iv_audio, auditorium.getAuditorium_picture());
             tv_video.setText(video.getVideo_title());
             tv_audio.setText(auditorium.getAuditorium_title());
             myLVCaseAdaper = new MyLVCaseAdaper();
@@ -377,7 +377,7 @@ public class HomePager extends BasePager {
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             String imageUrl = Constants.BASE_URL + banner.get(position).getBanner_image_url();
             //联网请求图片
-            x.image().bind(imageView, imageUrl);
+            x.image().bind(imageView, banner.get(position).getBanner_image_url());
             container.addView(imageView);
             return imageView;
         }
@@ -423,7 +423,8 @@ public class HomePager extends BasePager {
             String name = cases.get(position).getCase_name();
             String imageUrl = Constants.BASE_URL + cases.get(position).getCase_pircture();
             //请求图片
-            x.image().bind(viewHolder.iv_cases_item, imageUrl);
+            LogUtil.e("图片路径："+cases.get(position).getCase_pircture());
+            x.image().bind(viewHolder.iv_cases_item, cases.get(position).getCase_pircture());
             viewHolder.tv_name_item.setText(name);
             return convertView;
         }

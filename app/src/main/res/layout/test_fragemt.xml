@@ -12,7 +12,7 @@
 
         <include layout="@layout/titlebar" />
 
-        <RelativeLayout
+        <!--<RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/blue"
@@ -53,7 +53,7 @@
                 android:paddingTop="3dp"
                 android:paddingRight="110dp"
                 android:text="2" />
-        </RelativeLayout>
+        </RelativeLayout>-->
 
         <com.handmark.pulltorefresh.library.PullToRefreshListView
             android:id="@+id/pull_refresh_list"

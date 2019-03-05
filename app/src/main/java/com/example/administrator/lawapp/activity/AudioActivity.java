@@ -206,8 +206,8 @@ public class AudioActivity extends Activity {
             }
             viewHolder.tv_audio_item.setText(AudioBeanList.get(position).getAuditorium_title());
             viewHolder.tv_audio_time.setText(AudioBeanList.get(position).getAuditorium_time());
-            String iv_videoUrl1 = Constants.BASE_URL + AudioBeanList.get(position).getAuditorium_picture();
-            x.image().bind(viewHolder.iv_audio_item, iv_videoUrl1);
+            //String iv_videoUrl1 = Constants.BASE_URL + AudioBeanList.get(position).getAuditorium_picture();
+            x.image().bind(viewHolder.iv_audio_item, AudioBeanList.get(position).getAuditorium_picture());
             String timeArray = CacheUtils.getString(AudioActivity.this, READ_ARRAY_TIME);
             if (timeArray.contains(AudioBeanList.get(position).getAuditorium_time())) {
                 viewHolder.tv_audio_item.setTextColor(Color.GRAY);

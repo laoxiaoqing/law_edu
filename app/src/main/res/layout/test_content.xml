@@ -36,6 +36,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="4dp"
+        android:textSize="20sp"
+        android:text="aa"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="8dp" />
 
@@ -51,6 +53,7 @@
             android:layout_height="wrap_content"
             android:button="@null"
             android:drawableLeft="@drawable/choicea"
+            android:layout_margin="8dp"
             android:text="选择答案a" />
 
         <RadioButton
@@ -58,6 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@null"
+            android:layout_margin="8dp"
             android:drawableLeft="@drawable/choiceb"
             android:text="选择答案b" />
 
@@ -66,6 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@null"
+            android:layout_margin="8dp"
             android:drawableLeft="@drawable/choicec"
             android:text="选择答案c" />
 
@@ -74,6 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@null"
+            android:layout_margin="8dp"
             android:drawableLeft="@drawable/choiced"
             android:text="选择答案d" />
     </RadioGroup>

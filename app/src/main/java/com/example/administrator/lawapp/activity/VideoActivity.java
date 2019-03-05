@@ -207,7 +207,7 @@ public class VideoActivity extends Activity {
             viewHolder.tv_video_item.setText(videoBeanList.get(position).getVideo_title());
             viewHolder.tv_video_time.setText(videoBeanList.get(position).getAdd_time());
             String iv_videoUrl1 = Constants.BASE_URL + videoBeanList.get(position).getVideo_picture();
-            x.image().bind(viewHolder.iv_video_item, iv_videoUrl1);
+            x.image().bind(viewHolder.iv_video_item, videoBeanList.get(position).getVideo_picture());
             return convertView;
         }
     }
