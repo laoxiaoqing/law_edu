@@ -13,6 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.administrator.lawapp.R;
 import com.example.administrator.lawapp.bean.VideoMoreBean;
 import com.example.administrator.lawapp.utils.CacheUtils;
@@ -59,7 +61,7 @@ public class VideoActivity extends Activity {
     }
 
     private void getDataFromNet() {
-        RequestParams params = new RequestParams(Constants.VIDEO_URL + "?pagenum=1&pagesize=8");//写url
+        RequestParams params = new RequestParams(Constants.VIDEO_URL + "?pagenum=1&pagesize="+pagesize);//写url
         params.setConnectTimeout(3000);
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
@@ -146,7 +148,6 @@ public class VideoActivity extends Activity {
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 Toast.makeText(VideoActivity.this, "Pull Up!", Toast.LENGTH_SHORT).show();
                 if (videoMoreBeanList != null) {
-                    LogUtil.e("videoMoreBeanListvideoMoreBeanListvideoMoreBeanListvideoMoreBeanListvideoMoreBeanListvideoMoreBeanList");
                     pagenum++;
                 }
                 getMoreFromNet();
@@ -207,7 +208,13 @@ public class VideoActivity extends Activity {
             viewHolder.tv_video_item.setText(videoBeanList.get(position).getVideo_title());
             viewHolder.tv_video_time.setText(videoBeanList.get(position).getAdd_time());
             String iv_videoUrl1 = Constants.BASE_URL + videoBeanList.get(position).getVideo_picture();
-            x.image().bind(viewHolder.iv_video_item, videoBeanList.get(position).getVideo_picture());
+            //x.image().bind(viewHolder.iv_video_item, videoBeanList.get(position).getVideo_picture());
+            Glide.with(VideoActivity.this)
+                    .load(videoBeanList.get(position).getVideo_picture())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .placeholder(R.mipmap.cases_upload)
+                    .error(R.mipmap.cases_upload)
+                    .into(viewHolder.iv_video_item);
             return convertView;
         }
     }

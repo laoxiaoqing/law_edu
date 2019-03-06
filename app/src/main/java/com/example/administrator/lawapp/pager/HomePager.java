@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.administrator.lawapp.R;
 import com.example.administrator.lawapp.activity.AudioActivity;
 import com.example.administrator.lawapp.activity.DetailActivity;
@@ -266,8 +268,20 @@ public class HomePager extends BasePager {
             //联网请求图片
             //String iv_videoUrl = Constants.BASE_URL + video.getVideo_picture();
             //String iv_audioUrl = Constants.BASE_URL + auditorium.getAuditorium_picture();
-            x.image().bind(iv_video, video.getVideo_picture());
-            x.image().bind(iv_audio, auditorium.getAuditorium_picture());
+            //x.image().bind(iv_video, video.getVideo_picture());
+            //x.image().bind(iv_audio, auditorium.getAuditorium_picture());
+            Glide.with(context)
+                    .load(video.getVideo_picture())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .placeholder(R.mipmap.cases_upload)
+                    .error(R.mipmap.cases_upload)
+                    .into(iv_video);
+            Glide.with(context)
+                    .load(auditorium.getAuditorium_picture())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .placeholder(R.mipmap.cases_upload)
+                    .error(R.mipmap.cases_upload)
+                    .into(iv_audio);
             tv_video.setText(video.getVideo_title());
             tv_audio.setText(auditorium.getAuditorium_title());
             myLVCaseAdaper = new MyLVCaseAdaper();
@@ -377,7 +391,13 @@ public class HomePager extends BasePager {
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             String imageUrl = Constants.BASE_URL + banner.get(position).getBanner_image_url();
             //联网请求图片
-            x.image().bind(imageView, banner.get(position).getBanner_image_url());
+            //x.image().bind(imageView, banner.get(position).getBanner_image_url());
+            Glide.with(context)
+                    .load(banner.get(position).getBanner_image_url())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .placeholder(R.mipmap.cases_upload)
+                    .error(R.mipmap.cases_upload)
+                    .into(imageView);
             container.addView(imageView);
             return imageView;
         }
@@ -424,7 +444,13 @@ public class HomePager extends BasePager {
             String imageUrl = Constants.BASE_URL + cases.get(position).getCase_pircture();
             //请求图片
             LogUtil.e("图片路径："+cases.get(position).getCase_pircture());
-            x.image().bind(viewHolder.iv_cases_item, cases.get(position).getCase_pircture());
+            Glide.with(context)
+                    .load(cases.get(position).getCase_pircture())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .placeholder(R.mipmap.cases_upload)
+                    .error(R.mipmap.cases_upload)
+                    .into(viewHolder.iv_cases_item);
+            //x.image().bind(viewHolder.iv_cases_item, cases.get(position).getCase_pircture());
             viewHolder.tv_name_item.setText(name);
             return convertView;
         }

@@ -15,6 +15,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.administrator.lawapp.R;
 import com.example.administrator.lawapp.bean.AudioMoreBean;
 import com.example.administrator.lawapp.utils.CacheUtils;
@@ -207,7 +209,13 @@ public class AudioActivity extends Activity {
             viewHolder.tv_audio_item.setText(AudioBeanList.get(position).getAuditorium_title());
             viewHolder.tv_audio_time.setText(AudioBeanList.get(position).getAuditorium_time());
             //String iv_videoUrl1 = Constants.BASE_URL + AudioBeanList.get(position).getAuditorium_picture();
-            x.image().bind(viewHolder.iv_audio_item, AudioBeanList.get(position).getAuditorium_picture());
+            //x.image().bind(viewHolder.iv_audio_item, AudioBeanList.get(position).getAuditorium_picture());
+            Glide.with(AudioActivity.this)
+                    .load(AudioBeanList.get(position).getAuditorium_picture())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .placeholder(R.mipmap.cases_upload)
+                    .error(R.mipmap.cases_upload)
+                    .into(viewHolder.iv_audio_item);
             String timeArray = CacheUtils.getString(AudioActivity.this, READ_ARRAY_TIME);
             if (timeArray.contains(AudioBeanList.get(position).getAuditorium_time())) {
                 viewHolder.tv_audio_item.setTextColor(Color.GRAY);

@@ -33,4 +33,5 @@ dependencies {
     implementation project(':ViewPagerIndicator_library')
     implementation project(':PullToRefresh_library')
     implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
 }

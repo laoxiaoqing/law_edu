@@ -127,8 +127,6 @@ public class LawCategoryPager extends BaseCategoryPager {
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        Intent intent = new Intent();
-//                        intent.putExtra("category_id", name);
                         Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
                         MainActivity mainActivity = (MainActivity) context;
                         //mainActivity.getSlidingMenu().toggle();//关开切换

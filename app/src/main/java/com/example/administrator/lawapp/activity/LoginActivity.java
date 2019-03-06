@@ -68,26 +68,25 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         loginbutton = (TextView) findViewById(R.id.loginbutton);
         input = (LinearLayout) findViewById(R.id.input);
         userId = (EditText) findViewById(R.id.userId);//帐号
-        buttonBar = (Button) findViewById(R.id.button_bar);
+
         pass = (EditText) findViewById(R.id.pass);//密码
         loginBtn = (Button) findViewById(R.id.loginBtn);
         register = (Button) findViewById(R.id.register);
         promptText = (TextView) findViewById(R.id.promptText);
         cbAuto = (CheckBox) findViewById(R.id.cb_auto);
         cbSave = (CheckBox) findViewById(R.id.cb_save);
-        buttonBar.setOnClickListener(this);
+
         loginBtn.setOnClickListener(this);
         register.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v == buttonBar) {
-            // Handle clicks for buttonBar
-        } else if (v == loginBtn) {
+        if (v == loginBtn) {
             manageLogin();
         } else if (v == register) {
-            // Handle clicks for register
+            Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -158,7 +157,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 }
 
             }
-
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             //CacheUtils.putString(this, "userManage", userid);
             startActivity(intent);
@@ -166,8 +164,5 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         }else {
             promptText.setText("帐号密码有误！");
         }
-
     }
-
-
 }
