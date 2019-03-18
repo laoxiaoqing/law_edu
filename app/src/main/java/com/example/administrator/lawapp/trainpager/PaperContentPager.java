@@ -28,7 +28,7 @@ import java.util.List;
 
 /**
  * Created by 吴青晓 on 2019/3/1
- * Describe
+ * Describe ：具体的试卷正确答案和错误答案对比页面
  */
 public class PaperContentPager extends BaseTrainPager {
 

@@ -258,6 +258,15 @@ public class ForumBean {
             private String user_name;
             private int to_user_id;
             private String user_name1;
+            private String user_head;
+
+            public String getUser_head() {
+                return user_head;
+            }
+
+            public void setUser_head(String user_head) {
+                this.user_head = user_head;
+            }
 
             public int getComment_id() {
                 return comment_id;

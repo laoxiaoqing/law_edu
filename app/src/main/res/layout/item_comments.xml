@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:layout_marginTop="6dp"
+        android:id="@+id/comments"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_head"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/default1" />
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_head"
+            android:text="用户名"
+            android:textColor="#505050"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/comments_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="21:34"
+            android:textColor="#8e8e8e"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/comments_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_name"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@+id/iv_head"
+            android:text="内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容容内容"
+            android:textColor="#505050"
+            android:textSize="12sp" />
+
+
+    </RelativeLayout>
+</LinearLayout>

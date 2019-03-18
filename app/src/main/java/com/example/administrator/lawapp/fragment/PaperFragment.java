@@ -33,7 +33,7 @@ import java.util.regex.Pattern;
 
 /**
  * Created by 吴青晓 on 2019/2/25
- * Describe
+ * Describe:我的试卷
  */
 public class PaperFragment extends BaseTrainFragment {
     private ImageView ivBack;

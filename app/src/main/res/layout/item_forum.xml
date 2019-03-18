@@ -3,27 +3,30 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:background="@color/white"
+    android:focusable="false"
+    android:orientation="horizontal"
+    android:descendantFocusability="blocksDescendants">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingBottom="9.5dp"
-        android:paddingLeft="12.5dp"
-        android:paddingRight="18.5dp"
-        android:paddingTop="12.5dp">
+        android:paddingLeft="5dp"
+        android:paddingRight="8dp"
+        android:paddingTop="3dp">
 
         <ImageView
             android:id="@+id/iv_head"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@mipmap/default1"/>
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:src="@mipmap/default1" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="3dp"
             android:orientation="vertical">
 
             <TextView
@@ -87,7 +90,7 @@
                     android:background="@mipmap/feed_more"/>
             </RelativeLayout>
 
-            <ListView
+            <com.example.administrator.lawapp.ui.ExpandListView
                 android:id="@+id/lv_comments"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -100,7 +103,8 @@
                 android:paddingBottom="5dp"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:paddingTop="16dp"/>
+                android:visibility="gone"
+                android:paddingTop="5dp"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

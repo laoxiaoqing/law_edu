@@ -2,10 +2,12 @@ package com.example.administrator.lawapp.pager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -37,6 +39,8 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.util.List;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 /**
  * 主页面
@@ -83,6 +87,7 @@ public class HomePager extends BasePager {
     private int pagenum = 2;
     private int pagesize = 5;
     private List<HomePagerBean.DataBean.CasesBean> casesMore;
+    private MyInternalHandler myInternalHandler;
 
     public HomePager(Context context) {
         super(context);
@@ -266,10 +271,6 @@ public class HomePager extends BasePager {
             viewpager_banner.setAdapter(new ViewpagerBannerAdapter());
             addpoint();//添加点
             //联网请求图片
-            //String iv_videoUrl = Constants.BASE_URL + video.getVideo_picture();
-            //String iv_audioUrl = Constants.BASE_URL + auditorium.getAuditorium_picture();
-            //x.image().bind(iv_video, video.getVideo_picture());
-            //x.image().bind(iv_audio, auditorium.getAuditorium_picture());
             Glide.with(context)
                     .load(video.getVideo_picture())
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -296,7 +297,34 @@ public class HomePager extends BasePager {
             //刷新适配器
             myLVCaseAdaper.notifyDataSetChanged();
         }
+        //发消息每个三秒切换一次viewpager页面
+        if (myInternalHandler == null) {//因为加载viewpager一次加载两次，需要做下判定
+            myInternalHandler = new MyInternalHandler();//子线程
+        }
+        //把消息队列所有的消息和回调移除
+        myInternalHandler.removeCallbacksAndMessages(null);
+        //三秒执行这个方法
+        myInternalHandler.postDelayed(new MyRunnable(), 3000);
+    }
 
+    class MyRunnable implements Runnable {
+
+        @Override
+        public void run() {
+            myInternalHandler.sendEmptyMessage(0);
+
+        }
+    }
+
+    class MyInternalHandler extends android.os.Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            //切换viewpager的下一个页面
+            int item = (viewpager_banner.getCurrentItem() + 1) % banner.size();
+            viewpager_banner.setCurrentItem(item);
+            myInternalHandler.postDelayed(new MyRunnable(), 3000);
+        }
     }
 
     private HomePagerBean parsedJson(String json) {
@@ -341,11 +369,11 @@ public class HomePager extends BasePager {
 
         @Override
         public void onLoadMore() {
-            //Toast.makeText(context, "加载更多", Toast.LENGTH_SHORT).show();
             getMoreFromNet();
         }
     }
 
+    //轮播监听
     class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
 
         @Override
@@ -365,12 +393,32 @@ public class HomePager extends BasePager {
             prePosition = i;
         }
 
+        private boolean isDraggin = false;
+
         @Override
         public void onPageScrollStateChanged(int i) {
-
+            if (i == ViewPager.SCROLL_STATE_DRAGGING) {//拖拽
+                isDraggin = true;
+                //拖拽要移除消息
+                LogUtil.e("拖拽");
+                myInternalHandler.removeCallbacksAndMessages(null);
+            } else if (i == ViewPager.SCROLL_STATE_SETTLING && isDraggin) {//惯性
+                //发消息
+                isDraggin = false;
+                LogUtil.e("惯性");
+                myInternalHandler.removeCallbacksAndMessages(null);
+                myInternalHandler.postDelayed(new MyRunnable(), 3000);
+            } else if (i == ViewPager.SCROLL_STATE_IDLE && isDraggin) {//静止
+                //
+                isDraggin = false;
+                LogUtil.e("静止");
+                myInternalHandler.removeCallbacksAndMessages(null);
+                myInternalHandler.postDelayed(new MyRunnable(), 3000);
+            }
         }
     }
 
+    //轮播图适配器
     class ViewpagerBannerAdapter extends PagerAdapter {
 
         @Override
@@ -389,9 +437,7 @@ public class HomePager extends BasePager {
             ImageView imageView = new ImageView(context);
             imageView.setBackgroundResource(R.mipmap.banner_upload);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            String imageUrl = Constants.BASE_URL + banner.get(position).getBanner_image_url();
             //联网请求图片
-            //x.image().bind(imageView, banner.get(position).getBanner_image_url());
             Glide.with(context)
                     .load(banner.get(position).getBanner_image_url())
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -399,6 +445,23 @@ public class HomePager extends BasePager {
                     .error(R.mipmap.cases_upload)
                     .into(imageView);
             container.addView(imageView);
+            imageView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            LogUtil.e("按下");
+                            myInternalHandler.removeCallbacksAndMessages(null);
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            LogUtil.e("离开");
+                            myInternalHandler.removeCallbacksAndMessages(null);
+                            myInternalHandler.postDelayed(new MyRunnable(), 3000);
+                            break;
+                    }
+                    return true;//如果加触摸事件返回false
+                }
+            });
             return imageView;
         }
 
@@ -443,14 +506,13 @@ public class HomePager extends BasePager {
             String name = cases.get(position).getCase_name();
             String imageUrl = Constants.BASE_URL + cases.get(position).getCase_pircture();
             //请求图片
-            LogUtil.e("图片路径："+cases.get(position).getCase_pircture());
+            LogUtil.e("图片路径：" + cases.get(position).getCase_pircture());
             Glide.with(context)
                     .load(cases.get(position).getCase_pircture())
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .placeholder(R.mipmap.cases_upload)
                     .error(R.mipmap.cases_upload)
                     .into(viewHolder.iv_cases_item);
-            //x.image().bind(viewHolder.iv_cases_item, cases.get(position).getCase_pircture());
             viewHolder.tv_name_item.setText(name);
             return convertView;
         }
@@ -465,7 +527,6 @@ public class HomePager extends BasePager {
             Intent intent = new Intent(context, DetailActivity.class);
             intent.putExtra("type", "cases");
             intent.putExtra("dataId", cases.get(realPosition).getCase_id() + "");
-            //LogUtil.e("id======"+cases.get(position).getCase_id());
             context.startActivity(intent);
         }
     }

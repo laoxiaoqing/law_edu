@@ -31,7 +31,7 @@ import java.util.List;
 
 /**
  * Created by 吴青晓 on 2019/2/25
- * Describe
+ * Describe 错题查看
  */
 public class WrongFragment extends BaseTrainFragment {
     private View view;
