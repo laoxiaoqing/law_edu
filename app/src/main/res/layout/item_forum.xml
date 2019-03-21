@@ -78,6 +78,7 @@
                     android:layout_marginTop="9dp"
                     android:layout_toRightOf="@id/tv_createTime"
                     android:text="删除"
+                    android:visibility="gone"
                     android:textColor="#883A5FCD"
                     android:textSize="12sp"/>
 
@@ -112,7 +113,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="9.5dp"
-                android:background="#ff99bb"
+                android:background="#20000000"
                 android:divider="@null"
                 android:dividerHeight="0dp"
                 android:orientation="vertical"

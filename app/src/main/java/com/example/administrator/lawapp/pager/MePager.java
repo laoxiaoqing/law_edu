@@ -61,7 +61,14 @@ public class MePager extends BasePager {
                 Intent intent = new Intent(context, LoginActivity.class);
                 context.startActivity(intent);
                 MainActivity mainActivity = (MainActivity) context;
-                mainActivity.finish();
+                CacheUtils.putString(context,"user_id","");
+                CacheUtils.putString(context,"user_head","");
+                CacheUtils.putString(context,"user_tel","");
+                CacheUtils.putString(context,"user_name","");
+                CacheUtils.putString(context,"user_email","");
+                CacheUtils.putString(context, "username", "");
+                CacheUtils.putString(context, "password", "");
+                /*mainActivity.finish();*/
             }
         });
         fl_content.removeAllViews();

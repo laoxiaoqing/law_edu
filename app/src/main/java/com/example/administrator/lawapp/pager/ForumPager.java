@@ -30,6 +30,7 @@ import com.example.administrator.lawapp.activity.EditorActivity;
 import com.example.administrator.lawapp.activity.MainActivity;
 import com.example.administrator.lawapp.adaper.MyRecyclerViewAdapter;
 import com.example.administrator.lawapp.base.BasePager;
+import com.example.administrator.lawapp.bean.AudioMoreBean;
 import com.example.administrator.lawapp.bean.ForumBean;
 import com.example.administrator.lawapp.utils.CacheUtils;
 import com.example.administrator.lawapp.utils.Constants;
@@ -56,14 +57,17 @@ public class ForumPager extends BasePager {
     @ViewInject(R.id.pb_loading)
     private ProgressBar pb_loading;
     private MyForumAdapter myAdapter;
-    private int pagesize = 20;
     private List<ForumBean.DataBean> forumList;
+    private List<ForumBean.DataBean> forumMoreList;
     //private List<ForumBean.DataBean.CommentListBean> commentList;
     private LayoutInflater mInflater;
     private PopupWindow window;
     private PopupWindow editWindow;
     private String user_id;
+    private int pagenum = 2;
+    private int pagesize = 20;
     private MyRecyclerViewAdapter myRecyclerViewAdapter;
+    private List<ForumBean.DataBean> forumMoreBean;
 
 
     public ForumPager(Context context) {
@@ -134,8 +138,8 @@ public class ForumPager extends BasePager {
         pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-               /* pagenum = 2;
-                Toast.makeText(AudioActivity.this, "Pull Down!", Toast.LENGTH_SHORT).show();*/
+                pagenum = 2;
+
                 LogUtil.e("下拉刷新");
                 getDataFromNet();
                 LogUtil.e("下拉刷新");
@@ -144,15 +148,61 @@ public class ForumPager extends BasePager {
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 Toast.makeText(context, "Pull Up!", Toast.LENGTH_SHORT).show();
-                /*if (AudioMoreBeanList != null) {
+                if (forumMoreList != null) {
                     pagenum++;
                 }
-                getMoreFromNet();*/
-                pullToRefreshListView.onRefreshComplete();
+                getMoreFromNet();
             }
         });
         pullToRefreshListView.setOnItemClickListener(new MyOnItemClickListener());
 
+    }
+    private void getMoreFromNet() {
+        RequestParams params = new RequestParams(Constants.FORUM_PAGER_URL + "?pagenum="+pagenum+"&pagesize=" + pagesize + "&topic_type=1");//写url
+        params.setConnectTimeout(3000);
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                LogUtil.e("请求成功" + result);
+                LogUtil.e(Constants.AUDITORIUM_URL + "?pagenum=" + pagenum + "&pagesize=" + pagesize);
+                //设置适配器
+                manageDataMore(result);
+                pullToRefreshListView.onRefreshComplete();
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                LogUtil.e("请求失败" + ex.getMessage());
+                //隐藏下拉刷新控件--不更新时间，显示联网请求失败
+                pullToRefreshListView.onRefreshComplete();
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+                LogUtil.e("请求onCancelled" + cex.getMessage());
+
+            }
+
+            @Override
+            public void onFinished() {
+                LogUtil.e("请求结束");
+
+            }
+        });
+    }
+
+    private void manageDataMore(String result) {
+        ForumBean forumBean = parsedJson(result);
+        forumMoreList = forumBean.getData();
+        forumList.addAll(forumMoreList);
+        myAdapter.notifyDataSetChanged();
+        pullToRefreshListView.onRefreshComplete();
+    }
+
+    private ForumBean parsedJson(String result) {
+        Gson gson = new Gson();
+        ForumBean forumBean = gson.fromJson(result, ForumBean.class);
+        return forumBean;
     }
 
     private class MyForumAdapter extends BaseAdapter {
@@ -203,11 +253,14 @@ public class ForumPager extends BasePager {
                 //LayoutManager
                 viewHolder.rv_comments.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false));
             }
-            viewHolder.delete.setVisibility(View.VISIBLE);
-            if ((forumList.get(position).getUser_id()+"")!=user_id){
+            user_id=CacheUtils.getString(context,"user_id");
+            if (forumList.get(position).getUser_id()==Integer.parseInt(user_id)){
+                LogUtil.e("显示删除");
+                viewHolder.delete.setVisibility(View.VISIBLE);
+            }else {
+                LogUtil.e("不显示删除");
                 viewHolder.delete.setVisibility(View.GONE);
             }
-            LogUtil.e("user_id:"+forumList.get(position).getUser_id());
             viewHolder.tv_username.setText(forumList.get(position).getUser_name());
             viewHolder.tv_content.setText(forumList.get(position).getForum_content());
             viewHolder.tv_createTime.setText(forumList.get(position).getForum_date());
@@ -223,8 +276,43 @@ public class ForumPager extends BasePager {
                     sendReply(forumList.get(position).getForum_id(), 0,"");
                 }
             });
+            viewHolder.delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    deleteData(position,forumList.get(position).getForum_id());
+                }
+            });
             return convertView;
         }
+    }
+
+    private void deleteData(final int position, int forum_id) {
+        RequestParams params = new RequestParams(Constants.FORUM_PAGER_URL+"/del/"+forum_id);//写url
+        params.setConnectTimeout(3000);
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                LogUtil.e("请求成功" + result);
+                forumList.remove(position);
+                myAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                LogUtil.e("请求失败" + ex.getMessage());
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+                LogUtil.e("请求onCancelled" + cex.getMessage());
+
+            }
+
+            @Override
+            public void onFinished() {
+                LogUtil.e("请求结束");
+            }
+        });
     }
 
     static class ViewHolder {
@@ -313,9 +401,6 @@ public class ForumPager extends BasePager {
             bean.setUser_name1(to_user_name);
             bean.setComment_user_id(Integer.parseInt(user_id));
             bean.setTopic_type(1);
-            LogUtil.e("--------------");
-            LogUtil.e(name);
-            LogUtil.e("name:"+bean.getUser_name());
         }
         final ForumBean.DataBean.CommentListBean bean2=bean;
         params.setConnectTimeout(3000);

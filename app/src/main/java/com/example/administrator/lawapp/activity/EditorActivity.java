@@ -57,9 +57,13 @@ public class EditorActivity extends Activity {
             @Override
             public void onSuccess(String result) {
                 LogUtil.e("请求成功" + result);
-                //设置适配器
-                Toast.makeText(EditorActivity.this,"发表成功",Toast.LENGTH_SHORT);
-                finish();
+                if (result.indexOf("true")==-1){
+                    Toast.makeText(EditorActivity.this,"存在非法字眼"+result,Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(EditorActivity.this,"发表成功",Toast.LENGTH_LONG).show();
+                    finish();
+                }
+
             }
 
             @Override
