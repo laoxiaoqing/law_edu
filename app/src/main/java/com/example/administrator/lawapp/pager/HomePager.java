@@ -98,7 +98,7 @@ public class HomePager extends BasePager {
         super.initData();
         LogUtil.e("主页面数据初始化了");
         //1.设置标题
-        tv_title.setText("主页面");
+        tv_title.setText("学习");
         //2.联网请求得到数据创建视图
         View lvView = View.inflate(context, R.layout.home_display_child, null);
         View view = View.inflate(context, R.layout.home_display, null);
@@ -504,11 +504,11 @@ public class HomePager extends BasePager {
             }
             //跟位置得到数据
             String name = cases.get(position).getCase_name();
-            String imageUrl = Constants.BASE_URL + cases.get(position).getCase_pircture();
+            String imageUrl = Constants.BASE_URL + cases.get(position).getCase_picture();
             //请求图片
-            LogUtil.e("图片路径：" + cases.get(position).getCase_pircture());
+            LogUtil.e("图片路径：" + cases.get(position).getCase_picture());
             Glide.with(context)
-                    .load(cases.get(position).getCase_pircture())
+                    .load(cases.get(position).getCase_picture())
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .placeholder(R.mipmap.cases_upload)
                     .error(R.mipmap.cases_upload)

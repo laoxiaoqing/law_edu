@@ -1,8 +1,11 @@
 package com.example.administrator.lawapp.pager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +26,9 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.administrator.lawapp.R;
+import com.example.administrator.lawapp.activity.EditorActivity;
 import com.example.administrator.lawapp.activity.MainActivity;
+import com.example.administrator.lawapp.adaper.MyRecyclerViewAdapter;
 import com.example.administrator.lawapp.base.BasePager;
 import com.example.administrator.lawapp.bean.ForumBean;
 import com.example.administrator.lawapp.utils.CacheUtils;
@@ -38,6 +43,8 @@ import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,11 +58,12 @@ public class ForumPager extends BasePager {
     private MyForumAdapter myAdapter;
     private int pagesize = 20;
     private List<ForumBean.DataBean> forumList;
-    private MyComments myComments;//评论的适配器
     //private List<ForumBean.DataBean.CommentListBean> commentList;
     private LayoutInflater mInflater;
     private PopupWindow window;
     private PopupWindow editWindow;
+    private String user_id;
+    private MyRecyclerViewAdapter myRecyclerViewAdapter;
 
 
     public ForumPager(Context context) {
@@ -65,9 +73,18 @@ public class ForumPager extends BasePager {
     @Override
     public void initData() {
         super.initData();
-        LogUtil.e("社区页面数据初始化了");
         //1.设置标题
         tv_title.setText("社区");
+        iv_forum.setVisibility(View.VISIBLE);
+        iv_forum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, EditorActivity.class);
+                String userid=CacheUtils.getString(context,"user_id");
+                intent.putExtra("user_id",userid);
+                context.startActivity(intent);
+            }
+        });
         //2.联网请求得到数据创建视图
         View view = View.inflate(context, R.layout.forum_pager, null);
         x.view().inject(ForumPager.this, view);
@@ -167,19 +184,30 @@ public class ForumPager extends BasePager {
                 viewHolder.tv_createTime = convertView.findViewById(R.id.tv_createTime);
                 viewHolder.delete = convertView.findViewById(R.id.delete);
                 viewHolder.more = convertView.findViewById(R.id.more);
-                viewHolder.lv_comments = convertView.findViewById(R.id.lv_comments);
+                viewHolder.rv_comments = convertView.findViewById(R.id.rv_comments);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ForumPager.ViewHolder) convertView.getTag();
             }
             if (commentList == null || commentList.size() == 0) {
-                viewHolder.lv_comments.setVisibility(View.GONE);
+                viewHolder.rv_comments.setVisibility(View.GONE);
             } else {
-                viewHolder.lv_comments.setVisibility(View.VISIBLE);
-                myComments = new MyComments(commentList);
-                viewHolder.lv_comments.setAdapter(myComments);
-                viewHolder.lv_comments.setOnItemClickListener(new MyCommentsItemListener());
+                viewHolder.rv_comments.setVisibility(View.VISIBLE);
+                /*myComments = new MyComments(commentList);
+                viewHolder.lv_comments.setAdapter(myComments);*/
+
+                //设置适配器
+                myRecyclerViewAdapter=new MyRecyclerViewAdapter(context,commentList);
+                viewHolder.rv_comments.setAdapter(myRecyclerViewAdapter);
+
+                //LayoutManager
+                viewHolder.rv_comments.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false));
             }
+            viewHolder.delete.setVisibility(View.VISIBLE);
+            if ((forumList.get(position).getUser_id()+"")!=user_id){
+                viewHolder.delete.setVisibility(View.GONE);
+            }
+            LogUtil.e("user_id:"+forumList.get(position).getUser_id());
             viewHolder.tv_username.setText(forumList.get(position).getUser_name());
             viewHolder.tv_content.setText(forumList.get(position).getForum_content());
             viewHolder.tv_createTime.setText(forumList.get(position).getForum_date());
@@ -192,7 +220,7 @@ public class ForumPager extends BasePager {
             viewHolder.more.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    sendReply(forumList.get(position).getForum_id(), 0);
+                    sendReply(forumList.get(position).getForum_id(), 0,"");
                 }
             });
             return convertView;
@@ -206,89 +234,11 @@ public class ForumPager extends BasePager {
         TextView tv_createTime;
         TextView delete;
         ImageView more;
-        ListView lv_comments;
+        RecyclerView rv_comments;
     }
 
-    private class MyComments extends BaseAdapter {
-
-
-        private final List<ForumBean.DataBean.CommentListBean> commentList;
-
-        public MyComments(List<ForumBean.DataBean.CommentListBean> commentList) {
-            this.commentList = commentList;
-        }
-
-        @Override
-        public int getCount() {
-            return commentList.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return position;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            ForumPager.ViewHolderComments viewHolderComments;
-            if (convertView == null) {
-                convertView = View.inflate(context, R.layout.item_comments, null);
-                viewHolderComments = new ForumPager.ViewHolderComments();
-                viewHolderComments.iv_head = convertView.findViewById(R.id.iv_head);
-                viewHolderComments.user_name = convertView.findViewById(R.id.user_name);
-                viewHolderComments.comments_time = convertView.findViewById(R.id.comments_time);
-                viewHolderComments.comments_content = convertView.findViewById(R.id.comments_content);
-                convertView.setTag(viewHolderComments);
-            } else {
-                viewHolderComments = (ForumPager.ViewHolderComments) convertView.getTag();
-            }
-            if (commentList.get(position).getUser_name1() == null || commentList.get(position).getUser_name1() == "") {
-                viewHolderComments.user_name.setText(commentList.get(position).getUser_name());
-            } else {
-                viewHolderComments.user_name.setText(commentList.get(position).getUser_name() + " 回复 " + commentList.get(position).getUser_name1());
-            }
-            Glide.with(context)
-                    .load(commentList.get(position).getUser_head())
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .placeholder(R.mipmap.cases_upload)
-                    .error(R.mipmap.default1)
-                    .into(viewHolderComments.iv_head);
-            //mInflater = LayoutInflater.from(mainActivity);
-            String user_id = CacheUtils.getString(context, "user_id");
-            //判断该评论是否是别人的
-            if (commentList.get(position).getComment_user_id() != Integer.parseInt(user_id)) {
-                viewHolderComments.comments_content.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        LogUtil.e("postion:"+position);
-                        LogUtil.e("主题id:"+commentList.get(position).getTopic_id());
-                        LogUtil.e("该评论人id:"+commentList.get(position).getComment_user_id());
-                        LogUtil.e("comment_id"+commentList.get(position).getComment_id());
-                        LogUtil.e("内容："+commentList.get(position).getContent());
-                        sendReply(commentList.get(position).getTopic_id(), commentList.get(position).getComment_user_id());
-                    }
-                });
-            } else {
-                viewHolderComments.comments_content.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                });
-            }
-
-            viewHolderComments.comments_content.setText(commentList.get(position).getContent());
-            viewHolderComments.comments_time.setText(commentList.get(position).getComment_date());
-            return convertView;
-        }
-    }
     //弹出键盘
-    private void sendReply(final int topic_id, final int to_user_id) {
+    public void sendReply(final int topic_id, final int to_user_id, final String to_user_name) {
         View editView = View.inflate(context, R.layout.replay_input, null);
         editWindow = new PopupWindow(editView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         editWindow.setOutsideTouchable(true);
@@ -317,43 +267,70 @@ public class ForumPager extends BasePager {
             @Override
             public void onClick(View v) {
                 if (to_user_id == 0) {
-                    sendReplyNetData(topic_id, 0, replyEdit.getText().toString().trim());
+                    sendReplyNetData(topic_id, 0, replyEdit.getText().toString().trim(),to_user_name);
                 } else {
-                    sendReplyNetData(topic_id, to_user_id, replyEdit.getText().toString().trim());
+                    sendReplyNetData(topic_id, to_user_id, replyEdit.getText().toString().trim(),to_user_name);
                 }
             }
         });
         if (window != null) window.dismiss();
     }
 
-    private void sendReplyNetData(int topic_id, Integer to_user_id, String content) {
+    public void sendReplyNetData(int topic_id, final Integer to_user_id, final String content, String to_user_name) {
         String userid = CacheUtils.getString(context, "user_id");
-        LogUtil.e("发送消息1");
         RequestParams params = new RequestParams(Constants.FORUM_comment_URL);//写url
+        final ForumBean.DataBean.CommentListBean bean= new ForumBean.DataBean.CommentListBean();
         if (to_user_id == 0) {
-            LogUtil.e("发送消息2");
+            LogUtil.e("to_user_id1:"+to_user_id);
             params.setBodyContent("{\"topic_id\":\"" + topic_id
                     + "\",\"topic_type\":\"" + 1
                     + "\",\"content\":\"" + content
                     + "\",\"comment_user_id\":\"" + Integer.parseInt(userid)
                     + "\"}");
-            LogUtil.e("发送消息3");
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+            bean.setComment_date(df.format(new Date()));
+            bean.setContent(content);
+            String head = CacheUtils.getString(context,"user_head");
+            String name = CacheUtils.getString(context,"user_name");
+            bean.setUser_head(Constants.IMAGEPATH+head);
+            bean.setUser_name(name);
         } else {
-            LogUtil.e("发送消息4");
+            LogUtil.e("to_user_id2:"+to_user_id);
             params.setBodyContent("{\"topic_id\":\"" + topic_id
                     + "\",\"topic_type\":\"" + 1
                     + "\",\"content\":\"" + content
                     + "\",\"comment_user_id\":\"" + Integer.parseInt(userid)
                     + "\",\"to_user_id\":\"" + to_user_id
                     + "\"}");
-            LogUtil.e("发送消息5");
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+            bean.setComment_date(df.format(new Date()));
+            bean.setContent(content);
+            String head = CacheUtils.getString(context,"user_head");
+            String name = CacheUtils.getString(context,"user_name");
+            String user_id = CacheUtils.getString(context,"user_id");
+            bean.setUser_head(Constants.IMAGEPATH+head);
+            bean.setUser_name(name);
+            bean.setUser_name1(to_user_name);
+            bean.setComment_user_id(Integer.parseInt(user_id));
+            bean.setTopic_type(1);
+            LogUtil.e("--------------");
+            LogUtil.e(name);
+            LogUtil.e("name:"+bean.getUser_name());
         }
+        final ForumBean.DataBean.CommentListBean bean2=bean;
         params.setConnectTimeout(3000);
         x.http().post(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
                 LogUtil.e("请求成功" + result);
-
+                Toast.makeText(context,"发送成功",Toast.LENGTH_SHORT).show();
+                if (to_user_id == 0) {
+                    LogUtil.e("fffffff");
+                    myRecyclerViewAdapter.addData(0,bean2);
+                }/*else {
+                    LogUtil.e("aaaaaabbb");
+                    myRecyclerViewAdapter.addData(0,bean2);
+                }*/
             }
 
             @Override
@@ -374,11 +351,9 @@ public class ForumPager extends BasePager {
         });
     }
 
-    static class ViewHolderComments {
-        ImageView iv_head;
-        TextView user_name;
-        TextView comments_time;
-        TextView comments_content;
+    private void manageData2(String json) {
+        Gson gson = new Gson();
+        LogUtil.e("json"+json);
     }
 
     private class MyOnItemClickListener implements android.widget.AdapterView.OnItemClickListener {
@@ -388,11 +363,4 @@ public class ForumPager extends BasePager {
         }
     }
 
-    private class MyCommentsItemListener implements android.widget.AdapterView.OnItemClickListener {
-
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            LogUtil.e("内部类" + position + "个");
-        }
-    }
 }

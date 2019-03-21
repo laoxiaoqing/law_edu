@@ -233,12 +233,14 @@ public class PaperFragment extends BaseTrainFragment {
                 viewHolder = new PaperFragment.ViewHolder();
                 viewHolder.name = convertView.findViewById(R.id.tv_paper_name);
                 viewHolder.score = convertView.findViewById(R.id.score);
+                viewHolder.tv_time = convertView.findViewById(R.id.tv_time);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (PaperFragment.ViewHolder) convertView.getTag();
             }
             viewHolder.name.setText(papersList.get(position).getTopic_type_name());
             viewHolder.score.setText(papersList.get(position).getPapers_score());
+            viewHolder.tv_time.setText(papersList.get(position).getAdd_time());
             return convertView;
         }
     }
@@ -246,5 +248,6 @@ public class PaperFragment extends BaseTrainFragment {
     static class ViewHolder {
         TextView name;
         TextView score;
+        TextView tv_time;
     }
 }

@@ -284,7 +284,7 @@ public class HomePagerBean {
             private String case_date;
             private String case_content;
             private int case_type_id;
-            private String case_pircture;
+            private String case_picture;
 
             public int getCase_id() {
                 return case_id;
@@ -326,12 +326,12 @@ public class HomePagerBean {
                 this.case_type_id = case_type_id;
             }
 
-            public String getCase_pircture() {
-                return case_pircture;
+            public String getCase_picture() {
+                return case_picture;
             }
 
-            public void setCase_pircture(String case_pircture) {
-                this.case_pircture = case_pircture;
+            public void setCase_picture(String case_picture) {
+                this.case_picture = case_picture;
             }
         }
 

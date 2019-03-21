@@ -23,13 +23,17 @@
         <activity android:name=".activity.GuideActivity" />
         <activity
             android:name=".activity.MainActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden" />
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden"></activity>
         <activity android:name=".activity.VideoActivity" />
         <activity android:name=".activity.AudioActivity" />
         <activity android:name=".activity.DetailActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.TrainActivity" />
-        <activity android:name=".activity.RegisterActivity"></activity>
+        <activity android:name=".activity.RegisterActivity" />
+        <activity
+            android:name=".activity.EditorActivity"
+            android:label="@string/title_activity_main2"></activity>
     </application>
 
 </manifest>

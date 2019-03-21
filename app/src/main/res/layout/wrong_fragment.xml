@@ -3,7 +3,8 @@
     xmlns:ptr="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fl_train"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#05000000">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,7 +13,7 @@
 
         <include layout="@layout/titlebar" />
 
-        <RelativeLayout
+        <!--<RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/blue"
@@ -53,7 +54,7 @@
                 android:paddingTop="3dp"
                 android:paddingRight="110dp"
                 android:text="2" />
-        </RelativeLayout>
+        </RelativeLayout>-->
 
         <com.handmark.pulltorefresh.library.PullToRefreshListView
             android:id="@+id/pullrefreshlist"

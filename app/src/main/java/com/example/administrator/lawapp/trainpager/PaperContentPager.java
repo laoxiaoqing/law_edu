@@ -120,7 +120,12 @@ public class PaperContentPager extends BaseTrainPager {
             rbB.setClickable(false);
             rbC.setClickable(false);
             rbD.setClickable(false);
-            tvAnalysis.setText(topicPaper.getTopic().getDescribe() + "");
+            if(topicPaper.getTopic().getDescribe()==null||topicPaper.getTopic().getDescribe()==""){
+                tvAnalysis.setText("暂无详解");
+            }else {
+                tvAnalysis.setText(topicPaper.getTopic().getDescribe() + "");
+            }
+
         } else {//答题卡
             tvAnalysis.setVisibility(View.GONE);
             question.setText("");

@@ -27,5 +27,7 @@ public class Constants {
     public static final String TOPIC_ALL_WRONG_URL = BASE_URL+"/api/v1/topic/wrong2/";
     public static final String REGISTER_URL = BASE_URL +"/api/v1/user/register";
 
+    public static final String IMAGEPATH=BASE_URL+"/upload/images/";
+
 
 }

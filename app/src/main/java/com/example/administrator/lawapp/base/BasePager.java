@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.lawapp.R;
@@ -33,6 +34,8 @@ public class BasePager {
      */
     public FrameLayout fl_content;
 
+    public ImageView iv_forum;
+
     public BasePager(Context context) {
         this.context = context;
         //构造方法执行，视图就被初始化了
@@ -44,6 +47,7 @@ public class BasePager {
         View view = View.inflate(context, R.layout.base_pager, null);
         tv_title = view.findViewById(R.id.tv_title);
         ib_menu = view.findViewById(R.id.ib_menu);
+        iv_forum = view.findViewById(R.id.iv_forum);
         fl_content = view.findViewById(R.id.fl_content);
         ib_menu.setOnClickListener(new View.OnClickListener() {
             @Override

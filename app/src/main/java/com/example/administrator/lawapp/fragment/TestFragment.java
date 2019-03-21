@@ -34,10 +34,10 @@ import java.util.List;
  */
 public class TestFragment extends BaseTrainFragment {
 
-    private TextView tv1;
+    /*private TextView tv1;
     private TextView tv2;
     private TextView tvCource;
-    private TextView tvTopic;
+    private TextView tvTopic;*/
     private PullToRefreshListView pullRefreshList;
     private ImageView iv_back;
     private TextView tv_title;
@@ -111,10 +111,10 @@ public class TestFragment extends BaseTrainFragment {
     }
 
     private void findViews() {
-        tv1 = (TextView) view.findViewById(R.id.tv1);
+        /*tv1 = (TextView) view.findViewById(R.id.tv1);
         tv2 = (TextView) view.findViewById(R.id.tv2);
         tvCource = (TextView) view.findViewById(R.id.tv_cource);
-        tvTopic = (TextView) view.findViewById(R.id.tv_topic);
+        tvTopic = (TextView) view.findViewById(R.id.tv_topic);*/
         iv_back = (ImageView) view.findViewById(R.id.iv_back);
         tv_title = (TextView) view.findViewById(R.id.tv_title);
         fl_train = (FrameLayout) view.findViewById(R.id.fl_train);
