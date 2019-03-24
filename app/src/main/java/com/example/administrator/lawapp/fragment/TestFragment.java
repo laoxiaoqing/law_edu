@@ -9,6 +9,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.administrator.lawapp.R;
 import com.example.administrator.lawapp.base.BaseCategoryPager;
@@ -133,13 +134,17 @@ public class TestFragment extends BaseTrainFragment {
     private class MyOnItemClickListener implements android.widget.AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            //3.添加新内容
-            fl_train.removeAllViews();
-            LogUtil.e("type_id=="+topicTypeList.get(position-1).getTopic_type_id());
-            BaseTrainPager baseTrainPager = new TestPager(context,topicTypeList.get(position-1).getTopic_type_id());
-            View rootView = baseTrainPager.rootView;
-            baseTrainPager.initData();
-            fl_train.addView(rootView);
+            if (topicTypeList.get(position-1).getNum()>10){
+                //3.添加新内容
+                fl_train.removeAllViews();
+                BaseTrainPager baseTrainPager = new TestPager(context,topicTypeList.get(position-1).getTopic_type_id());
+                View rootView = baseTrainPager.rootView;
+                baseTrainPager.initData();
+                fl_train.addView(rootView);
+            }else{
+                Toast.makeText(context,"题目数量未够开题",Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 

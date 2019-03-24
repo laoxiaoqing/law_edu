@@ -22,6 +22,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.administrator.lawapp.R;
 import com.example.administrator.lawapp.activity.AudioActivity;
 import com.example.administrator.lawapp.activity.DetailActivity;
+import com.example.administrator.lawapp.activity.LoginActivity;
 import com.example.administrator.lawapp.activity.TrainActivity;
 import com.example.administrator.lawapp.activity.VideoActivity;
 import com.example.administrator.lawapp.base.BasePager;
@@ -100,7 +101,7 @@ public class HomePager extends BasePager {
         //1.设置标题
         tv_title.setText("学习");
         //2.联网请求得到数据创建视图
-        View lvView = View.inflate(context, R.layout.home_display_child, null);
+        View lvView = View.inflate(context, R.layout.home_display_child, null);//非案例部分
         View view = View.inflate(context, R.layout.home_display, null);
         x.view().inject(HomePager.this, lvView);
         x.view().inject(HomePager.this, view);
@@ -160,27 +161,47 @@ public class HomePager extends BasePager {
         iv_test_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, TrainActivity.class);
-                intent.putExtra("position", "test");
-                context.startActivity(intent);
+                //判断是否已登录
+                if (!isLogin()){
+                    Intent intent = new Intent(context, TrainActivity.class);
+                    intent.putExtra("position", "test");
+                    context.startActivity(intent);
+                }
             }
         });
         iv_wrong_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, TrainActivity.class);
-                intent.putExtra("position", "wrong");
-                context.startActivity(intent);
+                if (!isLogin()){
+                    Intent intent = new Intent(context, TrainActivity.class);
+                    intent.putExtra("position", "wrong");
+                    context.startActivity(intent);
+                }
+
             }
         });
         iv_page_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, TrainActivity.class);
-                intent.putExtra("position", "page");
-                context.startActivity(intent);
+                if (!isLogin()){
+                    Intent intent = new Intent(context, TrainActivity.class);
+                    intent.putExtra("position", "page");
+                    context.startActivity(intent);
+                }
+
             }
         });
+    }
+
+    private boolean isLogin() {
+        String user_id = CacheUtils.getString(context, "user_id");
+        if (user_id == null || user_id == "") {
+            Intent intent2 = new Intent(context, LoginActivity.class);
+            context.startActivity(intent2);
+            Toast.makeText(context,"请登录，享用该功能",Toast.LENGTH_SHORT);
+            return true;
+        }
+        return false;
     }
 
     private void getDataFromNet() {
@@ -259,7 +280,6 @@ public class HomePager extends BasePager {
         HomePagerBean homePagerBean = parsedJson(json);
         //LogUtil.e("轮播的标题==" + homePagerBean.getData().getBanner().get(0).getBanner_title());
         if (!isLoadMore) {//是否加载更多
-            LogUtil.v("pagenum============================" + pagenum);
             pagenum = 2;
             banner = homePagerBean.getData().getBanner();
             video = homePagerBean.getData().getVideo();
@@ -363,7 +383,6 @@ public class HomePager extends BasePager {
 
         @Override
         public void onPullDownRefresh() {
-            Toast.makeText(context, "我在下拉", Toast.LENGTH_SHORT).show();
             getDataFromNet();
         }
 
@@ -433,7 +452,7 @@ public class HomePager extends BasePager {
 
         @NonNull
         @Override
-        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+        public Object instantiateItem(@NonNull ViewGroup container, final int position) {
             ImageView imageView = new ImageView(context);
             imageView.setBackgroundResource(R.mipmap.banner_upload);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -457,6 +476,13 @@ public class HomePager extends BasePager {
                             LogUtil.e("离开");
                             myInternalHandler.removeCallbacksAndMessages(null);
                             myInternalHandler.postDelayed(new MyRunnable(), 3000);
+                            Intent intent = new Intent(context, DetailActivity.class);
+                            intent.putExtra("type", "banner");
+                            intent.putExtra("bannerUrl", banner.get(position).getBanner_url() + "");
+                            intent.putExtra("title", banner.get(position).getBanner_title() + "");
+                            intent.putExtra("content", banner.get(position).getBanner_content() + "");
+                            intent.putExtra("picture", banner.get(position).getBanner_image_url() + "");
+                            context.startActivity(intent);
                             break;
                     }
                     return true;//如果加触摸事件返回false

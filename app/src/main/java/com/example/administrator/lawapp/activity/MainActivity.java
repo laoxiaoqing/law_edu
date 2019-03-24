@@ -1,12 +1,16 @@
 package com.example.administrator.lawapp.activity;
 
 import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Window;
+import android.widget.Toast;
 
 import com.example.administrator.lawapp.R;
 import com.example.administrator.lawapp.fragment.ContentFragment;
@@ -75,5 +79,30 @@ public class MainActivity extends SlidingFragmentActivity {
     public ContentFragment getContentFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         return (ContentFragment) fragmentManager.findFragmentByTag(MAIN_CONTENT_TAG);
+    }
+
+    //按两次退出
+    private boolean exit=false;//标识是够可以退出
+    //延迟两秒将exit=false
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what==1){
+                exit=false;
+            }
+        }
+    };
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (event.getKeyCode()==KeyEvent.KEYCODE_BACK){
+            if (!exit){
+                exit=true;
+                Toast.makeText(this,"再按一次退出应用",Toast.LENGTH_SHORT).show();
+                //发消息延迟两秒将exit =false
+                handler.sendEmptyMessageDelayed(1,2000);
+                return true;//不退出
+            }
+        }
+        return super.onKeyUp(keyCode, event);
     }
 }

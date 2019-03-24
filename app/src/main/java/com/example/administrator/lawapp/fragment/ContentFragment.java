@@ -1,5 +1,6 @@
 package com.example.administrator.lawapp.fragment;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -8,8 +9,10 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.administrator.lawapp.R;
+import com.example.administrator.lawapp.activity.LoginActivity;
 import com.example.administrator.lawapp.activity.MainActivity;
 import com.example.administrator.lawapp.base.BaseFragment;
 import com.example.administrator.lawapp.base.BasePager;
@@ -18,6 +21,7 @@ import com.example.administrator.lawapp.pager.HomePager;
 import com.example.administrator.lawapp.pager.LawPager;
 import com.example.administrator.lawapp.pager.MePager;
 import com.example.administrator.lawapp.ui.IsScrollViewPager;
+import com.example.administrator.lawapp.utils.CacheUtils;
 import com.example.administrator.lawapp.utils.LogUtil;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
@@ -104,7 +108,16 @@ public class ContentFragment extends BaseFragment {
 
         }
     }
-
+    private boolean isLogin() {
+        String user_id = CacheUtils.getString(context, "user_id");
+        if (user_id == null || user_id == "") {
+            Intent intent2 = new Intent(context, LoginActivity.class);
+            context.startActivity(intent2);
+            Toast.makeText(context,"请登录，享用该功能",Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return false;
+    }
     class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
         /**
          * @param group     RadioGroup
@@ -126,14 +139,18 @@ public class ContentFragment extends BaseFragment {
                     mainActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     break;
                 case R.id.rb_forum:
-                    viewPager.setCurrentItem(2, false);
-                    //设置不可以侧滑菜单
-                    mainActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+                    if (!isLogin()){
+                        viewPager.setCurrentItem(2, false);
+                        //设置不可以侧滑菜单
+                        mainActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+                    }
                     break;
                 case R.id.rb_me:
-                    viewPager.setCurrentItem(3, false);
-                    //设置不可以侧滑菜单
-                    mainActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+                    if (!isLogin()){
+                        viewPager.setCurrentItem(3, false);
+                        //设置不可以侧滑菜单
+                        mainActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+                    }
                     break;
             }
         }

@@ -147,13 +147,11 @@ public class AudioActivity extends Activity {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
                 pagenum = 2;
-                Toast.makeText(AudioActivity.this, "Pull Down!", Toast.LENGTH_SHORT).show();
                 getDataFromNet();
             }
 
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-                Toast.makeText(AudioActivity.this, "Pull Up!", Toast.LENGTH_SHORT).show();
                 if (AudioMoreBeanList != null) {
                     pagenum++;
                 }
@@ -238,7 +236,6 @@ public class AudioActivity extends Activity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             int realPosition = position - 1;
             AudioMoreBean.DataBean data = AudioBeanList.get(realPosition);
-            Toast.makeText(AudioActivity.this, "data==" + data.getAuditorium_title(), Toast.LENGTH_SHORT).show();
             //1.取出保存的时间集合
             String timeArray = CacheUtils.getString(AudioActivity.this, READ_ARRAY_TIME);
             //2.判断是否存在，如果不存在，才保存，并且刷新适配器

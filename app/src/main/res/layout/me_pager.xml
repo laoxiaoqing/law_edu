@@ -83,18 +83,6 @@
                 android:background="@android:color/darker_gray" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="我的帖子"
-                android:textSize="30dp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
-            <TextView
                 android:id="@+id/tv_logun"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

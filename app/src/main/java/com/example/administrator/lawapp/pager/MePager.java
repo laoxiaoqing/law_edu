@@ -1,9 +1,13 @@
 package com.example.administrator.lawapp.pager;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,6 +18,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.administrator.lawapp.R;
 import com.example.administrator.lawapp.activity.LoginActivity;
 import com.example.administrator.lawapp.activity.MainActivity;
+import com.example.administrator.lawapp.activity.UserActivity;
 import com.example.administrator.lawapp.base.BasePager;
 import com.example.administrator.lawapp.utils.CacheUtils;
 import com.example.administrator.lawapp.utils.Constants;
@@ -22,6 +27,8 @@ import com.handmark.pulltorefresh.library.PullToRefreshExpandableListView;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
+
+import java.io.File;
 
 /**
  * 主页面
@@ -33,6 +40,10 @@ public class MePager extends BasePager {
     private TextView userName;
     @ViewInject(R.id.h_head)
     private ImageView hHead;
+    @ViewInject(R.id.message)
+    private TextView message;
+    @ViewInject(R.id.user_val)
+    private TextView user_val;
     public MePager(Context context) {
         super(context);
     }
@@ -45,9 +56,11 @@ public class MePager extends BasePager {
         tv_title.setText("社区");
         String username = CacheUtils.getString(context,"user_name");
         String user_head = CacheUtils.getString(context,"user_head");
+        String user_email = CacheUtils.getString(context,"user_email");
         //2.联网请求得到数据创建视图
         View view = View.inflate(context, R.layout.me_pager, null);
         x.view().inject(MePager.this,view);
+        user_val.setText(user_email);
         userName.setText(username);
         Glide.with(context)
                 .load(Constants.IMAGEPATH+user_head)
@@ -71,7 +84,17 @@ public class MePager extends BasePager {
                 /*mainActivity.finish();*/
             }
         });
+        message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(context,UserActivity.class);
+                context.startActivity(intent);
+            }
+        });
         fl_content.removeAllViews();
         fl_content.addView(view);
     }
+
+
+
 }

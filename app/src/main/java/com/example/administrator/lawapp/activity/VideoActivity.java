@@ -140,13 +140,11 @@ public class VideoActivity extends Activity {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
                 pagenum = 2;
-                Toast.makeText(VideoActivity.this, "Pull Down!", Toast.LENGTH_SHORT).show();
                 getDataFromNet();
             }
 
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-                Toast.makeText(VideoActivity.this, "Pull Up!", Toast.LENGTH_SHORT).show();
                 if (videoMoreBeanList != null) {
                     pagenum++;
                 }

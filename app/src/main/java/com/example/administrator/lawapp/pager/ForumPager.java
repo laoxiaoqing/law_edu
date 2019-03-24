@@ -35,6 +35,7 @@ import com.example.administrator.lawapp.bean.ForumBean;
 import com.example.administrator.lawapp.utils.CacheUtils;
 import com.example.administrator.lawapp.utils.Constants;
 import com.example.administrator.lawapp.utils.LogUtil;
+import com.example.administrator.lawapp.utils.TimeUtil;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -44,6 +45,7 @@ import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -147,7 +149,6 @@ public class ForumPager extends BasePager {
 
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-                Toast.makeText(context, "Pull Up!", Toast.LENGTH_SHORT).show();
                 if (forumMoreList != null) {
                     pagenum++;
                 }
@@ -263,7 +264,14 @@ public class ForumPager extends BasePager {
             }
             viewHolder.tv_username.setText(forumList.get(position).getUser_name());
             viewHolder.tv_content.setText(forumList.get(position).getForum_content());
-            viewHolder.tv_createTime.setText(forumList.get(position).getForum_date());
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String data = forumList.get(position).getForum_date();
+            try {
+                viewHolder.tv_createTime.setText(TimeUtil.getTimeFormatText(simpleDateFormat.parse(data)));
+            } catch (ParseException e) {
+
+                e.printStackTrace();
+            }
             Glide.with(context)
                     .load(forumList.get(position).getUser_head())
                     .diskCacheStrategy(DiskCacheStrategy.ALL)

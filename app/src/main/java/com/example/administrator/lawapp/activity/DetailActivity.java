@@ -31,6 +31,8 @@ import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
+import cn.sharesdk.onekeyshare.OnekeyShare;
+
 public class DetailActivity extends Activity implements View.OnClickListener {
     private ImageView ivBack;
     private TextView tvTitle;
@@ -48,6 +50,9 @@ public class DetailActivity extends Activity implements View.OnClickListener {
     private LinearLayout llLawHead;
     private TextView tvLaw1;
     private TextView tvLaw2;
+    private String title;
+    private String content;
+    private String picture="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +78,10 @@ public class DetailActivity extends Activity implements View.OnClickListener {
                 break;
             case "law":
                 getLawDataId();
+            case "banner":
+                getBannerId();
         }
     }
-
 
     private void findViews() {
         ivBack = (ImageView) findViewById(R.id.iv_back);
@@ -102,12 +108,33 @@ public class DetailActivity extends Activity implements View.OnClickListener {
             finish();
         } else if (v == ivShare) {
             Toast.makeText(DetailActivity.this, "分享", Toast.LENGTH_SHORT).show();
+            showShare();
         } else if (v == ivFont) {
             changeFontSizeDialog();
             Toast.makeText(DetailActivity.this, "ziti", Toast.LENGTH_SHORT).show();
         }
     }
 
+    private void showShare() {
+        OnekeyShare oks = new OnekeyShare();
+        //关闭sso授权
+        oks.disableSSOWhenAuthorize();
+
+        // title标题，微信、QQ和QQ空间等平台使用
+        oks.setTitle(title);
+        // titleUrl QQ和QQ空间跳转链接
+        oks.setTitleUrl("http://news.eastday.com/c/20180730/u1a14119005_K26843.html");
+        // text是分享文本，所有平台都需要这个字段
+        oks.setText(content);
+        // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+        oks.setImagePath(picture);//确保SDcard下面存在此张图片
+        // url在微信、微博，Facebook等平台中使用
+        oks.setUrl("http://news.eastday.com/c/20180730/u1a14119005_K26843.html");
+        // comment是我对这条分享的评论，仅在人人网使用
+        oks.setComment("我是测试评论文本");
+        // 启动分享GUI
+        oks.show(this);
+    }
     private int tempsize = 2;
     private int realsize = tempsize;
 
@@ -200,6 +227,9 @@ public class DetailActivity extends Activity implements View.OnClickListener {
     //3
     private void manageAudio(String json) {
         auditoriumBean = parsedJsonAudio(json);
+        title=auditoriumBean.getData().getAuditorium_title();
+        content=auditoriumBean.getData().getAuditorium_content();
+        picture=auditoriumBean.getData().getAuditorium_picture();
         webview.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -269,6 +299,9 @@ public class DetailActivity extends Activity implements View.OnClickListener {
     //3
     private void manageVideo(String json) {
         videoBean = parsedJsonVideo(json);
+        title=videoBean.getData().getVideo_title();
+        content=videoBean.getData().getVideo_content();
+        picture =videoBean.getData().getVideo_picture();
         webview.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -340,6 +373,9 @@ public class DetailActivity extends Activity implements View.OnClickListener {
     //3
     private void manageCases(String json) {
         casesBean = parsedJsonCases(json);
+        title=casesBean.getData().getCase_name();
+        content=casesBean.getData().getCase_content();
+        picture=casesBean.getData().getCase_picture();
         webview.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -409,6 +445,7 @@ public class DetailActivity extends Activity implements View.OnClickListener {
     //3
     private void manageLaw(String json) {
         lawBean = parsedJsonLaw(json);
+        title=lawBean.getData().getTwoName();
         tvLaw1.setText(lawBean.getData().getLaw().getLaw_name());
         tvLaw2.setText(lawBean.getData().getOneName()+" -> "+lawBean.getData().getTwoName());
         webview.setWebViewClient(new WebViewClient() {
@@ -434,6 +471,27 @@ public class DetailActivity extends Activity implements View.OnClickListener {
         Gson gson = new Gson();
         LawBean lawBean = gson.fromJson(json, LawBean.class);
         return lawBean;
+    }
+
+    /**
+     * 轮播图事件
+     */
+    private void getBannerId() {
+        title=getIntent().getStringExtra("title");
+        content = getIntent().getStringExtra("content");
+        picture=getIntent().getStringExtra("picture");
+        String bannerUrl = getIntent().getStringExtra("bannerUrl");
+        webSettings = webview.getSettings();
+        //设置支持js
+        webSettings.setJavaScriptEnabled(true);
+        webview.setWebViewClient(new WebViewClient(){
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                pbLoading.setVisibility(View.GONE);
+            }
+        });
+        webview.loadUrl(bannerUrl);
     }
 
 

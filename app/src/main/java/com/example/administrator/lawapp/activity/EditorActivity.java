@@ -49,9 +49,13 @@ public class EditorActivity extends Activity {
     }
 
     private void getDataFromNet() {
+        String content = et_text.getText().toString().trim();
+        System.out.println("content:"+content);
+        content.replace("\n","\\n");
+        System.out.println("content:"+content);
         RequestParams params = new RequestParams(Constants.FORUM_PAGER_URL);//写url
         params.setBodyContent("{\"user_id\":\"" + user_id
-                + "\",\"forum_content\":\"" + et_text.getText().toString().trim()
+                + "\",\"forum_content\":\"" + content
                 + "\"}");
         x.http().post(params, new Callback.CommonCallback<String>() {
             @Override

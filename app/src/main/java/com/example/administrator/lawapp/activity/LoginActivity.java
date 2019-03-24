@@ -38,6 +38,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private IsSuccessBean isSuccessBean;
     private CheckBox cbAuto;
     private CheckBox cbSave;
+    private LinearLayout tv_mian;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +76,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         promptText = (TextView) findViewById(R.id.promptText);
         cbAuto = (CheckBox) findViewById(R.id.cb_auto);
         cbSave = (CheckBox) findViewById(R.id.cb_save);
-
+        tv_mian=(LinearLayout) findViewById(R.id.tv_mian);
+        tv_mian.setOnClickListener(this);
         loginBtn.setOnClickListener(this);
         register.setOnClickListener(this);
     }
@@ -86,6 +88,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             manageLogin();
         } else if (v == register) {
             Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+            startActivity(intent);
+        }else if(v == tv_mian){
+            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
             startActivity(intent);
         }
     }
